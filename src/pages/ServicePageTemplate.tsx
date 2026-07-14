@@ -65,9 +65,9 @@ export function ServicePageTemplate() {
 
   if (!service) {
     return (
-      <div className="bg-white pt-32 pb-20 px-6 text-center">
-        <h1 className="font-cormorant text-2xl text-[#2B2B2B] mb-4">{tStr("servicePages.classic.title")}</h1>
-        <Link to="/" className="font-inter text-[13px] text-[#565656] hover:text-[#2B2B2B]">
+      <div className="bg-[#F7F5F2] pt-32 pb-20 px-6 text-center">
+        <h1 className="font-cormorant text-2xl text-[#1F1F1F] mb-4">{tStr("servicePages.classic.title")}</h1>
+        <Link to="/" className="font-inter text-[13px] text-[#4A4A4A] hover:text-[#1F1F1F]">
           {tStr("servicePages.backToHome")}
         </Link>
       </div>
@@ -75,7 +75,7 @@ export function ServicePageTemplate() {
   }
 
   return (
-    <div className="bg-white min-h-[100dvh]">
+    <div className="bg-[#F7F5F2] min-h-[100dvh]">
       {/* Header spacer */}
       <div className="h-[60px] md:h-[68px]" />
 
@@ -104,7 +104,7 @@ export function ServicePageTemplate() {
           <ScrollReveal>
             <Link
               to="/"
-              className="group inline-flex items-center gap-2 font-inter text-[13px] text-[#565656] hover:text-[#2B2B2B] transition-colors duration-300 mb-10"
+              className="group inline-flex items-center gap-2 font-inter text-[13px] text-[#4A4A4A] hover:text-[#1F1F1F] transition-colors duration-300 mb-10"
             >
               <ArrowLeft size={14} strokeWidth={1.5} className="transition-transform duration-300 group-hover:-translate-x-0.5" />
               {tStr("servicePages.backToHome")}
@@ -112,10 +112,10 @@ export function ServicePageTemplate() {
           </ScrollReveal>
 
           <ScrollReveal>
-            <h2 className="font-cormorant text-[22px] md:text-[26px] text-[#2B2B2B] leading-[1.3] mb-6">
+            <h2 className="font-cormorant text-[22px] md:text-[26px] text-[#1F1F1F] leading-[1.3] mb-6">
               {service.subtitle}
             </h2>
-            <p className="font-inter text-[15px] text-[#2B2B2B] leading-[1.75] mb-10">
+            <p className="font-inter text-[15px] text-[#4A4A4A] leading-[1.75] mb-10">
               {service.description}
             </p>
           </ScrollReveal>
@@ -148,7 +148,7 @@ export function ServicePageTemplate() {
           <ScrollReveal delay={0.2}>
             <a
               href="https://memassage.fi/ajanvaraus"
-              className="inline-flex items-center justify-center px-14 py-[16px] rounded font-inter text-[14px] font-semibold tracking-wide bg-[#2B2B2B] text-white hover:bg-[#565656] transition-colors duration-300 mb-4"
+              className="inline-flex min-h-[52px] items-center justify-center px-8 py-3 rounded-lg font-inter text-[14px] font-semibold tracking-wide bg-[#1F1F1F] text-white hover:bg-[#3A3A3A] transition-colors duration-300 mb-4"
             >
               {tStr("pricing.bookNow")}
             </a>

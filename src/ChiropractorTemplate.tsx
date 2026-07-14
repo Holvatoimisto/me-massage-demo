@@ -39,7 +39,7 @@ const templateData = {
   navigation: {
     logo: '/assets/me_logo.png',
     logoDark: '/assets/me_logo.png',
-    backgroundColor: '#2B2B2B',
+    backgroundColor: '#1F1F1F',
     links: [
       { label: 'ETUSIVU', href: '#' },
       { label: 'Palvelut', href: '#palvelut' },
@@ -67,7 +67,7 @@ const templateData = {
   },
   intro: {
     text: 'Ammattitaitoista hierontaa ja kehonhuoltoa',
-    backgroundColor: '#2B2B2B',
+    backgroundColor: '#1F1F1F',
   },
   services: {
     eyebrow: 'PALVELUT',
@@ -181,8 +181,8 @@ const templateData = {
         firstName: 'Janinalta',
         title: 'Koulutettu hieroja',
         role: 'Hieroja',
-        image: '/assets/me_mathias.jpg',
-        avatar: '/assets/me_mathias.jpg',
+        image: '/assets/me_janina.png',
+        avatar: '/assets/me_janina.png',
         bio: 'Janina on koulutettu hieroja, joka liittyi ME massagen tiimiin vuonna 2024. Hän tuo mukanaan lämpöistä ja ammattitaitoista otetta hierontapalveluihin.\n\nJaninalta saat klassista hierontaa ja kuumakivihierontaa. Hän on erityisen kiinnostunut kokonaisvaltaisesta hyvinvoinnista ja kehonhuollosta.',
         testimonial: 'Haluan auttaa asiakkaitani löytämään keinot rentoutumiseen ja kivunlievitykseen.',
       },
@@ -407,8 +407,8 @@ export function ChiropractorTemplate() {
       firstName: lang === 'sv' ? 'från Janina' : lang === 'en' ? 'from Janina' : 'Janinalta',
       title: tStr('team.janina.title'),
       role: 'Hieroja',
-      image: '/assets/me_mathias.jpg',
-      avatar: '/assets/me_mathias.jpg',
+      image: '/assets/me_janina.png',
+      avatar: '/assets/me_janina.png',
       bio: tStr('team.janina.bio'),
       testimonial: tStr('team.janina.quote'),
     },
@@ -425,7 +425,7 @@ export function ChiropractorTemplate() {
   return (
     <div className="min-h-[100dvh] font-inter antialiased">
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#2B2B2B] shadow-[0_1px_12px_rgba(0,0,0,0.15)]">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#1F1F1F] shadow-[0_1px_12px_rgba(0,0,0,0.18)]">
         <div className="max-w-[1200px] mx-auto px-5 md:px-10 h-[60px] md:h-[68px] flex items-center justify-between">
           <Link to="/" className="relative z-10">
             <img
@@ -565,7 +565,7 @@ export function ChiropractorTemplate() {
             {/* CTA Button */}
             <a
               href={templateData.navigation.ctaButton.href}
-              className="inline-flex items-center justify-center px-7 py-3 rounded font-inter text-[13px] font-bold tracking-[0.06em] bg-[#DEDEDE] text-[#2B2B2B] hover:bg-[#FFFFFF] hover:-translate-y-0.5 transition-all duration-300 shadow-[0_2px_8px_rgba(0,0,0,0.15)]"
+              className="inline-flex min-h-[40px] items-center justify-center px-5 py-2 rounded-md font-inter text-[13px] font-semibold tracking-[0.06em] bg-white text-[#1F1F1F] hover:bg-[#F0F0F0] transition-colors duration-300 shadow-[0_2px_8px_rgba(0,0,0,0.15)]"
             >
               {templateData.navigation.ctaButton.label}
             </a>
@@ -615,7 +615,7 @@ export function ChiropractorTemplate() {
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="md:hidden absolute top-full left-0 right-0 bg-[#2B2B2B] border-t border-[#F4F4F4]/[0.06] px-5 py-6"
+            className="md:hidden absolute top-full left-0 right-0 bg-[#1F1F1F] border-t border-white/[0.08] px-5 py-6"
           >
             <a href="#" onClick={() => setMobileOpen(false)} className="block font-inter text-[14px] font-semibold uppercase tracking-wider text-[#FFFFFF]/90 py-3 border-b border-[#F4F4F4]/[0.06]">{tStr('nav.home')}</a>
 
@@ -695,7 +695,7 @@ export function ChiropractorTemplate() {
             <div className="mt-3">
               <a
                 href={templateData.navigation.ctaButton.href}
-                className="inline-flex items-center justify-center w-full px-5 py-3.5 rounded font-inter text-[14px] font-bold tracking-[0.08em] bg-[#FFFFFF] text-[#2B2B2B] hover:bg-[#DEDEDE] transition-colors duration-300"
+                className="inline-flex min-h-[40px] items-center justify-center w-full px-5 py-2 rounded-md font-inter text-[14px] font-semibold tracking-wide bg-white text-[#1F1F1F] hover:bg-[#F0F0F0] transition-colors duration-300"
               >
                 {templateData.navigation.ctaButton.label}
               </a>
@@ -707,7 +707,7 @@ export function ChiropractorTemplate() {
       {/* Hero */}
       <section className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-110" style={{ backgroundImage: `url(${templateData.hero.backgroundImage})` }} />
-        <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at 50% 50%, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.50) 50%, rgba(0,0,0,0.65) 100%)' }} />
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(31,31,31,0.58) 0%, rgba(31,31,31,0.42) 42%, rgba(31,31,31,0.76) 100%)' }} />
         <div className="absolute inset-0" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`, backgroundRepeat: 'repeat', backgroundSize: '128px 128px', opacity: 0.03 }} />
         <div className="relative z-10 w-full max-w-[800px] mx-auto px-6 md:px-12 flex flex-col items-center text-center pt-[60px]">
 
@@ -750,13 +750,13 @@ export function ChiropractorTemplate() {
           >
             <a
               href={templateData.hero.ctaPrimary.href}
-              className="inline-flex items-center justify-center px-10 py-4 rounded font-inter text-[14px] font-bold tracking-[0.08em] bg-[#FFFFFF] text-[#2B2B2B] shadow-[0_4px_20px_rgba(0,0,0,0.2)] hover:-translate-y-1 hover:bg-[#DEDEDE] transition-all duration-300"
+              className="inline-flex min-h-[52px] items-center justify-center px-8 py-3 rounded-lg font-inter text-[14px] font-semibold tracking-wide bg-white text-[#1F1F1F] shadow-[0_4px_20px_rgba(0,0,0,0.2)] hover:bg-[#F0F0F0] transition-colors duration-300"
             >
               {tStr('hero.bookNow')}
             </a>
             <a
               href={templateData.hero.ctaSecondary.href}
-              className="inline-flex items-center justify-center px-10 py-4 rounded font-inter text-[14px] font-semibold tracking-[0.06em] text-[#FFFFFF]/80 border border-[#FFFFFF]/25 hover:border-[#FFFFFF]/50 hover:text-[#FFFFFF] transition-all duration-300"
+              className="inline-flex min-h-[52px] items-center justify-center px-8 py-3 rounded-lg font-inter text-[14px] font-semibold tracking-wide text-white border border-white/30 hover:bg-white/10 transition-colors duration-300"
             >
               {tStr('hero.exploreServices')}
             </a>
@@ -801,28 +801,28 @@ export function ChiropractorTemplate() {
       </section>
 
       {/* Services */}
-      <section id="palvelut" className="bg-[#DEDEDE] pt-16 md:pt-20 pb-16 md:pb-20 px-6 md:px-12">
+      <section id="palvelut" className="bg-[#F7F5F2] pt-16 md:pt-20 pb-16 md:pb-20 px-6 md:px-12">
         <div className="max-w-[920px] mx-auto">
           <ScrollReveal>
             <div className="text-center mb-14 md:mb-18">
-              <p className="font-inter text-[11px] font-semibold uppercase tracking-[0.2em] text-[#565656] mb-5">{tStr('services.eyebrow')}</p>
-              <h2 className="font-cormorant text-[26px] md:text-[32px] text-[#2B2B2B] leading-[1.35] mb-6">{tStr('services.headline')}</h2>
-              <p className="font-inter text-[14px] text-[#2B2B2B] leading-[1.75] max-w-[440px] mx-auto">{tStr('services.body')}</p>
+              <p className="font-inter text-[11px] font-semibold uppercase tracking-[0.2em] text-[#7A7A7A] mb-5">{tStr('services.eyebrow')}</p>
+              <h2 className="font-cormorant text-[26px] md:text-[32px] text-[#1F1F1F] leading-[1.35] mb-6">{tStr('services.headline')}</h2>
+              <p className="font-inter text-[14px] text-[#4A4A4A] leading-[1.75] max-w-[440px] mx-auto">{tStr('services.body')}</p>
             </div>
           </ScrollReveal>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
             {templateData.services.primaryServices.map((service, i) => (
               <ScrollReveal key={i} delay={i * 0.12}>
-                <Link to={service.linkHref} className="group block rounded-[12px] overflow-hidden bg-[#D5D5D5] transition-all duration-500 ease-out hover:shadow-[0_16px_48px_rgba(0,0,0,0.06)]">
+                <Link to={service.linkHref} className="group block rounded-[12px] overflow-hidden bg-white border border-[#1F1F1F]/[0.06] shadow-[0_8px_28px_rgba(0,0,0,0.04)] transition-all duration-500 ease-out hover:shadow-[0_16px_48px_rgba(0,0,0,0.08)]">
                   <div className="relative overflow-hidden">
                     <img src={service.image} alt={service.title} loading="lazy" className="w-full aspect-[16/10.5] object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02]" />
                     <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(180deg, rgba(86,86,86,0.018) 0%, transparent 40%, rgba(222,222,222,0.15) 100%)', mixBlendMode: 'multiply' }} />
                   </div>
                   <div className="px-8 pt-7 pb-9 md:px-10 md:pt-8 md:pb-10">
-                    <h3 className="font-cormorant text-[26px] md:text-[28px] text-[#2B2B2B] mb-4">{i === 0 ? tStr('services.primary.classic.title') : tStr('services.primary.hotStone.title')}</h3>
-                    <p className="font-inter text-[14px] text-[#565656] leading-[1.75] mb-8 max-w-[340px]">{i === 0 ? tStr('services.primary.classic.description') : tStr('services.primary.hotStone.description')}</p>
-                    <span className="inline-flex items-center gap-1.5 font-inter text-[13px] text-[#2B2B2B]/45 group-hover:text-[#565656] transition-colors duration-300">
+                    <h3 className="font-cormorant text-[26px] md:text-[28px] text-[#1F1F1F] mb-4">{i === 0 ? tStr('services.primary.classic.title') : tStr('services.primary.hotStone.title')}</h3>
+                    <p className="font-inter text-[14px] text-[#4A4A4A] leading-[1.75] mb-8 max-w-[340px]">{i === 0 ? tStr('services.primary.classic.description') : tStr('services.primary.hotStone.description')}</p>
+                    <span className="inline-flex items-center gap-1.5 font-inter text-[13px] text-[#1F1F1F]/60 group-hover:text-[#1F1F1F] transition-colors duration-300">
                       {i === 0 ? tStr('services.primary.classic.link') : tStr('services.primary.hotStone.link')}
                       <ArrowRight size={13} strokeWidth={1.5} className="transition-transform duration-300 group-hover:translate-x-0.5" />
                     </span>
@@ -858,7 +858,7 @@ export function ChiropractorTemplate() {
                     <p className="font-inter text-[14px] text-[#565656] leading-[1.7] mb-6">{tStr('survey.description')}</p>
                     <button
                       onClick={() => { setSurveyStep(1); setSurveyAnswers([]); }}
-                      className="inline-flex items-center justify-center px-10 py-4 rounded font-inter text-[14px] font-bold tracking-[0.08em] bg-[#2B2B2B] text-white shadow-[0_4px_16px_rgba(0,0,0,0.2)] hover:-translate-y-0.5 hover:bg-[#565656] transition-all duration-300 cursor-pointer"
+                      className="inline-flex min-h-[52px] items-center justify-center px-8 py-3 rounded-lg font-inter text-[14px] font-semibold tracking-wide bg-[#1F1F1F] text-white hover:bg-[#3A3A3A] transition-colors duration-300 cursor-pointer"
                     >
                       {tStr('survey.startButton')}
                     </button>
@@ -919,13 +919,13 @@ export function ChiropractorTemplate() {
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                           <a
                             href={rec.bookingUrl}
-                            className="inline-flex items-center justify-center px-10 py-4 rounded font-inter text-[14px] font-bold tracking-[0.08em] bg-[#2B2B2B] text-white shadow-[0_4px_16px_rgba(0,0,0,0.2)] hover:-translate-y-0.5 hover:bg-[#565656] transition-all duration-300"
+                            className="inline-flex min-h-[52px] items-center justify-center px-8 py-3 rounded-lg font-inter text-[14px] font-semibold tracking-wide bg-[#1F1F1F] text-white hover:bg-[#3A3A3A] transition-colors duration-300"
                           >
                             Varaa aika
                           </a>
                           <Link
                             to={rec.serviceLink}
-                            className="inline-flex items-center justify-center px-8 py-4 rounded font-inter text-[14px] font-medium tracking-wide text-[#2B2B2B] border border-[#2B2B2B]/20 hover:border-[#2B2B2B]/40 hover:bg-[#2B2B2B]/[0.04] transition-all duration-300"
+                            className="inline-flex min-h-[52px] items-center justify-center px-8 py-3 rounded-lg font-inter text-[14px] font-semibold tracking-wide text-[#1F1F1F] border border-[#1F1F1F]/30 hover:bg-[#1F1F1F]/5 transition-colors duration-300"
                           >
                             {tStr('survey.exploreService')}
                           </Link>
@@ -947,13 +947,13 @@ export function ChiropractorTemplate() {
       </section>
 
       {/* Pricing */}
-      <section id="hinnasto" className="bg-[#C8C8C8] py-16 md:py-20 px-6 md:px-12">
+      <section id="hinnasto" className="bg-[#F7F5F2] py-16 md:py-20 px-6 md:px-12">
         <div className="max-w-[640px] mx-auto">
           <ScrollReveal>
             <div className="text-center mb-8 md:mb-10">
-              <p className="font-inter text-[11px] font-semibold uppercase tracking-[0.2em] text-[#565656] mb-5">{tStr('pricing.eyebrow')}</p>
-              <h2 className="font-cormorant text-[26px] md:text-[30px] text-[#2B2B2B] leading-[1.35] mb-4">{tStr('pricing.headline')}</h2>
-              <p className="font-inter text-[14px] text-[#2B2B2B]/80 leading-[1.75] max-w-[400px] mx-auto">{tStr('pricing.body')}</p>
+              <p className="font-inter text-[11px] font-semibold uppercase tracking-[0.2em] text-[#7A7A7A] mb-5">{tStr('pricing.eyebrow')}</p>
+              <h2 className="font-cormorant text-[26px] md:text-[30px] text-[#1F1F1F] leading-[1.35] mb-4">{tStr('pricing.headline')}</h2>
+              <p className="font-inter text-[14px] text-[#4A4A4A] leading-[1.75] max-w-[400px] mx-auto">{tStr('pricing.body')}</p>
             </div>
           </ScrollReveal>
 
@@ -966,8 +966,8 @@ export function ChiropractorTemplate() {
                   onClick={() => setActivePricingTab(i)}
                   className={`shrink-0 px-4 py-2.5 rounded-lg font-inter text-[13px] font-medium tracking-wide transition-all duration-200 cursor-pointer border ${
                     i === activePricingTab
-                      ? 'bg-[#2B2B2B] text-white border-[#2B2B2B] shadow-[0_2px_8px_rgba(0,0,0,0.2)]'
-                      : 'bg-transparent text-[#2B2B2B] border-[#B3B3B3] hover:bg-[#2B2B2B]/[0.06]'
+                      ? 'bg-[#1F1F1F] text-white border-[#1F1F1F] shadow-[0_2px_8px_rgba(0,0,0,0.16)]'
+                      : 'bg-transparent text-[#1F1F1F] border-[#1F1F1F]/20 hover:bg-[#1F1F1F]/5'
                   }`}
                 >
                   {tStr(`pricing.tabs.${tab.key}.label`)}
@@ -1004,13 +1004,13 @@ export function ChiropractorTemplate() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
                 href={templateData.business.bookingUrl}
-                className="inline-flex items-center justify-center px-10 py-4 rounded font-inter text-[14px] font-bold tracking-[0.08em] bg-[#2B2B2B] text-white shadow-[0_4px_16px_rgba(0,0,0,0.2)] hover:-translate-y-0.5 hover:bg-[#565656] transition-all duration-300"
+                className="inline-flex min-h-[52px] items-center justify-center px-8 py-3 rounded-lg font-inter text-[14px] font-semibold tracking-wide bg-[#1F1F1F] text-white hover:bg-[#3A3A3A] transition-colors duration-300"
               >
                 Varaa aika
               </a>
               <a
                 href={templateData.business.phoneLink}
-                className="inline-flex items-center justify-center px-8 py-4 rounded font-inter text-[14px] font-medium tracking-wide text-[#2B2B2B] border border-[#2B2B2B]/20 hover:border-[#2B2B2B]/40 hover:bg-[#2B2B2B]/[0.04] transition-all duration-300"
+                className="inline-flex min-h-[52px] items-center justify-center px-8 py-3 rounded-lg font-inter text-[14px] font-semibold tracking-wide text-[#1F1F1F] border border-[#1F1F1F]/30 hover:bg-[#1F1F1F]/5 transition-colors duration-300"
               >
                 {tStr('pricing.askService')}
               </a>
@@ -1020,15 +1020,15 @@ export function ChiropractorTemplate() {
       </section>
 
       {/* Reviews */}
-      <section id="arvostelut" className="bg-[#2B2B2B] pt-20 md:pt-28 pb-14 md:pb-16 px-6 md:px-12 overflow-hidden">
+      <section id="arvostelut" className="bg-[#1F1F1F] pt-20 md:pt-28 pb-14 md:pb-16 px-6 md:px-12 overflow-hidden">
         <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at 50% 25%, rgba(86,86,86,0.05) 0%, transparent 55%)' }} />
         <div className="absolute inset-0" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`, backgroundRepeat: 'repeat', backgroundSize: '128px 128px', opacity: 0.02 }} />
         <div className="relative max-w-[1200px] mx-auto">
           <ScrollReveal>
             <div className="text-center mb-12 md:mb-16">
-              <p className="font-inter text-[11px] font-semibold uppercase tracking-[0.2em] text-[#565656]/80 mb-5">{tStr('reviews.eyebrow')}</p>
+              <p className="font-inter text-[11px] font-semibold uppercase tracking-[0.2em] text-white/55 mb-5">{tStr('reviews.eyebrow')}</p>
               <h2 className="font-cormorant text-[26px] md:text-[32px] text-[#FFFFFF] leading-[1.35] mb-6">{tStr('reviews.headline')}</h2>
-              <p className="font-inter text-[14px] text-[#565656]/65 leading-[1.7] max-w-[420px] mx-auto">{tStr('reviews.description')}</p>
+              <p className="font-inter text-[14px] text-white/60 leading-[1.7] max-w-[420px] mx-auto">{tStr('reviews.description')}</p>
             </div>
           </ScrollReveal>
 
@@ -1045,10 +1045,10 @@ export function ChiropractorTemplate() {
                 <div className="flex-1 flex gap-5 md:gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
                   {visibleReviews.map((review, i) => (
                     <div key={`${reviewIndex}-${i}`} className="flex-shrink-0 w-[260px] md:w-[290px] snap-start">
-                      <div className="bg-[#565656] rounded-xl p-7 md:p-9 shadow-[0_1px_8px_rgba(0,0,0,0.03)] h-full flex flex-col">
+                      <div className="bg-[#2A2A2A] rounded-xl p-7 md:p-9 border border-white/[0.05] shadow-[0_8px_24px_rgba(0,0,0,0.16)] h-full flex flex-col">
                         <p className="font-inter text-[14px] text-[#FFFFFF]/90 leading-[1.75] italic flex-1">&ldquo;{review.text}&rdquo;</p>
                         <div className="flex items-center gap-3 mt-5 pt-5 border-t border-[#FFFFFF]/[0.06]">
-                          <div className="w-10 h-10 rounded-full bg-[#6A6A6A] flex items-center justify-center">
+                          <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
                             <span className="font-cormorant text-[15px] text-[#FFFFFF]/60">{review.name.charAt(0)}</span>
                           </div>
                           <div>
@@ -1073,7 +1073,7 @@ export function ChiropractorTemplate() {
                   href="https://www.google.com/search?q=me+massage+arvostelut"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center px-10 py-4 rounded font-inter text-[14px] font-bold tracking-[0.08em] bg-[#FFFFFF] text-[#2B2B2B] shadow-[0_4px_16px_rgba(0,0,0,0.2)] hover:-translate-y-0.5 hover:bg-[#DEDEDE] transition-all duration-300"
+                  className="inline-flex min-h-[52px] items-center justify-center px-8 py-3 rounded-lg font-inter text-[14px] font-semibold tracking-wide bg-white text-[#1F1F1F] shadow-[0_4px_16px_rgba(0,0,0,0.2)] hover:bg-[#F0F0F0] transition-colors duration-300"
                 >
                   {tStr('reviews.allReviews')}
                 </a>
@@ -1081,7 +1081,7 @@ export function ChiropractorTemplate() {
                   href="https://g.page/r/CeK1L8vJ3Z1KEAE/review"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center px-8 py-4 rounded font-inter text-[14px] font-medium tracking-wide text-[#FFFFFF] border border-[#FFFFFF]/25 hover:border-[#FFFFFF]/50 hover:bg-[#FFFFFF]/[0.06] transition-all duration-300"
+                  className="inline-flex min-h-[52px] items-center justify-center px-8 py-3 rounded-lg font-inter text-[14px] font-semibold tracking-wide text-white border border-white/30 hover:bg-white/10 transition-colors duration-300"
                 >
                   {tStr('reviews.leaveReview')}
                 </a>
@@ -1092,14 +1092,14 @@ export function ChiropractorTemplate() {
       </section>
 
       {/* Team */}
-      <section id="tiimi" className="relative bg-[#2B2B2B] pt-20 md:pt-28 pb-8 md:pb-10 px-6 md:px-12 overflow-hidden">
+      <section id="tiimi" className="relative bg-[#F7F5F2] pt-20 md:pt-28 pb-8 md:pb-10 px-6 md:px-12 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse at 50% 25%, rgba(86,86,86,0.05) 0%, transparent 55%)' }} />
         <div className="absolute inset-0 pointer-events-none opacity-[0.02]" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`, backgroundRepeat: 'repeat', backgroundSize: '128px 128px' }} />
         <div className="relative max-w-[1000px] mx-auto">
           <ScrollReveal>
             <div className="text-center mb-10 md:mb-16">
-              <p className="font-inter text-[11px] font-semibold uppercase tracking-[0.2em] text-[#DEDEDE]/70 mb-5">{tStr('team.eyebrow')}</p>
-              <h2 className="font-cormorant text-[26px] md:text-[32px] text-[#FFFFFF] leading-[1.2]">{tStr('team.headline')}</h2>
+              <p className="font-inter text-[11px] font-semibold uppercase tracking-[0.2em] text-[#7A7A7A] mb-5">{tStr('team.eyebrow')}</p>
+              <h2 className="font-cormorant text-[26px] md:text-[32px] text-[#1F1F1F] leading-[1.2]">{tStr('team.headline')}</h2>
             </div>
           </ScrollReveal>
 
@@ -1112,9 +1112,9 @@ export function ChiropractorTemplate() {
             </div>
 
             <div style={{ opacity: teamTransitioning ? 0 : 1, transform: teamTransitioning ? 'translateY(8px)' : 'translateY(0)', transition: 'opacity 350ms ease-in-out, transform 350ms ease-out' }}>
-              <p className="font-cormorant text-[22px] md:text-[24px] text-[#FFFFFF] mb-2">{activeTeamMember.name}</p>
-              <p className="font-inter text-[12px] font-medium text-[#DEDEDE]/60 tracking-[0.12em] uppercase mb-8">{activeTeamMember.title}</p>
-              <div className="font-inter text-[14px] text-[#DEDEDE]/85 leading-[1.8] mb-8 max-w-[420px] space-y-4">
+              <p className="font-cormorant text-[22px] md:text-[24px] text-[#1F1F1F] mb-2">{activeTeamMember.name}</p>
+              <p className="font-inter text-[12px] font-medium text-[#7A7A7A] tracking-[0.12em] uppercase mb-8">{activeTeamMember.title}</p>
+              <div className="font-inter text-[14px] text-[#4A4A4A] leading-[1.8] mb-8 max-w-[420px] space-y-4">
                 {activeTeamMember.bio.split('\\n\\n').map((para, pi) => (
                   <p key={pi}>{para}</p>
                 ))}
@@ -1122,8 +1122,8 @@ export function ChiropractorTemplate() {
 
               {activeTeamMember.testimonial && (
                 <div className="mb-8 max-w-[420px]">
-                  <div className="pl-3 border-l border-[#F4F4F4]/[0.07]">
-                    <p className="font-inter text-[13px] italic text-[#DEDEDE]/50 leading-[1.7]">&ldquo;{activeTeamMember.testimonial}&rdquo;</p>
+                  <div className="pl-3 border-l border-[#1F1F1F]/10">
+                    <p className="font-inter text-[13px] italic text-[#7A7A7A] leading-[1.7]">&ldquo;{activeTeamMember.testimonial}&rdquo;</p>
                   </div>
                 </div>
               )}
@@ -1135,7 +1135,7 @@ export function ChiropractorTemplate() {
                     <div className={`rounded-full overflow-hidden mb-2 transition-all duration-300 ${i === activeTeamIndex ? 'w-12 h-12 md:w-14 md:h-14 border-2 border-[#B3B3B3] opacity-100 scale-105' : 'w-10 h-10 md:w-11 md:h-11 border border-[#565656]/20 opacity-60 group-hover:opacity-85 scale-100'}`}>
                       <img src={t.avatar} alt={t.name} loading="lazy" className="w-full h-full object-cover" />
                     </div>
-                    <p className={`font-inter text-[11px] mb-px transition-colors duration-300 ${i === activeTeamIndex ? 'text-[#FFFFFF]/80' : 'text-[#FFFFFF]/25 group-hover:text-[#FFFFFF]/50'}`}>{t.name.split(' ')[0]}</p>
+                    <p className={`font-inter text-[11px] mb-px transition-colors duration-300 ${i === activeTeamIndex ? 'text-[#1F1F1F]' : 'text-[#7A7A7A] group-hover:text-[#1F1F1F]'}`}>{t.name.split(' ')[0]}</p>
                   </button>
                 ))}
               </div>
@@ -1145,12 +1145,12 @@ export function ChiropractorTemplate() {
       </section>
 
       {/* FAQ */}
-      <section className="bg-[#E8E8E8] pt-16 md:pt-20 pb-6 md:pb-8 px-6 md:px-12">
+      <section className="bg-[#F7F5F2] pt-16 md:pt-20 pb-6 md:pb-8 px-6 md:px-12">
         <div className="max-w-[640px] mx-auto">
           <ScrollReveal>
             <div className="text-center mb-12 md:mb-14">
-              <p className="font-inter text-[10px] font-semibold uppercase tracking-[0.2em] text-[#565656]/70 mb-5">{tStr('faq.eyebrow')}</p>
-              <h2 className="font-cormorant text-[26px] md:text-[32px] text-[#2B2B2B] leading-[1.25]">{tStr('faq.headline')}</h2>
+              <p className="font-inter text-[10px] font-semibold uppercase tracking-[0.2em] text-[#7A7A7A] mb-5">{tStr('faq.eyebrow')}</p>
+              <h2 className="font-cormorant text-[26px] md:text-[32px] text-[#1F1F1F] leading-[1.25]">{tStr('faq.headline')}</h2>
             </div>
           </ScrollReveal>
 
@@ -1159,13 +1159,13 @@ export function ChiropractorTemplate() {
               {tArr<{question: string; answer: string; includePhone?: boolean}>('faq.items').map((faq, i) => (
                 <div key={i} className="border-t border-[#2B2B2B]/[0.06]">
                   <button onClick={() => setOpenFaqIndex(openFaqIndex === i ? null : i)} className="group w-full flex items-start justify-between gap-4 py-5 md:py-6 text-left bg-transparent border-none cursor-pointer">
-                    <span className="font-inter text-[15px] md:text-[16px] font-semibold text-[#2B2B2B] leading-[1.5]">{faq.question}</span>
+                    <span className="font-inter text-[15px] md:text-[16px] font-semibold text-[#1F1F1F] leading-[1.5]">{faq.question}</span>
                     <span className="shrink-0 mt-[2px] text-[#565656]/50 group-hover:text-[#565656]/70 transition-colors duration-300">
                       {openFaqIndex === i ? <Minus size={16} strokeWidth={1.5} /> : <Plus size={16} strokeWidth={1.5} />}
                     </span>
                   </button>
                   <div className="overflow-hidden transition-all duration-[400ms] ease-out" style={{ maxHeight: openFaqIndex === i ? '220px' : '0px', opacity: openFaqIndex === i ? 1 : 0 }}>
-                    <div className="font-inter text-[14px] text-[#565656] leading-[1.75] pb-5 md:pb-6 max-w-[540px]">
+                    <div className="font-inter text-[14px] text-[#4A4A4A] leading-[1.75] pb-5 md:pb-6 max-w-[540px]">
                       {faq.answer.replace('{phone}', templateData.business.phone)}
                       {faq.includePhone && (
                         <a href={templateData.business.phoneLink} className="block mt-3 font-inter text-[14px] text-[#2B2B2B]/70 tracking-wider no-underline hover:text-[#2B2B2B] hover:underline underline-offset-4 decoration-[#4A4540]/20 transition-colors duration-300">
@@ -1185,7 +1185,7 @@ export function ChiropractorTemplate() {
       {/* Final CTA */}
       <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-110" style={{ backgroundImage: `url(${templateData.finalCta.backgroundImage})` }} />
-        <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at 50% 48%, rgba(20,16,12,0.50) 0%, rgba(20,16,12,0.82) 55%, rgba(20,16,12,0.97) 100%), linear-gradient(180deg, rgba(20,16,12,0.85) 0%, rgba(20,16,12,0.22) 35%, rgba(20,16,12,0.42) 65%, rgba(20,16,12,0.94) 100%)', backdropFilter: 'blur(4px)', WebkitBackdropFilter: 'blur(4px)' }} />
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(31,31,31,0.84) 0%, rgba(31,31,31,0.58) 42%, rgba(31,31,31,0.92) 100%)', backdropFilter: 'blur(3px)', WebkitBackdropFilter: 'blur(3px)' }} />
         <div className="relative z-10 w-full max-w-[480px] mx-auto px-6 pt-[2vh]">
           <ScrollReveal>
             <div className="text-center">
@@ -1195,10 +1195,10 @@ export function ChiropractorTemplate() {
 
               <div className="flex flex-col items-center gap-3 mb-8">
                 <div className="flex flex-col sm:flex-row items-center gap-3 w-full max-w-[480px]">
-                  <a href="https://memassage.fi/ajanvaraus" className="inline-flex items-center justify-center px-6 py-4 rounded font-inter text-[13px] font-bold tracking-[0.06em] bg-[#FFFFFF] text-[#2B2B2B] shadow-[0_4px_20px_rgba(0,0,0,0.2)] hover:-translate-y-0.5 hover:bg-[#DEDEDE] transition-all duration-300 w-full sm:w-1/2">
+                  <a href="https://memassage.fi/ajanvaraus" className="inline-flex min-h-[52px] items-center justify-center px-8 py-3 rounded-lg font-inter text-[14px] font-semibold tracking-wide bg-white text-[#1F1F1F] shadow-[0_4px_20px_rgba(0,0,0,0.2)] hover:bg-[#F0F0F0] transition-colors duration-300 w-full sm:w-1/2">
                     {tStr('finalCta.bookKlaukkala')}
                   </a>
-                  <a href="https://memassage.fi/ajanvaraus" className="inline-flex items-center justify-center px-6 py-4 rounded font-inter text-[13px] font-bold tracking-[0.06em] bg-[#FFFFFF] text-[#2B2B2B] shadow-[0_4px_20px_rgba(0,0,0,0.2)] hover:-translate-y-0.5 hover:bg-[#DEDEDE] transition-all duration-300 w-full sm:w-1/2">
+                  <a href="https://memassage.fi/ajanvaraus" className="inline-flex min-h-[52px] items-center justify-center px-8 py-3 rounded-lg font-inter text-[14px] font-semibold tracking-wide bg-white text-[#1F1F1F] shadow-[0_4px_20px_rgba(0,0,0,0.2)] hover:bg-[#F0F0F0] transition-colors duration-300 w-full sm:w-1/2">
                     {tStr('finalCta.bookVaasa')}
                   </a>
                 </div>
@@ -1218,7 +1218,7 @@ export function ChiropractorTemplate() {
       </section>
 
       {/* Footer */}
-      <footer id="yhteystiedot" className="bg-[#2B2B2B] pt-14 md:pt-16 pb-10 md:pb-12 px-6 md:px-12">
+      <footer id="yhteystiedot" className="bg-[#1F1F1F] pt-14 md:pt-16 pb-10 md:pb-12 px-6 md:px-12">
         <div className="max-w-[1200px] mx-auto">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12 mb-10">
             <div>
