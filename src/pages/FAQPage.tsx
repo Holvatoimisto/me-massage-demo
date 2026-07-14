@@ -17,18 +17,18 @@ export function FAQPage() {
           <ScrollReveal>
             <Link
               to="/"
-              className="group inline-flex items-center gap-2 font-inter text-[13px] text-[#4A4A4A] hover:text-[#1F1F1F] transition-colors duration-300 mb-10"
+              className="group inline-flex items-center gap-2 font-inter text-[13px] text-[#1F2937] hover:text-[#152238] transition-colors duration-300 mb-10"
             >
               <ArrowLeft size={14} strokeWidth={1.5} className="transition-transform duration-300 group-hover:-translate-x-0.5" />
               {tStr('servicePages.backToHome')}
             </Link>
-            <p className="font-inter text-[10px] font-medium uppercase tracking-[4px] text-[#2B2B2B]/60 mb-5">
+            <p className="font-inter text-[10px] font-semibold uppercase tracking-[0.12em] text-[#5A6A7A] mb-5">
               {tStr('faqPage.eyebrow')}
             </p>
-            <h1 className="font-cormorant text-[26px] md:text-[32px] text-[#1F1F1F] leading-[1.25] mb-5">
+            <h1 className="font-cormorant text-[26px] md:text-[32px] text-[#152238] leading-[1.25] mb-5">
               {tStr('faqPage.headline')}
             </h1>
-            <p className="font-inter text-[14px] text-[#4A4A4A] leading-[1.7] mb-12 max-w-[440px]">
+            <p className="font-inter text-[14px] text-[#1F2937] leading-[1.7] mb-12 max-w-[440px]">
               {tStr('faqPage.supportText', { phone: '040 833 8512' })}
             </p>
           </ScrollReveal>
@@ -36,27 +36,27 @@ export function FAQPage() {
           <div className="space-y-0">
             {faqs.map((faq, i) => (
               <ScrollReveal key={i} delay={i * 0.05}>
-                <div className="border-t border-[#1A1A1A]/[0.06] py-6">
-                  <h3 className="font-inter text-[16px] font-semibold text-[#1F1F1F] leading-[1.5] mb-3">
+                <div className="border-t border-[#E2E8F0] py-6">
+                  <h3 className="font-inter text-[16px] font-medium text-[#152238] leading-[1.5] mb-3">
                     {faq.question}
                   </h3>
-                  <p className="font-inter text-[14px] text-[#4A4A4A] leading-[1.7]">
+                  <p className="font-inter text-[14px] text-[#1F2937] leading-[1.7]">
                     {faq.answer}
                   </p>
                 </div>
               </ScrollReveal>
             ))}
-            <div className="border-t border-[#1A1A1A]/[0.06]" />
+            <div className="border-t border-[#E2E8F0]" />
           </div>
 
           <ScrollReveal delay={0.3}>
             <div className="mt-12 text-center">
-              <p className="font-inter text-[14px] text-[#2B2B2B] mb-5">
+              <p className="font-inter text-[14px] text-[#152238] mb-5">
                 {tStr('faqPage.notFound')}
               </p>
               <a
                 href="tel:+358408338512"
-                className="inline-flex min-h-[52px] items-center justify-center px-8 py-3 rounded-lg font-inter text-[14px] font-semibold tracking-wide bg-[#1F1F1F] text-white hover:bg-[#3A3A3A] transition-colors duration-300"
+                className="inline-flex min-h-[52px] items-center justify-center px-8 py-3 rounded-lg font-inter text-[14px] font-semibold tracking-wide bg-[#152238] text-white hover:bg-[#1E3A5F] transition-colors duration-300"
               >
                 {tStr('faqPage.callButton')} 040 833 8512
               </a>

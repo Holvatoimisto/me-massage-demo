@@ -17,7 +17,7 @@ export const translations = {
     hero: {
       eyebrow: 'ME MASSAGE',
       headline: 'Ammattitaitoista hierontaa Klaukkalassa ja Vaasassa',
-      subheadline: 'Klassinen hieronta, kuumakivihieronta, purentalihashieronta ja faskiarautakäsittely. Koulutettu hieroja Mathias Eklund.',
+      subheadline: 'Klassinen hieronta, kuumakivihieronta, purentalihashieronta ja faskiarautakäsittely. Koulutetut hierojat sinua varten.',
       bookNow: 'Varaa aika',
       exploreServices: 'Tutustu palveluihin',
       statRating: 'Google-arvostelu',
@@ -31,7 +31,7 @@ export const translations = {
       eyebrow: 'PALVELUT',
       headline: 'Hierontaa ja kehonhuoltoa',
       body: 'Valitse tarpeisiisi sopiva hoito. Kaikki hoidot räätälöidään yksilöllisesti.',
-      reassurance: 'Etkö ole varma mikä palvelu sopii sinulle? Soita {phone} ja kysy.',
+      reassurance: 'Etkö ole varma, mikä palvelu sopii sinulle? Soita {phone} ja kysy.',
       primary: {
         classic: {
           title: 'Klassinen hieronta',
@@ -56,23 +56,23 @@ export const translations = {
       tabs: {
         classic: {
           label: 'Klassinen hieronta',
-          description: 'Klassinen hieronta kaikilla tekniikoilla. Voimakkuus räätälöidään aina asiakkaan tarpeiden mukaan.',
+          description: 'Perinteinen hieronta lihaskireyksiin, palautumiseen ja rentoutumiseen. Hoidon voimakkuus ja käsiteltävät alueet sovitetaan aina tarpeidesi mukaan.',
         },
         hotStone: {
           label: 'Kuumakivihieronta',
-          description: 'Lämpimien kivien avulla tehtävä hieronta, joka rentouttaa syvällä tasolla ja lievittää lihaskireyksiä.',
+          description: 'Lämpimillä kivillä tehtävä rauhallinen hoito, joka auttaa rentoutumaan ja pehmentämään lihaskireyksiä.',
         },
         jaw: {
           label: 'Purentalihashieronta',
-          description: 'Erikoishoito leukojen ja purentalihasten alueelle. Lievittää jännitystä ja parantaa alueen toimintaa.',
+          description: 'Purentalihasten, leuan ja kasvojen alueen käsittelyä jännityksen, kireyden ja kuormituksen helpottamiseen.',
         },
         iastm: {
           label: 'Faskiarautakäsittely',
-          description: 'IASTM-tekniikka lihaskireyksien ja fascian käsittelyyn. Tehokas apuvälinehoito.',
+          description: 'Faskiarautaa hyödyntävä käsittely lihaskireyksiin ja pehmytkudosten liikkuvuuden tukemiseen.',
         },
       },
       bookNow: 'Varaa aika',
-      askService: 'Kysy sopiva hoito',
+      askService: 'Kysy sopivaa hoitoa',
       duration: '{duration}',
       priceUnit: '€',
     },
@@ -86,7 +86,7 @@ export const translations = {
       items: [
         { name: 'Anni K.', text: 'Mathias on ehdottomasti paras hieroja, jolla olen käynyt. Ammattitaitoinen, kuuntelee ja osaa kohdistaa hoidon oikein. Suosittelen lämpimästi!', service: 'Klassinen hieronta' },
         { name: 'Mikael L.', text: 'Upea hierontakokemus! Mathias otti hyvin huomioon toiveeni ja keskittyi juuri niihin kohtiin, jotka kaipasivat huomiota. Tulen ehdottomasti uudelleen.', service: 'Klassinen hieronta' },
-        { name: 'Sanna R.', text: 'Kuumakivihieronta oli aivan mieletön elämys. Lämmin ja rauhallinen tunnelma, ja hieronta rentouti koko kehon. Kiitos!', service: 'Kuumakivihieronta' },
+        { name: 'Sanna R.', text: 'Kuumakivihieronta oli aivan mieletön elämys. Lämmin ja rauhallinen tunnelma, ja hieronta rentoutti koko kehon. Kiitos!', service: 'Kuumakivihieronta' },
         { name: 'Petri H.', text: 'Purentalihashieronta auttoi minua todella paljon. Olen kärsinyt leukakivuista vuosia ja nyt ne ovat vihdoin helpottaneet. Kiitos Mathias!', service: 'Purentalihashieronta' },
         { name: 'Laura M.', text: 'Faskiarautakäsittely oli tehokasta ja ammattimaista. Mathias osaa kertoa mitä tekee ja miksi. Tulen varmasti uudelleen!', service: 'Faskiarautakäsittely' },
         { name: 'Jussi T.', text: 'Erittäin ammattitaitoinen hieroja. Rentouttava ilmapiiri ja laadukas hoito. Suosittelen kaikille!', service: 'Klassinen hieronta' },
@@ -242,6 +242,7 @@ export const translations = {
       backToHome: 'Takaisin etusivulle',
       benefits: 'Hoidon hyödyt',
       duration: 'Kesto',
+      callPrompt: 'tai soita',
       allServices: 'Kaikki palvelut',
       classic: {
         eyebrow: 'HIERONTA',
@@ -316,7 +317,7 @@ export const translations = {
     hero: {
       eyebrow: 'ME MASSAGE',
       headline: 'Professional Massage in Klaukkala and Vaasa',
-      subheadline: 'Classic massage, hot stone massage, TMJ massage and IASTM treatment. Certified masseur Mathias Eklund.',
+      subheadline: 'Classic massage, hot stone massage, TMJ massage and IASTM treatment. Certified massage therapists at your service.',
       bookNow: 'Book Now',
       exploreServices: 'Explore Services',
       statRating: 'Google Rating',
@@ -541,6 +542,7 @@ export const translations = {
       backToHome: 'Back to Home',
       benefits: 'Treatment Benefits',
       duration: 'Duration',
+      callPrompt: 'or call',
       allServices: 'All Services',
       classic: {
         eyebrow: 'MASSAGE',
@@ -615,7 +617,7 @@ export const translations = {
     hero: {
       eyebrow: 'ME MASSAGE',
       headline: 'Professionell Massage i Klaukkala och Vaasa',
-      subheadline: 'Klassisk massage, varm stenmassage, tuggmuskelmassage och IASTM-behandling. Diplomerad massör Mathias Eklund.',
+      subheadline: 'Klassisk massage, varm stenmassage, tuggmuskelmassage och IASTM-behandling. Diplomerade massörer till din tjänst.',
       bookNow: 'Boka Tid',
       exploreServices: 'Utforska Tjänster',
       statRating: 'Google-betyg',
@@ -840,6 +842,7 @@ export const translations = {
       backToHome: 'Tillbaka Hem',
       benefits: 'Behandlingsfördelar',
       duration: 'Varaktighet',
+      callPrompt: 'eller ring',
       allServices: 'Alla Tjänster',
       classic: {
         eyebrow: 'MASSAGE',

@@ -5,30 +5,30 @@
 @layer base {
   :root {
     --background: 36 24% 96%;
-    --foreground: 0 0% 12%;
+    --foreground: 215 28% 17%;
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 12%;
+    --card-foreground: 215 28% 17%;
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 12%;
-    --primary: 0 0% 12%;
+    --popover-foreground: 215 28% 17%;
+    --primary: 216 45% 15%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 0 0% 29%;
+    --secondary: 214 52% 25%;
     --secondary-foreground: 0 0% 100%;
-    --muted: 0 0% 29%;
-    --muted-foreground: 0 0% 48%;
-    --accent: 0 0% 29%;
+    --muted: 214 32% 91%;
+    --muted-foreground: 210 15% 42%;
+    --accent: 38 29% 50%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 82%;
-    --input: 0 0% 82%;
-    --ring: 0 0% 12%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 38 29% 50%;
     --radius: 0.5rem;
 
     /* Premium palette */
     --color-kingly: #F7F5F2;
-    --color-charcoal: #1F1F1F;
-    --color-iron: #4A4A4A;
+    --color-charcoal: #152238;
+    --color-iron: #1F2937;
     --color-white: #FFFFFF;
   }
 
@@ -38,13 +38,18 @@
 
   body {
     font-family: 'Inter', sans-serif;
-    color: var(--color-charcoal);
+    color: var(--color-iron);
     background-color: var(--color-kingly);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1, h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+  }
+
+  h3, h4, h5, h6 {
     font-family: 'Cormorant Garamond', serif;
     font-weight: 500;
   }
