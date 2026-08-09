@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 816" width="1024" height="816">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#152238"/>
+      <stop offset="1" stop-color="#1E3A5F"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#24354D"/>
+      <stop offset="1" stop-color="#1A2B45"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1024" height="816" fill="url(#bg)"/>
+
+  <!-- subtle brand waves -->
+  <g fill="none" stroke="#2E4A6E" stroke-width="3" opacity="0.5">
+    <path d="M-40 640 C 200 560, 420 700, 660 620 S 1020 560, 1120 640"/>
+    <path d="M-40 700 C 220 620, 440 760, 700 680 S 1040 620, 1140 700"/>
+    <path d="M-40 120 C 200 60, 480 160, 760 100 S 1060 60, 1140 120"/>
+  </g>
+
+  <!-- gift card -->
+  <g transform="rotate(-6 512 408)">
+    <rect x="232" y="248" width="560" height="320" rx="20" fill="url(#card)" stroke="#3D5A80" stroke-width="2"/>
+    <!-- ribbon -->
+    <rect x="492" y="248" width="40" height="320" fill="#F6F8FB" opacity="0.9"/>
+    <rect x="232" y="388" width="560" height="40" fill="#F6F8FB" opacity="0.9"/>
+    <!-- bow -->
+    <path d="M512 388 C 470 340, 430 350, 448 386 C 460 410, 500 400, 512 388 Z" fill="#F6F8FB"/>
+    <path d="M512 388 C 554 340, 594 350, 576 386 C 564 410, 524 400, 512 388 Z" fill="#F6F8FB"/>
+    <circle cx="512" cy="388" r="10" fill="#F6F8FB"/>
+    <!-- card text -->
+    <text x="272" y="308" font-family="Georgia, 'Times New Roman', serif" font-size="30" letter-spacing="6" fill="#F6F8FB">ME MASSAGE</text>
+    <text x="272" y="524" font-family="Georgia, 'Times New Roman', serif" font-size="34" letter-spacing="4" fill="#F6F8FB">LAHJAKORTTI</text>
+  </g>
+</svg>
