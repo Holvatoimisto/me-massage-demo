@@ -1,5 +1,7 @@
 import { useParams, Link } from 'react-router-dom';
 import { ScrollReveal } from '@/components/ScrollReveal';
+import { Header } from '@/components/Header';
+import { Footer } from '@/components/Footer';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { useLang } from '@/contexts/LanguageContext';
 
@@ -65,17 +67,23 @@ export function ServicePageTemplate() {
 
   if (!service) {
     return (
-      <div className="bg-[#F7F5F2] pt-32 pb-20 px-6 text-center">
-        <h1 className="font-cormorant text-2xl text-[#152238] mb-4">{tStr("servicePages.classic.title")}</h1>
-        <Link to="/" className="font-inter text-[13px] text-[#1F2937] hover:text-[#152238]">
-          {tStr("servicePages.backToHome")}
-        </Link>
+      <div className="bg-[#F7F5F2] min-h-[100dvh]">
+        <Header />
+        <div className="h-[60px] md:h-[68px]" />
+        <div className="pt-32 pb-20 px-6 text-center">
+          <h1 className="font-cormorant text-2xl text-[#152238] mb-4">{tStr("servicePages.classic.title")}</h1>
+          <Link to="/" className="font-inter text-[13px] text-[#1F2937] hover:text-[#152238]">
+            {tStr("servicePages.backToHome")}
+          </Link>
+        </div>
+        <Footer />
       </div>
     );
   }
 
   return (
     <div className="bg-[#F7F5F2] min-h-[100dvh]">
+      <Header />
       {/* Header spacer */}
       <div className="h-[60px] md:h-[68px]" />
 
@@ -183,6 +191,7 @@ export function ServicePageTemplate() {
           </ScrollReveal>
         </div>
       </section>
+      <Footer />
     </div>
   );
 }

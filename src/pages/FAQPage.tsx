@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ScrollReveal } from '@/components/ScrollReveal';
+import { Header } from '@/components/Header';
+import { Footer } from '@/components/Footer';
 import { ArrowLeft } from 'lucide-react';
 import { useLang } from '@/contexts/LanguageContext';
 
@@ -10,6 +12,7 @@ export function FAQPage() {
 
   return (
     <div className="bg-[#F7F5F2] min-h-[100dvh]">
+      <Header />
       <div className="h-[60px] md:h-[68px]" />
 
       <section className="pt-16 md:pt-20 pb-16 md:pb-20 px-6 md:px-12">
@@ -64,6 +67,7 @@ export function FAQPage() {
           </ScrollReveal>
         </div>
       </section>
+      <Footer />
     </div>
   );
 }
