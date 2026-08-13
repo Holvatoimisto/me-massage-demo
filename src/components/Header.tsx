@@ -1,8 +1,9 @@
 import { useState, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Menu, X, ChevronDown, Globe } from 'lucide-react';
+import { Menu, X, ChevronDown, Globe, ShoppingBag } from 'lucide-react';
 import { useLang } from '@/contexts/LanguageContext';
+import { useCart } from '@/contexts/CartContext';
 import { useClickOutside } from '@/hooks/useClickOutside';
 import { businessInfo, navigationInfo } from '@/data/site';
 
@@ -15,6 +16,7 @@ const getServiceDropdownItems = (tStr: (p: string) => string) => [
 
 export function Header() {
   const { lang, setLang, tStr } = useLang();
+  const { count } = useCart();
   const { pathname } = useLocation();
   const langRef = useRef<HTMLDivElement>(null);
   const [langOpen, setLangOpen] = useState(false);
@@ -27,6 +29,7 @@ export function Header() {
   const isServices = pathname.startsWith('/palvelut');
   const isPricing = pathname === '/hinnasto';
   const isContact = pathname === '/yhteystiedot';
+  const isShop = pathname.startsWith('/verkkokauppa');
 
   const navLinkClass = (active: boolean) =>
     `font-inter text-[13px] font-semibold uppercase tracking-[0.08em] transition-colors duration-300 whitespace-nowrap ${
@@ -36,7 +39,7 @@ export function Header() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-[#152238] shadow-[0_1px_12px_rgba(0,0,0,0.18)]">
       <div className="max-w-[1200px] mx-auto px-5 md:px-10 h-[60px] md:h-[68px] flex items-center justify-between">
-        <Link to="/" className="relative z-10">
+        <Link to="/" className="relative z-10 shrink-0">
           <img
             src={navigationInfo.logo}
             alt={businessInfo.name}
@@ -45,7 +48,7 @@ export function Header() {
         </Link>
 
         {/* Desktop nav */}
-        <div className="hidden md:flex items-center gap-6">
+        <div className="hidden md:flex items-center gap-4">
           {/* Etusivu */}
           <Link to="/" className={navLinkClass(isHome)}>
             Etusivu
@@ -102,6 +105,12 @@ export function Header() {
           {/* Yhteystiedot */}
           <Link to="/yhteystiedot" className={navLinkClass(isContact)}>
             Yhteystiedot
+          </Link>
+
+          {/* Kauppa */}
+          <Link to="/verkkokauppa" className={`${navLinkClass(isShop)} flex items-center gap-1.5`}>
+            <ShoppingBag size={14} strokeWidth={1.5} />
+            {tStr('nav.shop')}{count > 0 ? ` · ${count}` : ''}
           </Link>
 
           <span className="h-4 w-px bg-white/10" aria-hidden="true" />
@@ -243,6 +252,10 @@ export function Header() {
 
           <Link to="/hinnasto" onClick={() => setMobileOpen(false)} className="block font-inter text-[14px] font-semibold uppercase tracking-wider text-[#FFFFFF]/90 py-3 border-b border-[#E2E8F0]/[0.06]">{tStr('nav.pricing')}</Link>
           <Link to="/yhteystiedot" onClick={() => setMobileOpen(false)} className="block font-inter text-[14px] font-semibold uppercase tracking-wider text-[#FFFFFF]/90 py-3 border-b border-[#E2E8F0]/[0.06]">{tStr('nav.contact')}</Link>
+          <Link to="/verkkokauppa" onClick={() => setMobileOpen(false)} className="flex items-center gap-2 font-inter text-[14px] font-semibold uppercase tracking-wider text-[#FFFFFF]/90 py-3 border-b border-[#E2E8F0]/[0.06]">
+            <ShoppingBag size={15} strokeWidth={1.5} />
+            {tStr('nav.webshop')}{count > 0 ? ` · ${count}` : ''}
+          </Link>
 
           {navigationInfo.extraLinks.map((link) => (
             <Link
