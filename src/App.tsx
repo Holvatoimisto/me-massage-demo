@@ -2,6 +2,7 @@ import { HashRouter, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { LanguageProvider } from '@/contexts/LanguageContext';
 import { CartProvider } from '@/contexts/CartContext';
+import { BookingModalProvider } from '@/contexts/BookingModalContext';
 import { CartDrawer } from '@/components/shop/CartDrawer';
 import { ChiropractorTemplate } from '@/ChiropractorTemplate';
 import { ServicePageTemplate } from '@/pages/ServicePageTemplate';
@@ -14,6 +15,8 @@ import { ContactPage } from '@/pages/ContactPage';
 import { ShopPage } from '@/pages/ShopPage';
 import { ShopGiftCardsPage } from '@/pages/ShopGiftCardsPage';
 import { ShopSeriesCardsPage } from '@/pages/ShopSeriesCardsPage';
+import { NotFoundPage } from '@/pages/NotFoundPage';
+import { ScrollManager } from '@/components/ScrollManager';
 
 function App() {
   return (
@@ -21,6 +24,8 @@ function App() {
       <LanguageProvider>
         <CartProvider>
           <HashRouter>
+            <BookingModalProvider>
+              <ScrollManager />
             <Routes>
               <Route path="/" element={<ChiropractorTemplate />} />
               <Route path="/palvelut" element={<PalvelutPage />} />
@@ -33,8 +38,10 @@ function App() {
               <Route path="/verkkokauppa" element={<ShopPage />} />
               <Route path="/verkkokauppa/lahjakortit" element={<ShopGiftCardsPage />} />
               <Route path="/verkkokauppa/sarjakortit" element={<ShopSeriesCardsPage />} />
+              <Route path="*" element={<NotFoundPage />} />
             </Routes>
             <CartDrawer />
+            </BookingModalProvider>
           </HashRouter>
         </CartProvider>
       </LanguageProvider>

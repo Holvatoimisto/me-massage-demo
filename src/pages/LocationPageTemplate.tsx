@@ -1,19 +1,29 @@
 import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { ArrowLeft, MapPin, Phone, Star } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Mail, MapPin, Phone, Star } from 'lucide-react';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { useLang } from '@/contexts/LanguageContext';
 import { locations, type LocationData } from '@/data/locations';
+import { teamAtLocation } from '@/data/team';
+import { serviceOverviews } from '@/data/services';
+import { pricingTabs } from '@/data/pricing';
 import { businessInfo } from '@/data/site';
 
 type ReviewItem = {
   name: string;
   text: string;
   service: string;
+  [key: string]: unknown;
 };
+
+interface ArrivalRow {
+  label: string;
+  text: string;
+  [key: string]: unknown;
+}
 
 /**
  * Presentation layer for a location's reviews. Receives plain review data,
@@ -63,6 +73,9 @@ function LocationPage({ location }: { location: LocationData }) {
   // TEMPORARY assignment — see reviewNames in src/data/locations.ts
   const locationReviews = allReviews.filter((r) => location.reviewNames.includes(r.name));
 
+  const arrivalRows = tArr<ArrivalRow>(`locationPage.${location.slug}.arrival`);
+  const therapists = teamAtLocation(location.slug);
+
   const bookingLabel = tStr(location.bookingLabelKey);
 
   return (
@@ -93,7 +106,7 @@ function LocationPage({ location }: { location: LocationData }) {
             <ScrollReveal>
               <div>
                 <p className="font-inter text-[11px] font-semibold uppercase tracking-[0.12em] text-[#5A6A7A] mb-5">{businessInfo.name.toUpperCase()}</p>
-                <h1 className="font-cormorant text-[40px] md:text-[48px] lg:text-[56px] font-semibold text-[#152238] leading-[1.05] mb-5">{location.name}</h1>
+                <h1 className="font-cormorant text-[36px] md:text-[44px] lg:text-[52px] font-semibold text-[#152238] leading-[1.08] mb-5">{t('heroTitle')}</h1>
                 <p className="font-inter text-[14px] md:text-[15px] text-[#5A6A7A] leading-[1.7] mb-6 max-w-[380px]">{t('heroSupport')}</p>
                 <p className="font-inter text-[14px] text-[#1F2937] leading-[1.7] mb-8 flex items-start gap-2">
                   <MapPin size={15} strokeWidth={1.5} className="shrink-0 mt-[3px] text-[#5A6A7A]" />
@@ -131,7 +144,15 @@ function LocationPage({ location }: { location: LocationData }) {
           <ScrollReveal>
             <div>
               <h2 className="font-cormorant text-[26px] md:text-[32px] text-[#152238] leading-[1.25] mb-5">{tStr('locationPage.arrivalHeading')}</h2>
-              <p className="font-inter text-[14px] md:text-[15px] text-[#1F2937] leading-[1.75] mb-6 max-w-[420px]">{t('arrivalText')}</p>
+              <div className="mb-8 max-w-[420px]">
+                {arrivalRows.map((row) => (
+                  <div key={row.label} className="border-t border-[#E2E8F0] py-4">
+                    <p className="font-inter text-[11px] font-semibold uppercase tracking-[0.12em] text-[#5A6A7A] mb-1.5">{row.label}</p>
+                    <p className="font-inter text-[14px] text-[#1F2937] leading-[1.7]">{row.text}</p>
+                  </div>
+                ))}
+                <div className="border-t border-[#E2E8F0]" />
+              </div>
               <a
                 href={location.mapUrl}
                 target="_blank"
@@ -159,12 +180,68 @@ function LocationPage({ location }: { location: LocationData }) {
         </div>
       </section>
 
-      {/* Services & booking */}
-      <section className="bg-[#F7F5F2] py-16 md:py-20 px-6 md:px-12">
-        <div className="max-w-[640px] mx-auto text-center">
+      {/* Therapists at this location */}
+      <section className="bg-[#152238] py-16 md:py-20 px-6 md:px-12">
+        <div className="max-w-[900px] mx-auto">
           <ScrollReveal>
-            <h2 className="font-cormorant text-[26px] md:text-[32px] text-[#152238] leading-[1.25] mb-5">{tStr('locationPage.bookingHeading')}</h2>
-            <p className="font-inter text-[14px] md:text-[15px] text-[#5A6A7A] leading-[1.7] mb-10 max-w-[420px] mx-auto">{tStr('locationPage.bookingSupport')}</p>
+            <h2 className="font-cormorant text-[26px] md:text-[32px] text-white leading-[1.25] mb-12 text-center">
+              {tStr('locationPage.therapistsHeading')}
+            </h2>
+          </ScrollReveal>
+          <div className={`grid grid-cols-1 gap-10 md:gap-12 max-w-[640px] mx-auto ${therapists.length > 1 ? 'sm:grid-cols-2' : ''}`}>
+            {therapists.map((member, i) => (
+              <ScrollReveal key={member.id} delay={0.05 + i * 0.08}>
+                <div className={`flex items-center gap-5 ${therapists.length === 1 ? 'justify-center' : ''}`}>
+                  <div className="w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden shrink-0 border border-white/15">
+                    <img src={member.image} alt={member.name} loading="lazy" className="w-full h-full object-cover" />
+                  </div>
+                  <div>
+                    <p className="font-cormorant text-[20px] text-white leading-[1.2] mb-1">{member.name}</p>
+                    <p className="font-inter text-[12px] text-[#94A3B8] leading-[1.5]">{tStr(member.titleKey)}</p>
+                  </div>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Services & pricing bridge */}
+      <section className="bg-[#F7F5F2] py-16 md:py-20 px-6 md:px-12">
+        <div className="max-w-[640px] mx-auto">
+          <ScrollReveal>
+            <div className="text-center mb-10">
+              <h2 className="font-cormorant text-[26px] md:text-[32px] text-[#152238] leading-[1.25] mb-5">{tStr('locationPage.servicesHeading')}</h2>
+              <p className="font-inter text-[14px] md:text-[15px] text-[#5A6A7A] leading-[1.7] max-w-[420px] mx-auto">{tStr('locationPage.servicesSupport')}</p>
+            </div>
+          </ScrollReveal>
+          <ScrollReveal delay={0.1}>
+            <div className="mb-8">
+              {serviceOverviews.map((service) => {
+                const tab = pricingTabs.find((pt) => pt.key === service.pricingKey);
+                const minPrice = tab ? Math.min(...tab.items.map((item) => Number(item.price))) : null;
+                return (
+                  <Link
+                    key={service.key}
+                    to={service.href}
+                    className="group flex items-baseline justify-between gap-4 border-t border-[#E2E8F0] py-5"
+                  >
+                    <span className="font-inter text-[15px] font-semibold text-[#152238]">
+                      {tStr(`servicePages.${service.key}.title`)}
+                    </span>
+                    <span className="flex items-center gap-3 shrink-0">
+                      {minPrice !== null && (
+                        <span className="font-inter text-[13px] text-[#5A6A7A]">
+                          {tStr('pages.palvelut.fromPrice').replace('{price}', String(minPrice))}
+                        </span>
+                      )}
+                      <ArrowRight size={14} strokeWidth={1.5} className="text-[#5A6A7A] transition-transform duration-300 group-hover:translate-x-0.5 group-hover:text-[#152238]" />
+                    </span>
+                  </Link>
+                );
+              })}
+              <div className="border-t border-[#E2E8F0]" />
+            </div>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
                 href={location.bookingUrl}
@@ -173,10 +250,10 @@ function LocationPage({ location }: { location: LocationData }) {
                 {bookingLabel}
               </a>
               <Link
-                to="/"
+                to="/hinnasto"
                 className="inline-flex min-h-[52px] items-center justify-center px-8 py-3 rounded-lg font-inter text-[14px] font-semibold tracking-wide text-[#152238] border border-[#152238]/30 hover:bg-[#152238]/5 transition-colors duration-300"
               >
-                {tStr('hero.exploreServices')}
+                {tStr('locationPage.servicesCta')}
               </Link>
             </div>
           </ScrollReveal>
@@ -189,6 +266,45 @@ function LocationPage({ location }: { location: LocationData }) {
         heading={tStr('locationPage.reviewsHeading')}
         support={tStr('reviews.description')}
       />
+
+      {/* Contact details */}
+      <section className="bg-white pb-16 md:pb-20 px-6 md:px-12">
+        <div className="max-w-[640px] mx-auto">
+          <ScrollReveal>
+            <h2 className="font-cormorant text-[24px] md:text-[28px] text-[#152238] leading-[1.3] mb-10 text-center">
+              {tStr('locationPage.contactHeading')}
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
+              <div>
+                <p className="font-inter text-[11px] font-semibold uppercase tracking-[0.12em] text-[#5A6A7A] mb-2 flex items-center justify-center gap-1.5">
+                  <MapPin size={12} strokeWidth={1.5} /> {tStr('locationPage.addressLabel')}
+                </p>
+                <p className="font-inter text-[14px] text-[#1F2937] leading-[1.7]">
+                  {location.addressLines.map((line) => (
+                    <span key={line} className="block">{line}</span>
+                  ))}
+                </p>
+              </div>
+              <div>
+                <p className="font-inter text-[11px] font-semibold uppercase tracking-[0.12em] text-[#5A6A7A] mb-2 flex items-center justify-center gap-1.5">
+                  <Phone size={12} strokeWidth={1.5} /> {tStr('pages.contact.phoneLabel')}
+                </p>
+                <a href={businessInfo.phoneLink} className="font-inter text-[14px] text-[#1F2937] hover:text-[#152238] transition-colors duration-300 no-underline">
+                  {businessInfo.phone}
+                </a>
+              </div>
+              <div>
+                <p className="font-inter text-[11px] font-semibold uppercase tracking-[0.12em] text-[#5A6A7A] mb-2 flex items-center justify-center gap-1.5">
+                  <Mail size={12} strokeWidth={1.5} /> {tStr('pages.contact.emailLabel')}
+                </p>
+                <a href={`mailto:${location.email}`} className="font-inter text-[14px] text-[#1F2937] hover:text-[#152238] transition-colors duration-300 no-underline break-all">
+                  {location.email}
+                </a>
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
 
       {/* Location final CTA */}
       <section className="bg-[#152238] py-20 md:py-28 px-6 md:px-12">

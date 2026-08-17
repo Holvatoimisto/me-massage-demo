@@ -1,8 +1,9 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { ShoppingCart } from 'lucide-react';
 import { useLang } from '@/contexts/LanguageContext';
+import { useBookingModal } from '@/contexts/BookingModalContext';
 import { ScrollReveal } from '@/components/ScrollReveal';
-import { businessInfo } from '@/data/site';
 import { pricingTabs, pricingTabGroups } from '@/data/pricing';
 
 /**
@@ -12,6 +13,7 @@ import { pricingTabs, pricingTabGroups } from '@/data/pricing';
  */
 export function PricingExplorer() {
   const { tStr } = useLang();
+  const { openBookingModal } = useBookingModal();
   const [activePricingTab, setActivePricingTab] = useState(0);
   // Selected price per pricing tab; preselect the popular item of each tab.
   const [selectedPrices, setSelectedPrices] = useState<Record<number, number>>(() => {
@@ -108,32 +110,22 @@ export function PricingExplorer() {
       {/* CTAs */}
       <ScrollReveal delay={0.2}>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          {activeTab.cta === 'cart' ? (
-            // Shop tab: cart CTA. Wired up when the online store is built.
-            <button
-              type="button"
-              className="inline-flex min-h-[52px] items-center justify-center gap-2 px-8 py-3 rounded-lg font-inter text-[14px] font-semibold tracking-wide whitespace-nowrap bg-[#152238] text-white hover:bg-[#1E3A5F] transition-colors duration-300 cursor-pointer"
+          {activeTab.cta === 'cart' && activeTab.shopUrl ? (
+            // Shop tab: route to the matching internal webshop page.
+            <Link
+              to={activeTab.shopUrl}
+              className="inline-flex min-h-[52px] items-center justify-center gap-2 px-8 py-3 rounded-lg font-inter text-[14px] font-semibold tracking-wide whitespace-nowrap bg-[#152238] text-white hover:bg-[#1E3A5F] transition-colors duration-300"
             >
               <ShoppingCart size={16} strokeWidth={1.5} />
-              {tStr('pricing.addToCart')}
-            </button>
+              {tStr('pricing.gotoShop')}
+            </Link>
           ) : (
-            <a
-              href={businessInfo.bookingUrl}
-              className="inline-flex min-h-[52px] items-center justify-center px-8 py-3 rounded-lg font-inter text-[14px] font-semibold tracking-wide whitespace-nowrap bg-[#152238] text-white hover:bg-[#1E3A5F] transition-colors duration-300"
+            <button
+              onClick={openBookingModal}
+              className="inline-flex min-h-[52px] items-center justify-center px-8 py-3 rounded-lg font-inter text-[14px] font-semibold tracking-wide whitespace-nowrap bg-[#152238] text-white hover:bg-[#1E3A5F] transition-colors duration-300 cursor-pointer border-none"
             >
               {tStr('pricing.bookNow')}
-            </a>
-          )}
-          {activeTab.shopUrl && (
-            <a
-              href={activeTab.shopUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex min-h-[52px] items-center justify-center px-8 py-3 rounded-lg font-inter text-[14px] font-semibold tracking-wide whitespace-nowrap text-[#152238] border border-[#152238]/30 hover:bg-[#152238]/5 transition-colors duration-300"
-            >
-              {tStr('pricing.viewAllProducts')}
-            </a>
+            </button>
           )}
         </div>
       </ScrollReveal>

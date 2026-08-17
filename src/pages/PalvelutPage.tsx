@@ -1,15 +1,15 @@
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { ArrowRight, Phone } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { useLang } from '@/contexts/LanguageContext';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { PageHero } from '@/components/PageHero';
 import { FinalCtaSection } from '@/components/FinalCtaSection';
 import { ScrollReveal } from '@/components/ScrollReveal';
+import { SymptomSurvey } from '@/components/SymptomSurvey';
 import { serviceOverviews } from '@/data/services';
 import { pricingTabs } from '@/data/pricing';
-import { businessInfo } from '@/data/site';
 
 export function PalvelutPage() {
   const { tStr } = useLang();
@@ -52,6 +52,9 @@ export function PalvelutPage() {
                     <p className="font-inter text-[13px] text-[#5A6A7A] leading-[1.6] mb-4">
                       {tStr(`servicePages.${service.key}.subtitle`)}
                     </p>
+                    <p className="font-inter text-[13px] font-medium text-[#152238] leading-[1.6] mb-4 border-l-2 border-[#152238]/20 pl-4">
+                      {tStr(`servicePages.${service.key}.bestFor`)}
+                    </p>
                     <p className="font-inter text-[14px] text-[#1F2937] leading-[1.75] mb-5 flex-1">
                       {tStr(`servicePages.${service.key}.description`)}
                     </p>
@@ -59,13 +62,21 @@ export function PalvelutPage() {
                       {t('durationsLabel')}: {durations}
                       {minPrice !== null && <> · {t('fromPrice').replace('{price}', String(minPrice))}</>}
                     </p>
-                    <Link
-                      to={service.href}
-                      className="group inline-flex items-center gap-2 font-inter text-[13px] font-semibold text-[#152238] underline underline-offset-4 decoration-[#152238]/25 hover:decoration-[#152238]/70 transition-colors duration-300"
-                    >
-                      {t('cta')}
-                      <ArrowRight size={14} strokeWidth={1.5} className="transition-transform duration-300 group-hover:translate-x-0.5" />
-                    </Link>
+                    <div className="flex items-center gap-6">
+                      <Link
+                        to={service.href}
+                        className="group inline-flex items-center gap-2 font-inter text-[13px] font-semibold text-[#152238] underline underline-offset-4 decoration-[#152238]/25 hover:decoration-[#152238]/70 transition-colors duration-300"
+                      >
+                        {t('cta')}
+                        <ArrowRight size={14} strokeWidth={1.5} className="transition-transform duration-300 group-hover:translate-x-0.5" />
+                      </Link>
+                      <Link
+                        to="/hinnasto"
+                        className="font-inter text-[13px] text-[#5A6A7A] hover:text-[#152238] underline underline-offset-4 decoration-[#152238]/15 hover:decoration-[#152238]/50 transition-colors duration-300"
+                      >
+                        {t('pricingLink')}
+                      </Link>
+                    </div>
                   </article>
                 </ScrollReveal>
               );
@@ -74,29 +85,11 @@ export function PalvelutPage() {
         </div>
       </section>
 
-      {/* Choosing support */}
+      {/* Choosing support — symptom survey */}
       <section className="bg-[#F7F5F2] py-14 md:py-16 px-6 md:px-12">
-        <div className="max-w-[560px] mx-auto text-center">
-          <ScrollReveal>
-            <h2 className="font-cormorant text-[24px] md:text-[28px] text-[#152238] leading-[1.3] mb-4">{t('unsureHeading')}</h2>
-            <p className="font-inter text-[14px] text-[#5A6A7A] leading-[1.7] mb-8">{t('unsureText').replace('{phone}', businessInfo.phone)}</p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <a
-                href={businessInfo.phoneLink}
-                className="inline-flex min-h-[52px] items-center justify-center gap-2 px-8 py-3 rounded-lg font-inter text-[14px] font-semibold tracking-wide bg-[#152238] text-white hover:bg-[#1E3A5F] transition-colors duration-300"
-              >
-                <Phone size={15} strokeWidth={1.5} />
-                {businessInfo.phone}
-              </a>
-              <Link
-                to="/usein-kysyttya"
-                className="inline-flex min-h-[52px] items-center justify-center px-8 py-3 rounded-lg font-inter text-[14px] font-semibold tracking-wide text-[#152238] border border-[#152238]/30 hover:bg-[#152238]/5 transition-colors duration-300"
-              >
-                {t('faqLink')}
-              </Link>
-            </div>
-          </ScrollReveal>
-        </div>
+        <ScrollReveal>
+          <SymptomSurvey />
+        </ScrollReveal>
       </section>
 
       <FinalCtaSection />

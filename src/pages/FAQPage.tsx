@@ -1,17 +1,40 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
-import { ArrowLeft } from 'lucide-react';
+import { FinalCtaSection } from '@/components/FinalCtaSection';
+import { ArrowLeft, ArrowRight, Plus, Minus } from 'lucide-react';
 import { useLang } from '@/contexts/LanguageContext';
+import { businessInfo } from '@/data/site';
+
+interface FaqItem {
+  question: string;
+  answer: string;
+  linkText?: string;
+  linkHref?: string;
+  [key: string]: unknown;
+}
+
+interface FaqGroup {
+  title: string;
+  faqs: FaqItem[];
+  [key: string]: unknown;
+}
 
 export function FAQPage() {
   const { tStr, tArr } = useLang();
+  const [openKey, setOpenKey] = useState<string | null>(null);
 
-  const faqs = tArr<{question: string; answer: string}>('faqPage.faqs');
+  const groups = tArr<FaqGroup>('faqPage.groups');
 
   return (
     <div className="bg-[#F7F5F2] min-h-[100dvh]">
+      <Helmet>
+        <title>{tStr('pages.faq.metaTitle')}</title>
+        <meta name="description" content={tStr('pages.faq.metaDescription')} />
+      </Helmet>
       <Header />
       <div className="h-[60px] md:h-[68px]" />
 
@@ -32,41 +55,72 @@ export function FAQPage() {
               {tStr('faqPage.headline')}
             </h1>
             <p className="font-inter text-[14px] text-[#1F2937] leading-[1.7] mb-12 max-w-[440px]">
-              {tStr('faqPage.supportText', { phone: '040 833 8512' })}
+              {tStr('faqPage.supportText', { phone: businessInfo.phone })}
             </p>
           </ScrollReveal>
 
-          <div className="space-y-0">
-            {faqs.map((faq, i) => (
-              <ScrollReveal key={i} delay={i * 0.05}>
-                <div className="border-t border-[#E2E8F0] py-6">
-                  <h3 className="font-inter text-[16px] font-medium text-[#152238] leading-[1.5] mb-3">
-                    {faq.question}
-                  </h3>
-                  <p className="font-inter text-[14px] text-[#1F2937] leading-[1.7]">
-                    {faq.answer}
-                  </p>
-                </div>
-              </ScrollReveal>
-            ))}
-            <div className="border-t border-[#E2E8F0]" />
-          </div>
+          {groups.map((group, gi) => (
+            <ScrollReveal key={group.title} delay={gi * 0.05}>
+              <div className="mb-12">
+                <h2 className="font-inter text-[13px] font-medium uppercase tracking-[0.12em] text-[#5A6A7A] mb-2">
+                  {group.title}
+                </h2>
+                {group.faqs.map((faq, fi) => {
+                  const key = `${gi}-${fi}`;
+                  const isOpen = openKey === key;
+                  return (
+                    <div key={key} className="border-t border-[#E2E8F0]">
+                      <button
+                        onClick={() => setOpenKey(isOpen ? null : key)}
+                        aria-expanded={isOpen}
+                        className="group w-full flex items-start justify-between gap-4 py-5 text-left bg-transparent border-none cursor-pointer"
+                      >
+                        <span className="font-inter text-[15px] font-semibold text-[#152238] leading-[1.5]">{faq.question}</span>
+                        <span className="shrink-0 mt-[2px] text-[#5A6A7A]/50 group-hover:text-[#5A6A7A]/70 transition-colors duration-300">
+                          {isOpen ? <Minus size={16} strokeWidth={1.5} /> : <Plus size={16} strokeWidth={1.5} />}
+                        </span>
+                      </button>
+                      <div
+                        className="overflow-hidden transition-all duration-[400ms] ease-out"
+                        style={{ maxHeight: isOpen ? '280px' : '0px', opacity: isOpen ? 1 : 0 }}
+                      >
+                        <div className="font-inter text-[14px] text-[#1F2937] leading-[1.75] pb-6 max-w-[540px]">
+                          {faq.answer.replace('{phone}', businessInfo.phone)}
+                          {faq.linkText && faq.linkHref && (
+                            <Link
+                              to={faq.linkHref}
+                              className="group/link inline-flex items-center gap-1.5 mt-3 font-inter text-[13px] font-semibold text-[#152238] underline underline-offset-4 decoration-[#152238]/25 hover:decoration-[#152238]/70 transition-colors duration-300"
+                            >
+                              {faq.linkText}
+                              <ArrowRight size={12} strokeWidth={1.5} className="transition-transform duration-300 group-hover/link:translate-x-0.5" />
+                            </Link>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+                <div className="border-t border-[#E2E8F0]" />
+              </div>
+            </ScrollReveal>
+          ))}
 
-          <ScrollReveal delay={0.3}>
-            <div className="mt-12 text-center">
+          <ScrollReveal delay={0.2}>
+            <div className="mt-4 text-center">
               <p className="font-inter text-[14px] text-[#152238] mb-5">
                 {tStr('faqPage.notFound')}
               </p>
               <a
-                href="tel:+358408338512"
+                href={businessInfo.phoneLink}
                 className="inline-flex min-h-[52px] items-center justify-center px-8 py-3 rounded-lg font-inter text-[14px] font-semibold tracking-wide bg-[#152238] text-white hover:bg-[#1E3A5F] transition-colors duration-300"
               >
-                {tStr('faqPage.callButton')} 040 833 8512
+                {tStr('faqPage.callButton')} {businessInfo.phone}
               </a>
             </div>
           </ScrollReveal>
         </div>
       </section>
+      <FinalCtaSection />
       <Footer />
     </div>
   );

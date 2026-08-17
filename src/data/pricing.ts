@@ -62,7 +62,7 @@ export const pricingTabs: PricingTab[] = [
     label: 'Lahjakortit',
     description: 'Lahjakortit kaikkiin hoitoihin. Saatavilla myös avoin lahjakortti, johon voit valita summan itse.',
     cta: 'cart',
-    shopUrl: 'https://memassage.fi/tuotekategoria/lahjakortit/',
+    shopUrl: '/verkkokauppa/lahjakortit',
     items: [
       { duration: 'Klassinen hieronta 50 min', price: '60', popular: true },
       { duration: 'Kuumakivihieronta 50 min', price: '70' },
@@ -75,7 +75,7 @@ export const pricingTabs: PricingTab[] = [
     label: 'Sarjakortit',
     description: 'Useamman hoitokerran sarjakortit kaikkiin hoitoihin. Mitä useampi hoitokerta, sitä enemmän säästät.',
     cta: 'cart',
-    shopUrl: 'https://memassage.fi/tuotekategoria/sarjakortit-3x/',
+    shopUrl: '/verkkokauppa/sarjakortit',
     items: [
       { duration: '3 x 50 min Klassinen hieronta', price: '160', normalPrice: '180', discount: '−10 %' },
       { duration: '6 x 50 min Klassinen hieronta', price: '300', normalPrice: '360', discount: '−15 %' },

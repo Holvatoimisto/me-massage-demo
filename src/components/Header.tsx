@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Menu, X, ChevronDown, Globe, ShoppingBag } from 'lucide-react';
 import { useLang } from '@/contexts/LanguageContext';
 import { useCart } from '@/contexts/CartContext';
+import { useBookingModal } from '@/contexts/BookingModalContext';
 import { useClickOutside } from '@/hooks/useClickOutside';
 import { businessInfo, navigationInfo } from '@/data/site';
 
@@ -17,6 +18,7 @@ const getServiceDropdownItems = (tStr: (p: string) => string) => [
 export function Header() {
   const { lang, setLang, tStr } = useLang();
   const { count } = useCart();
+  const { openBookingModal } = useBookingModal();
   const { pathname } = useLocation();
   const langRef = useRef<HTMLDivElement>(null);
   const [langOpen, setLangOpen] = useState(false);
@@ -167,12 +169,12 @@ export function Header() {
           </div>
 
           {/* CTA Button */}
-          <a
-            href={navigationInfo.ctaButton.href}
-            className="inline-flex min-h-[40px] items-center justify-center px-5 py-2 rounded-md font-inter text-[13px] font-semibold tracking-[0.06em] leading-none whitespace-nowrap bg-white text-[#152238] hover:bg-[#E2E8F0] transition-colors duration-300 shadow-sm"
+          <button
+            onClick={openBookingModal}
+            className="inline-flex min-h-[40px] items-center justify-center px-5 py-2 rounded-md font-inter text-[13px] font-semibold tracking-[0.06em] leading-none whitespace-nowrap bg-white text-[#152238] hover:bg-[#E2E8F0] transition-colors duration-300 shadow-sm cursor-pointer border-none"
           >
             {navigationInfo.ctaButton.label}
-          </a>
+          </button>
         </div>
 
         {/* Mobile: language + menu buttons */}
@@ -291,12 +293,12 @@ export function Header() {
           </div>
 
           <div className="mt-3">
-            <a
-              href={navigationInfo.ctaButton.href}
-              className="inline-flex min-h-[40px] items-center justify-center w-full px-5 py-2 rounded-md font-inter text-[14px] font-semibold tracking-wide leading-none whitespace-nowrap bg-white text-[#152238] hover:bg-[#E2E8F0] transition-colors duration-300 shadow-sm"
+            <button
+              onClick={() => { setMobileOpen(false); openBookingModal(); }}
+              className="inline-flex min-h-[40px] items-center justify-center w-full px-5 py-2 rounded-md font-inter text-[14px] font-semibold tracking-wide leading-none whitespace-nowrap bg-white text-[#152238] hover:bg-[#E2E8F0] transition-colors duration-300 shadow-sm cursor-pointer border-none"
             >
               {navigationInfo.ctaButton.label}
-            </a>
+            </button>
           </div>
         </motion.div>
       )}

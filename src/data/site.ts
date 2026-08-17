@@ -14,6 +14,11 @@ export const businessInfo = {
   googleMapsUrl: 'https://maps.google.com/?q=ME+massage+Klaukkala',
   facebookUrl: 'https://www.facebook.com/memassage',
   instagramUrl: 'https://www.instagram.com/memassage',
+  // Google rating shown site-wide. memassage.fi does not publish a numeric
+  // rating; the values below come from the project data. NEEDS MATHIAS
+  // CONFIRMATION — keep centralized so one edit updates every placement.
+  googleRating: '5.0',
+  googleReviewCount: '120+',
 };
 
 export const footerColumns = [
@@ -29,9 +34,10 @@ export const footerColumns = [
   {
     title: 'Yritys',
     links: [
-      { label: 'Tutustu tiimiin', href: '#tiimi' },
-      { label: 'Asiakkaiden kokemuksia', href: '#arvostelut' },
+      { label: 'Tutustu tiimiin', href: '/#tiimi' },
+      { label: 'Asiakkaiden kokemuksia', href: '/asiakkaiden-kokemuksia' },
       { label: 'Usein kysyttyä', href: '/usein-kysyttya' },
+      { label: 'Verkkokauppa', href: '/verkkokauppa' },
     ],
   },
   {
@@ -39,14 +45,17 @@ export const footerColumns = [
     links: [
       { label: '040 833 8512', href: 'tel:+358408338512' },
       { label: 'info.klaukkala@memassage.fi', href: 'mailto:info.klaukkala@memassage.fi' },
-      { label: 'Lepsämäntie 1, 2 krs, Klaukkala', href: '#' },
-      { label: 'Vaasanpuistikko 1 A1, Vaasa', href: '#' },
+      { label: 'Lepsämäntie 1, 2 krs, Klaukkala', href: '/toimipisteet/klaukkala' },
+      { label: 'Vaasanpuistikko 1 A1, Vaasa', href: '/toimipisteet/vaasa' },
     ],
   },
 ];
 
 export const footerMeta = {
-  paymentMethods: 'Maksutavat: Käteinen, MobilePay, Edenred, Smartum, Epassi',
+  // Union of payment methods shown on memassage.fi (location pages) and the
+  // previous project copy. NEEDS MATHIAS CONFIRMATION (esp. MobilePay and
+  // invoicing) — keep centralized in translations via footer.paymentMethods.
+  paymentMethods: 'Maksutavat: Käteinen, kortti, MobilePay, ePassi, Edenred, Smartum ja laskutus',
   copyright: 'ME massage. Kaikki oikeudet pidätetään.',
 };
 

@@ -11,11 +11,11 @@ import {
   Star,
 } from 'lucide-react';
 import { useLang } from '@/contexts/LanguageContext';
+import { useBookingModal } from '@/contexts/BookingModalContext';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { PricingExplorer } from '@/components/PricingExplorer';
-import { businessInfo, footerColumns, footerMeta } from '@/data/site';
-import { pricingTabs } from '@/data/pricing';
+import { businessInfo } from '@/data/site';
 
 const templateData = {
   business: businessInfo,
@@ -24,11 +24,10 @@ const templateData = {
     eyebrow: 'ME MASSAGE',
     headline: 'Ammattitaitoista hierontaa Klaukkalassa ja Vaasassa',
     subheadline: 'Klassinen hieronta, kuumakivihieronta, purentalihashieronta ja faskiarautakäsittely. Koulutetut hierojat sinua varten.',
-    ctaPrimary: { label: 'Varaa aika', href: 'https://memassage.fi/ajanvaraus' },
     ctaSecondary: { label: 'Tutustu palveluihin', href: '#palvelut' },
     stats: [
-      { value: '5.0', label: 'Google-arvostelu' },
-      { value: '120+', label: 'arvostelua' },
+      { value: businessInfo.googleRating, label: 'Google-arvostelu' },
+      { value: businessInfo.googleReviewCount, label: 'arvostelua' },
       { value: '2', label: 'Toimipistettä' },
     ],
   },
@@ -61,100 +60,11 @@ const templateData = {
     secondaryServices: [
       { image: '/assets/me_service_jaw.png', title: 'Purentalihashieronta', titleKey: 'services.jaw', linkHref: '/palvelut/purentalihashieronta' },
       { image: '/assets/me_service_iastm.png', title: 'Faskiarautakäsittely', titleKey: 'services.iastm', linkHref: '/palvelut/faskiarautakasittely' },
-      { image: '/assets/memassage_lahjakortti.png', title: 'Lahja- ja sarjakortit', titleKey: 'services.giftCards', linkHref: 'tel:+358408338512' },
-    ],
-  },
-  pricing: {
-    eyebrow: 'HINNASTO',
-    headline: 'Selkeät hinnat, ei yllätyksiä',
-    body: 'Kaikki hoidot räätälöidään yksilöllisesti tarpeidesi mukaan.',
-    tabs: pricingTabs,
-  },
-  reviews: {
-    eyebrow: 'ASIAKASKOKEMUKSIA',
-    headline: 'Mitä asiakkaat sanovat',
-    description: 'Kiitettävät arvostelut Googlesta.',
-    items: [
-      { name: 'Anni K.', text: 'Mathias on ehdottomasti paras hieroja, jolla olen käynyt. Ammattitaitoinen, kuuntelee ja osaa kohdistaa hoidon oikein. Suosittelen lämpimästi!', service: 'Klassinen hieronta' },
-      { name: 'Mikael L.', text: 'Upea hierontakokemus! Mathias otti hyvin huomioon toiveeni ja keskittyi juuri niihin kohtiin, jotka kaipasivat huomiota. Tulen ehdottomasti uudelleen.', service: 'Klassinen hieronta' },
-      { name: 'Sanna R.', text: 'Kuumakivihieronta oli aivan mieletön elämys. Lämmin ja rauhallinen tunnelma, ja hieronta rentoutti koko kehon. Kiitos!', service: 'Kuumakivihieronta' },
-      { name: 'Petri H.', text: 'Purentalihashieronta auttoi minua todella paljon. Olen kärsinyt leukakivuista vuosia ja nyt ne ovat vihdoin helpottaneet. Kiitos Mathias!', service: 'Purentalihashieronta' },
-      { name: 'Laura M.', text: 'Faskiarautakäsittely oli tehokasta ja ammattimaista. Mathias osaa kertoa mitä tekee ja miksi. Tulen varmasti uudelleen!', service: 'Faskiarautakäsittely' },
-      { name: 'Jussi T.', text: 'Erittäin ammattitaitoinen hieroja. Rentouttava ilmapiiri ja laadukas hoito. Suosittelen kaikille!', service: 'Klassinen hieronta' },
-      { name: 'Tiina S.', text: 'Paras hieronta Kokemukseni Klaukkalassa. Mathias kuuntelee asiakasta ja räätälöi hoidon tarpeiden mukaan.', service: 'Kuumakivihieronta' },
-      { name: 'Marko P.', text: 'Säännöllinen hieronta Mathiaksella on auttanut selkäkipuihin merkittävästi. Ammattitaitoista ja ystävällistä palvelua.', service: 'Klassinen hieronta' },
-    ],
-  },
-  team: {
-    eyebrow: 'TUTUSTU MEIHIN',
-    headline: 'Asiantuntijat sinua varten',
-    members: [
-      {
-        name: 'Mathias Eklund',
-        firstName: 'Mathiakselta',
-        title: 'Koulutettu hieroja, yrittäjä',
-        role: 'Hieroja',
-        image: '/assets/me_mathias.jpg',
-        avatar: '/assets/me_mathias.jpg',
-        bio: 'Mathias on ME massagen perustaja ja koulutettu hieroja. Hän aloitti yritystoiminnan vuonna 2023 ja palvelee asiakkaita sekä Klaukkalassa että Vaasassa.\n\nMathiakselta saat monipuolisia hieronta- ja kehonhuoltopalveluita: klassinen hieronta, kuumakivihieronta, purentalihashieronta ja faskiarautakäsittely (IASTM).\n\nHänelle tärkeää on kohdata jokainen asiakas yksilöllisesti, kuunnella toiveita ja räätälöidä hoito vastaamaan juuri sinun tarpeitasi.',
-        testimonial: 'Tärkeintä minulle on, että jokainen asiakas lähtee vastaanotolta paremminvoivana.',
-      },
-      {
-        name: 'Janina Honkanen',
-        firstName: 'Janinalta',
-        title: 'Koulutettu hieroja',
-        role: 'Hieroja',
-        image: '/assets/me_janina.png',
-        avatar: '/assets/me_janina.png',
-        bio: 'Janina on koulutettu hieroja, joka liittyi ME massagen tiimiin vuonna 2024. Hän tuo mukanaan lämpöistä ja ammattitaitoista otetta hierontapalveluihin.\n\nJaninalta saat klassista hierontaa ja kuumakivihierontaa. Hän on erityisen kiinnostunut kokonaisvaltaisesta hyvinvoinnista ja kehonhuollosta.',
-        testimonial: 'Haluan auttaa asiakkaitani löytämään keinot rentoutumiseen ja kivunlievitykseen.',
-      },
-    ],
-  },
-  faq: {
-    eyebrow: 'ENNEN ENSIMMÄISTÄ KÄYNTIÄ',
-    headline: 'Usein kysyttyä',
-    items: [
-      {
-        question: 'Minkä pituinen hieronta minulle?',
-        answer: 'Ensikertalaisille suosittelemme 45–60 minuutin hoitoa. 30 min riittää, jos haluat keskittyä vain yhteen alueeseen. 90 min antaa aikaa koko keholle perusteellisesti.',
-        includePhone: false,
-      },
-      {
-        question: 'Sopiiko hieronta minulle?',
-        answer: 'Kyllä! Hieronta sopii kaikille ikään ja kuntoon katsomatta. Meille ovat tervetulleita niin urheilijat, toimistotyöntekijät kuin senioritkin.',
-        includePhone: false,
-      },
-      {
-        question: 'Mitä eroa on klassisella hieronnalla ja kuumakivihieronnalla?',
-        answer: 'Klassinen hieronta on perinteistä lihaskäsittelyä, joka räätälöidään tarpeidesi mukaan. Kuumakivihieronnassa käytetään lämpimiä kiviä, jotka rentouttavat syvällä tasolla ja lievittävät lihaskireyksiä tehokkaasti.',
-        includePhone: false,
-      },
-      {
-        question: 'Miten ajanvaraus toimii?',
-        answer: 'Varaa aika helposti nettiajanvarauksestamme tai soita 040 833 8512. Voit myös lähettää sähköpostia.',
-        includePhone: true,
-      },
+      { image: '/assets/memassage_lahjakortti.png', title: 'Lahja- ja sarjakortit', titleKey: 'services.giftCards', linkHref: '/verkkokauppa' },
     ],
   },
   finalCta: {
     backgroundImage: '/assets/me_hero.jpg',
-    eyebrow: 'VARAA AIKA',
-    headline: 'Hoida kehoasi, se ansaitsee huolenpitoa',
-    supportText: 'Varaa hieronta jo tänään ja aloita matkasi kohti parempaa hyvinvointia.',
-    ctaLabel: 'Varaa aika',
-    phone: '040 833 8512',
-    phoneSupport: 'Soita tai lähetä sähköpostia',
-    trustItems: [
-      { icon: 'star', label: '4.9 Google-arvostelu' },
-      { icon: 'clock', label: 'Koulutettu hieroja' },
-      { icon: 'calendar', label: 'Kaksi toimipistettä' },
-    ],
-  },
-  footer: {
-    columns: footerColumns,
-    paymentMethods: footerMeta.paymentMethods,
-    copyright: footerMeta.copyright,
   },
 };
 
@@ -193,92 +103,12 @@ const getLocationCards = (tStr: (p: string) => string) => [
 
 export function ChiropractorTemplate() {
   const { lang, tStr, tArr } = useLang();
+  const { openBookingModal } = useBookingModal();
 
   const [activeTeamIndex, setActiveTeamIndex] = useState(0);
   const [teamTransitioning, setTeamTransitioning] = useState(false);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
   const [reviewIndex, setReviewIndex] = useState(0);
-  const [surveyStep, setSurveyStep] = useState(0);
-  const [surveyAnswers, setSurveyAnswers] = useState<string[]>([]);
-
-  const getRecommendation = (answers: string[], tStr: (p: string) => string) => {
-    const [, symptom] = answers;
-    if (answers[0] === 'leuka' || (answers[0] === 'niska' && symptom === 'paansarky')) {
-      return {
-        title: tStr('survey.results.jaw.title'),
-        description: tStr('survey.results.jaw.description'),
-        serviceLink: '/palvelut/purentalihashieronta',
-        bookingUrl: 'https://memassage.fi/ajanvaraus',
-      };
-    }
-    if (symptom === 'kireys' && answers[3] === 'rentoutuminen') {
-      return {
-        title: tStr('survey.results.hotStone.title'),
-        description: tStr('survey.results.hotStone.description'),
-        serviceLink: '/palvelut/kuumakivihieronta',
-        bookingUrl: 'https://memassage.fi/ajanvaraus',
-      };
-    }
-    if (answers[0] === 'selka' && symptom === 'kireys') {
-      return {
-        title: tStr('survey.results.iastm.title'),
-        description: tStr('survey.results.iastm.description'),
-        serviceLink: '/palvelut/faskiarautakasittely',
-        bookingUrl: 'https://memassage.fi/ajanvaraus',
-      };
-    }
-    return {
-      title: tStr('survey.results.classic.title'),
-      description: tStr('survey.results.classic.description'),
-      serviceLink: '/palvelut/hieronta',
-      bookingUrl: 'https://memassage.fi/ajanvaraus',
-    };
-  };
-
-  const getSurveyQuestions = (tStr: (p: string) => string) => [
-    {
-      question: tStr('survey.questions.0.question'),
-      options: [
-        { label: tStr('survey.questions.0.options.0.label'), value: 'niska' },
-        { label: tStr('survey.questions.0.options.1.label'), value: 'selka' },
-        { label: tStr('survey.questions.0.options.2.label'), value: 'leuka' },
-        { label: tStr('survey.questions.0.options.3.label'), value: 'kasi' },
-        { label: tStr('survey.questions.0.options.4.label'), value: 'jalka' },
-        { label: tStr('survey.questions.0.options.5.label'), value: 'useampi' },
-      ],
-    },
-    {
-      question: tStr('survey.questions.1.question'),
-      options: [
-        { label: tStr('survey.questions.1.options.0.label'), value: 'kireys' },
-        { label: tStr('survey.questions.1.options.1.label'), value: 'kipu' },
-        { label: tStr('survey.questions.1.options.2.label'), value: 'paansarky' },
-        { label: tStr('survey.questions.1.options.3.label'), value: 'puutuminen' },
-        { label: tStr('survey.questions.1.options.4.label'), value: 'urheiluvamma' },
-        { label: tStr('survey.questions.1.options.5.label'), value: 'palautuminen' },
-      ],
-    },
-    {
-      question: tStr('survey.questions.2.question'),
-      options: [
-        { label: tStr('survey.questions.2.options.0.label'), value: 'viikko' },
-        { label: tStr('survey.questions.2.options.1.label'), value: '4vko' },
-        { label: tStr('survey.questions.2.options.2.label'), value: '6kk' },
-        { label: tStr('survey.questions.2.options.3.label'), value: 'yli6kk' },
-        { label: tStr('survey.questions.2.options.4.label'), value: 'toistuu' },
-      ],
-    },
-    {
-      question: tStr('survey.questions.3.question'),
-      options: [
-        { label: tStr('survey.questions.3.options.0.label'), value: 'kivunlievitys' },
-        { label: tStr('survey.questions.3.options.1.label'), value: 'liikkuvuus' },
-        { label: tStr('survey.questions.3.options.2.label'), value: 'kireydenhelpotus' },
-        { label: tStr('survey.questions.3.options.3.label'), value: 'palautuminen' },
-        { label: tStr('survey.questions.3.options.4.label'), value: 'selvyys' },
-      ],
-    },
-  ];
 
   const handleTeamSelect = useCallback((index: number) => {
     if (index === activeTeamIndex || teamTransitioning) return;
@@ -289,8 +119,8 @@ export function ChiropractorTemplate() {
     }, 350);
   }, [activeTeamIndex, teamTransitioning]);
 
-  const prevReview = () => setReviewIndex((i) => (i === 0 ? templateData.reviews.items.length - 1 : i - 1));
-  const nextReview = () => setReviewIndex((i) => (i === templateData.reviews.items.length - 1 ? 0 : i + 1));
+  const prevReview = () => setReviewIndex((i) => (i === 0 ? translatedReviews.length - 1 : i - 1));
+  const nextReview = () => setReviewIndex((i) => (i === translatedReviews.length - 1 ? 0 : i + 1));
 
   const teamMembers = [
     {
@@ -371,12 +201,12 @@ export function ChiropractorTemplate() {
             transition={{ duration: 0.7, delay: 0.55 }}
             className="flex flex-col sm:flex-row items-center gap-4 mb-10"
           >
-            <a
-              href={templateData.hero.ctaPrimary.href}
-              className="inline-flex min-h-[52px] items-center justify-center px-8 py-3 rounded-lg font-inter text-[14px] font-semibold tracking-wide bg-white text-[#152238] shadow-[0_4px_20px_rgba(0,0,0,0.2)] hover:bg-[#E2E8F0] transition-colors duration-300"
+            <button
+              onClick={openBookingModal}
+              className="inline-flex min-h-[52px] items-center justify-center px-8 py-3 rounded-lg font-inter text-[14px] font-semibold tracking-wide bg-white text-[#152238] shadow-[0_4px_20px_rgba(0,0,0,0.2)] hover:bg-[#E2E8F0] transition-colors duration-300 cursor-pointer border-none"
             >
               {tStr('hero.bookNow')}
-            </a>
+            </button>
             <a
               href={templateData.hero.ctaSecondary.href}
               className="inline-flex min-h-[52px] items-center justify-center px-8 py-3 rounded-lg font-inter text-[14px] font-semibold tracking-wide text-white border border-white/30 hover:bg-white/10 transition-colors duration-300"
@@ -483,99 +313,6 @@ export function ChiropractorTemplate() {
                   );
                 })}
               </div>
-              {/* Symptom Survey */}
-              <div className="mt-14 md:mt-18 max-w-[520px] mx-auto">
-                {surveyStep === 0 ? (
-                  /* Intro view */
-                  <div className="text-center">
-                    <p className="font-inter text-[11px] font-semibold uppercase tracking-[0.12em] text-[#5A6A7A] mb-4">{tStr('survey.eyebrow')}</p>
-                    <h3 className="font-cormorant text-[22px] md:text-[26px] text-[#152238] leading-[1.35] mb-3">{tStr('survey.headline')}</h3>
-                    <p className="font-inter text-[14px] text-[#5A6A7A] leading-[1.7] mb-6">{tStr('survey.description')}</p>
-                    <button
-                      onClick={() => { setSurveyStep(1); setSurveyAnswers([]); }}
-                      className="inline-flex min-h-[52px] items-center justify-center px-8 py-3 rounded-lg font-inter text-[14px] font-semibold tracking-wide bg-[#152238] text-white hover:bg-[#1E3A5F] transition-colors duration-300 cursor-pointer"
-                    >
-                      {tStr('survey.startButton')}
-                    </button>
-                    <p className="font-inter text-[12px] text-[#5A6A7A]/50 mt-3">{tStr('survey.duration')}</p>
-                  </div>
-                ) : surveyStep <= 4 ? (
-                  /* Question views */
-                  <div>
-                    {/* Progress bar */}
-                    <div className="flex items-center gap-2 mb-8">
-                      <span className="font-inter text-[11px] font-semibold uppercase tracking-[0.12em] text-[#5A6A7A]">{tStr('survey.step')} {surveyStep} {tStr('survey.of')} 4</span>
-                      <div className="flex-1 h-[2px] bg-[#152238]/[0.08] rounded-full overflow-hidden">
-                        <div className="h-full bg-[#152238] rounded-full transition-all duration-500" style={{ width: `${(surveyStep / 4) * 100}%` }} />
-                      </div>
-                    </div>
-                    {/* Question */}
-                    <h3 className="font-cormorant text-[22px] md:text-[24px] text-[#152238] leading-[1.35] mb-6">{getSurveyQuestions(tStr)[surveyStep - 1].question}</h3>
-                    {/* Options grid */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
-                      {getSurveyQuestions(tStr)[surveyStep - 1].options.map((opt) => (
-                        <button
-                          key={opt.value}
-                          onClick={() => {
-                            const newAnswers = [...surveyAnswers];
-                            newAnswers[surveyStep - 1] = opt.value;
-                            setSurveyAnswers(newAnswers);
-                            if (surveyStep < 4) {
-                              setSurveyStep(surveyStep + 1);
-                            } else {
-                              setSurveyStep(5);
-                            }
-                          }}
-                          className="text-left px-5 py-4 rounded-xl bg-white/[0.5] border border-[#94A3B8]/60 hover:bg-white hover:border-[#152238]/30 hover:shadow-[0_2px_12px_rgba(0,0,0,0.06)] transition-all duration-200 cursor-pointer"
-                        >
-                          <span className="font-inter text-[14px] text-[#152238]">{opt.label}</span>
-                        </button>
-                      ))}
-                    </div>
-                    {/* Back button */}
-                    {surveyStep > 1 && (
-                      <button
-                        onClick={() => { setSurveyStep(surveyStep - 1); }}
-                        className="font-inter text-[13px] text-[#5A6A7A] hover:text-[#152238] transition-colors cursor-pointer"
-                      >
-                        {tStr('survey.back')}
-                      </button>
-                    )}
-                  </div>
-                ) : (
-                  /* Result view */
-                  (() => {
-                    const rec = getRecommendation(surveyAnswers, tStr);
-                    return (
-                      <div className="text-center">
-                        <p className="font-inter text-[11px] font-semibold uppercase tracking-[0.12em] text-[#5A6A7A] mb-4">{tStr('survey.resultEyebrow')}</p>
-                        <h3 className="font-cormorant text-[24px] md:text-[28px] text-[#152238] leading-[1.3] mb-4">{rec.title}</h3>
-                        <p className="font-inter text-[14px] text-[#5A6A7A] leading-[1.75] mb-8">{rec.description}</p>
-                        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                          <a
-                            href={rec.bookingUrl}
-                            className="inline-flex min-h-[52px] items-center justify-center px-8 py-3 rounded-lg font-inter text-[14px] font-semibold tracking-wide bg-[#152238] text-white hover:bg-[#1E3A5F] transition-colors duration-300"
-                          >
-                            Varaa aika
-                          </a>
-                          <Link
-                            to={rec.serviceLink}
-                            className="inline-flex min-h-[52px] items-center justify-center px-8 py-3 rounded-lg font-inter text-[14px] font-semibold tracking-wide text-[#152238] border border-[#152238]/30 hover:bg-[#152238]/5 transition-colors duration-300"
-                          >
-                            {tStr('survey.exploreService')}
-                          </Link>
-                        </div>
-                        <button
-                          onClick={() => { setSurveyStep(0); setSurveyAnswers([]); }}
-                          className="font-inter text-[13px] text-[#5A6A7A] hover:text-[#152238] transition-colors mt-6 cursor-pointer"
-                        >
-                          {tStr('survey.restart')}
-                        </button>
-                      </div>
-                    );
-                  })()
-                )}
-              </div>
             </div>
           </ScrollReveal>
         </div>
@@ -646,7 +383,7 @@ export function ChiropractorTemplate() {
               {/* Bottom CTAs */}
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10">
                 <a
-                  href="https://www.google.com/search?q=me+massage+arvostelut"
+                  href={businessInfo.googleReviewUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex min-h-[52px] items-center justify-center px-8 py-3 rounded-lg font-inter text-[14px] font-semibold tracking-wide bg-white text-[#152238] shadow-[0_4px_16px_rgba(0,0,0,0.2)] hover:bg-[#E2E8F0] transition-colors duration-300"
@@ -661,6 +398,14 @@ export function ChiropractorTemplate() {
                 >
                   {tStr('reviews.leaveReview')}
                 </a>
+              </div>
+              <div className="text-center mt-6">
+                <Link
+                  to="/asiakkaiden-kokemuksia"
+                  className="font-inter text-[13px] font-semibold text-white/80 underline underline-offset-4 decoration-white/25 hover:text-white hover:decoration-white/70 transition-colors duration-300"
+                >
+                  {tStr('reviews.pageLink')}
+                </Link>
               </div>
             </div>
           </ScrollReveal>
@@ -793,6 +538,17 @@ export function ChiropractorTemplate() {
               <div className="border-t border-[#E2E8F0]" />
             </div>
           </ScrollReveal>
+
+          <ScrollReveal delay={0.15}>
+            <div className="text-center mb-10 md:mb-12">
+              <Link
+                to="/usein-kysyttya"
+                className="font-inter text-[13px] font-semibold text-[#152238] underline underline-offset-4 decoration-[#152238]/25 hover:decoration-[#152238]/70 transition-colors duration-300"
+              >
+                {tStr('faq.viewAll')}
+              </Link>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -808,25 +564,12 @@ export function ChiropractorTemplate() {
               <p className="font-inter text-[15px] text-white/80 leading-[1.6] mb-10 max-w-[340px] mx-auto">{tStr('finalCta.supportText')}</p>
 
               <div className="flex flex-col items-center gap-3 mb-8">
-                <div className="flex flex-col sm:flex-row items-center gap-4 w-full max-w-[480px]">
-                  {[tStr('finalCta.bookKlaukkala'), tStr('finalCta.bookVaasa')].map((label) => {
-                    const splitAt = label.lastIndexOf(' ');
-                    return (
-                      <a
-                        key={label}
-                        href="https://memassage.fi/ajanvaraus"
-                        className="inline-flex w-full sm:flex-1 min-h-[64px] flex-col items-center justify-center gap-[5px] px-6 py-3 rounded-lg bg-[#F6F8FB] border border-[#152238]/15 shadow-[0_4px_16px_rgba(0,0,0,0.25)] hover:bg-white hover:-translate-y-[2px] hover:shadow-[0_10px_28px_rgba(0,0,0,0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/90 transition-all duration-300"
-                      >
-                        <span className="font-inter text-[11px] font-medium uppercase tracking-[0.12em] text-[#5A6A7A] leading-none">
-                          {label.slice(0, splitAt)}
-                        </span>
-                        <span className="font-inter text-[16px] font-semibold tracking-wide text-[#152238] leading-tight">
-                          {label.slice(splitAt + 1)}
-                        </span>
-                      </a>
-                    );
-                  })}
-                </div>
+                <button
+                  onClick={openBookingModal}
+                  className="inline-flex w-full max-w-[280px] min-h-[56px] items-center justify-center px-8 py-3 rounded-lg font-inter text-[16px] font-semibold tracking-wide bg-[#F6F8FB] text-[#152238] border border-[#152238]/15 shadow-[0_4px_16px_rgba(0,0,0,0.25)] hover:bg-white hover:-translate-y-[2px] hover:shadow-[0_10px_28px_rgba(0,0,0,0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/90 transition-all duration-300 cursor-pointer"
+                >
+                  {tStr('pricing.bookNow')}
+                </button>
                 <a href={templateData.business.phoneLink} className="inline-flex items-center justify-center gap-2 font-inter text-[15px] font-medium text-white/90 tracking-wide no-underline hover:text-white transition-colors duration-300 py-2">
                   <Phone size={15} strokeWidth={1.5} />
                   {templateData.business.phone}
@@ -835,7 +578,7 @@ export function ChiropractorTemplate() {
               </div>
 
               <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1">
-                <span className="font-inter text-[12px] text-white/80 tracking-wide">{tStr('finalCta.trustLine')}</span>
+                <span className="font-inter text-[12px] text-white/80 tracking-wide">{tStr('finalCta.trustLine', { rating: businessInfo.googleRating })}</span>
               </div>
             </div>
           </ScrollReveal>

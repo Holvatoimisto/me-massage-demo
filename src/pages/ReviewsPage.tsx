@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { Star } from 'lucide-react';
+import { ArrowRight, Star } from 'lucide-react';
 import { useLang } from '@/contexts/LanguageContext';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -9,6 +9,8 @@ import { FinalCtaSection } from '@/components/FinalCtaSection';
 import { ReviewCard, type ReviewCardData } from '@/components/ReviewCard';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import { locations } from '@/data/locations';
+import { serviceOverviews } from '@/data/services';
+import { businessInfo } from '@/data/site';
 
 export function ReviewsPage() {
   const { tStr, tArr } = useLang();
@@ -40,9 +42,17 @@ export function ReviewsPage() {
                 <Star key={s} size={18} fill="currentColor" strokeWidth={1.5} />
               ))}
             </div>
-            <p className="font-cormorant text-[40px] md:text-[48px] font-semibold text-[#152238] leading-none mb-2">{t('ratingValue')}</p>
-            <p className="font-inter text-[14px] text-[#1F2937] mb-1">{t('ratingCount')}</p>
-            <p className="font-inter text-[12px] text-[#5A6A7A] tracking-wide">{t('ratingSource')}</p>
+            <p className="font-cormorant text-[40px] md:text-[48px] font-semibold text-[#152238] leading-none mb-2">{businessInfo.googleRating}</p>
+            <p className="font-inter text-[14px] text-[#1F2937] mb-1">{businessInfo.googleReviewCount} {t('ratingCount')}</p>
+            <p className="font-inter text-[12px] text-[#5A6A7A] tracking-wide mb-5">{t('ratingSource')}</p>
+            <a
+              href={businessInfo.googleReviewUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-inter text-[13px] font-semibold text-[#152238] underline underline-offset-4 decoration-[#152238]/25 hover:decoration-[#152238]/70 transition-colors duration-300"
+            >
+              {t('googleLink')}
+            </a>
           </ScrollReveal>
         </div>
       </section>
@@ -57,6 +67,34 @@ export function ReviewsPage() {
               </ScrollReveal>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Service bridge */}
+      <section className="bg-white pb-14 md:pb-20 px-6 md:px-12">
+        <div className="max-w-[820px] mx-auto">
+          <ScrollReveal>
+            <div className="text-center mb-10">
+              <h2 className="font-cormorant text-[24px] md:text-[28px] text-[#152238] leading-[1.3] mb-4">{t('servicesHeading')}</h2>
+              <p className="font-inter text-[14px] text-[#5A6A7A] leading-[1.7] max-w-[420px] mx-auto">{t('servicesSupport')}</p>
+            </div>
+          </ScrollReveal>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 max-w-[640px] mx-auto">
+            {serviceOverviews.map((service, i) => (
+              <ScrollReveal key={service.key} delay={0.05 + (i % 2) * 0.06}>
+                <Link
+                  to={service.href}
+                  className="group flex items-baseline justify-between gap-4 border-t border-[#E2E8F0] py-4"
+                >
+                  <span className="font-inter text-[14px] font-semibold text-[#152238]">
+                    {tStr(`servicePages.${service.key}.title`)}
+                  </span>
+                  <ArrowRight size={14} strokeWidth={1.5} className="shrink-0 text-[#5A6A7A] transition-transform duration-300 group-hover:translate-x-0.5 group-hover:text-[#152238]" />
+                </Link>
+              </ScrollReveal>
+            ))}
+          </div>
+          <div className="border-t border-[#E2E8F0] max-w-[640px] mx-auto" />
         </div>
       </section>
 
