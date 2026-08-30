@@ -26,7 +26,7 @@ export const footerColumns = [
     title: 'Palvelut',
     links: [
       { label: 'Klassinen hieronta', href: '/palvelut/hieronta' },
-      { label: 'Kuumakivihieronta', href: '/palvelut/kuumakivihieronta' },
+      { label: 'Kuumakivi- ja klassinen hieronta', href: '/palvelut/kuumakivihieronta' },
       { label: 'Purentalihashieronta', href: '/palvelut/purentalihashieronta' },
       { label: 'Faskiarautakäsittely', href: '/palvelut/faskiarautakasittely' },
     ],
@@ -46,7 +46,7 @@ export const footerColumns = [
       { label: '040 833 8512', href: 'tel:+358408338512' },
       { label: 'info.klaukkala@memassage.fi', href: 'mailto:info.klaukkala@memassage.fi' },
       { label: 'Lepsämäntie 1, 2 krs, Klaukkala', href: '/toimipisteet/klaukkala' },
-      { label: 'Vaasanpuistikko 1 A1, Vaasa', href: '/toimipisteet/vaasa' },
+      { label: 'Rantakatu 11, Vaasa', href: '/toimipisteet/vaasa' },
     ],
   },
 ];

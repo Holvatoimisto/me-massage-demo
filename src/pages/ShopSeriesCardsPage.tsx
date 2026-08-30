@@ -37,7 +37,7 @@ export function ShopSeriesCardsPage() {
   const visitsLabel = (v: SeriesVisits) => t(v === 3 ? 'visits3' : v === 6 ? 'visits6' : 'visits12');
   const savingsLabel = (v: SeriesVisits) => t(v === 3 ? 'save10' : v === 6 ? 'save15' : 'save20');
 
-  const recipientLine = recipientType === 'gift' && recipientName.trim() ? `${t('summaryRecipient')}: ${recipientName.trim()}` : null;
+  const recipientLine = recipientName.trim() ? `${t(recipientType === 'gift' ? 'summaryRecipient' : 'summaryOwnName')}: ${recipientName.trim()}` : null;
   const summaryMeta = [
     t('electronicSeries'),
     ...(recipientLine ? [recipientLine] : []),
@@ -57,7 +57,7 @@ export function ShopSeriesCardsPage() {
         `${t('summaryLang')}: ${langLabel(cardLang)}`,
       ],
       price: selected.price,
-      recipientName: recipientType === 'gift' ? recipientName.trim() : undefined,
+      recipientName: recipientName.trim() || undefined,
       cardLanguage: cardLang,
     });
   };
@@ -145,19 +145,17 @@ export function ShopSeriesCardsPage() {
                     { value: 'self', label: t('forSelf') },
                   ]}
                 />
-                {recipientType === 'gift' && (
-                  <div className="mt-3">
-                    <label htmlFor="series-recipient-name" className="block font-inter text-[12px] text-[#5A6A7A] mb-1.5">{t('recipientNameLabel')}</label>
-                    <input
-                      id="series-recipient-name"
-                      type="text"
-                      value={recipientName}
-                      onChange={(e) => setRecipientName(e.target.value)}
-                      className="w-full max-w-[280px] rounded-lg border border-[#E2E8F0] px-4 py-2.5 font-inter text-[14px] text-[#152238] focus:outline-none focus:border-[#152238]/50"
-                    />
-                    <p className="font-inter text-[11px] text-[#5A6A7A] mt-1.5">{t('recipientHelper')}</p>
-                  </div>
-                )}
+                <div className="mt-3">
+                  <label htmlFor="series-recipient-name" className="block font-inter text-[12px] text-[#5A6A7A] mb-1.5">{t(recipientType === 'gift' ? 'recipientNameLabel' : 'ownNameLabel')}</label>
+                  <input
+                    id="series-recipient-name"
+                    type="text"
+                    value={recipientName}
+                    onChange={(e) => setRecipientName(e.target.value)}
+                    className="w-full max-w-[280px] rounded-lg border border-[#E2E8F0] px-4 py-2.5 font-inter text-[14px] text-[#152238] focus:outline-none focus:border-[#152238]/50"
+                  />
+                  <p className="font-inter text-[11px] text-[#5A6A7A] mt-1.5">{t(recipientType === 'gift' ? 'recipientHelper' : 'ownNameHelper')}</p>
+                </div>
               </div>
 
               <div>

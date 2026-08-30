@@ -1,5 +1,6 @@
 import { useLang } from '@/contexts/LanguageContext';
 import { ScrollReveal } from '@/components/ScrollReveal';
+import { businessInfo } from '@/data/site';
 
 /** "How the digital card works" + shop FAQ — shared by the shop subpages. */
 export function ShopInfoSections() {
@@ -35,6 +36,14 @@ export function ShopInfoSections() {
               </ScrollReveal>
             ))}
           </div>
+          <ScrollReveal delay={0.2}>
+            <p className="font-inter text-[12px] text-[#5A6A7A] leading-[1.7] text-center mt-10 md:mt-12 max-w-[560px] mx-auto">
+              {t('benefitNotice')}{' '}
+              <a href={businessInfo.phoneLink} className="text-[#152238] underline underline-offset-2 hover:text-[#152238]/70">{businessInfo.phone}</a>
+              {' · '}
+              <a href={businessInfo.emailLink} className="text-[#152238] underline underline-offset-2 hover:text-[#152238]/70">{businessInfo.email}</a>
+            </p>
+          </ScrollReveal>
         </div>
       </section>
 

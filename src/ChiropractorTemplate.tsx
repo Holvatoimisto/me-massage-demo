@@ -23,7 +23,7 @@ const templateData = {
     backgroundImage: '/assets/me_hero_new.png',
     eyebrow: 'ME MASSAGE',
     headline: 'Ammattitaitoista hierontaa Klaukkalassa ja Vaasassa',
-    subheadline: 'Klassinen hieronta, kuumakivihieronta, purentalihashieronta ja faskiarautakäsittely. Koulutetut hierojat sinua varten.',
+    subheadline: 'Klassinen hieronta, kuumakivi- ja klassinen hieronta, purentalihashieronta ja faskiarautakäsittely. Koulutetut hierojat sinua varten.',
     ctaSecondary: { label: 'Tutustu palveluihin', href: '#palvelut' },
     stats: [
       { value: businessInfo.googleRating, label: 'Google-arvostelu' },
@@ -50,9 +50,9 @@ const templateData = {
       },
       {
         image: '/assets/me_service_hot_stone.png',
-        title: 'Kuumakivihieronta',
+        title: 'Kuumakivi- ja klassinen hieronta',
         description: 'Lämpimillä kivillä tehtävä rauhallinen hoito, joka auttaa rentoutumaan ja pehmentämään lihaskireyksiä.',
-        linkText: 'Tutustu kuumakivihierontaan',
+        linkText: 'Tutustu kuumakivi- ja klassiseen hierontaan',
         linkHref: '/palvelut/kuumakivihieronta',
       },
     ],
@@ -93,7 +93,7 @@ const getLocationCards = (tStr: (p: string) => string) => [
   },
   {
     name: 'Vaasa',
-    address: 'Vaasanpuistikko 1 A1, 65100 Vaasa',
+    address: 'Rantakatu 11, 65100 Vaasa',
     image: '/assets/memassage_vaasa.webp',
     description: tStr('locations.supportingCopy'),
     cta: tStr('locations.ctaVaasa'),
@@ -165,14 +165,14 @@ export function ChiropractorTemplate() {
         <div className="relative z-10 w-full max-w-[800px] mx-auto px-6 md:px-12 flex flex-col items-center text-center pt-[60px]">
 
           {/* Eyebrow */}
-          <motion.p
+          <motion.img
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="font-inter text-[12px] md:text-[13px] font-semibold uppercase tracking-[0.12em] text-[#94A3B8] translate-y-1 mb-4"
-          >
-            {tStr('hero.eyebrow')}
-          </motion.p>
+            src="/assets/me_logo.png"
+            alt="ME massage"
+            className="h-9 md:h-10 w-auto translate-y-1 mb-4"
+          />
 
           {/* Headline */}
           <motion.h1
@@ -202,7 +202,7 @@ export function ChiropractorTemplate() {
             className="flex flex-col sm:flex-row items-center gap-4 mb-10"
           >
             <button
-              onClick={openBookingModal}
+              onClick={() => openBookingModal()}
               className="inline-flex min-h-[52px] items-center justify-center px-8 py-3 rounded-lg font-inter text-[14px] font-semibold tracking-wide bg-white text-[#152238] shadow-[0_4px_20px_rgba(0,0,0,0.2)] hover:bg-[#E2E8F0] transition-colors duration-300 cursor-pointer border-none"
             >
               {tStr('hero.bookNow')}
@@ -565,7 +565,7 @@ export function ChiropractorTemplate() {
 
               <div className="flex flex-col items-center gap-3 mb-8">
                 <button
-                  onClick={openBookingModal}
+                  onClick={() => openBookingModal()}
                   className="inline-flex w-full max-w-[280px] min-h-[56px] items-center justify-center px-8 py-3 rounded-lg font-inter text-[16px] font-semibold tracking-wide bg-[#F6F8FB] text-[#152238] border border-[#152238]/15 shadow-[0_4px_16px_rgba(0,0,0,0.25)] hover:bg-white hover:-translate-y-[2px] hover:shadow-[0_10px_28px_rgba(0,0,0,0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/90 transition-all duration-300 cursor-pointer"
                 >
                   {tStr('pricing.bookNow')}

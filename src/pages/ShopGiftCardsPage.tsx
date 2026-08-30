@@ -40,11 +40,12 @@ export function ShopGiftCardsPage() {
   const service = shopServices.find((s) => s.key === serviceKey)!;
   const duration = service.durations[Math.min(durationIdx, service.durations.length - 1)];
   const serviceLabel = t(`serviceNames.${serviceKey}`);
-  const recipientLine = (name: string) => (name.trim() ? `${t('summaryRecipient')}: ${name.trim()}` : null);
+  const recipientLine = (name: string, type: RecipientType) =>
+    name.trim() ? `${t(type === 'gift' ? 'summaryRecipient' : 'summaryOwnName')}: ${name.trim()}` : null;
 
   const serviceMeta = [
     t('electronicGift'),
-    ...(recipientType === 'gift' && recipientLine(recipientName) ? [recipientLine(recipientName)!] : []),
+    ...(recipientLine(recipientName, recipientType) ? [recipientLine(recipientName, recipientType)!] : []),
     `${t('summaryLang')}: ${langLabel(cardLang)}`,
   ];
 
@@ -56,11 +57,11 @@ export function ShopGiftCardsPage() {
       label: t('cartGift'),
       details: [
         `${serviceLabel} · ${duration.duration}`,
-        ...(recipientType === 'gift' && recipientLine(recipientName) ? [recipientLine(recipientName)!] : []),
+        ...(recipientLine(recipientName, recipientType) ? [recipientLine(recipientName, recipientType)!] : []),
         `${t('summaryLang')}: ${langLabel(cardLang)}`,
       ],
       price: duration.price,
-      recipientName: recipientType === 'gift' ? recipientName.trim() : undefined,
+      recipientName: recipientName.trim() || undefined,
       cardLanguage: cardLang,
     });
   };
@@ -68,7 +69,7 @@ export function ShopGiftCardsPage() {
   const openEntry = openGiftCardValues.find((v) => v.value === openValue) ?? null;
   const openMeta = [
     t('electronicGift'),
-    ...(openRecipientType === 'gift' && recipientLine(openRecipientName) ? [recipientLine(openRecipientName)!] : []),
+    ...(recipientLine(openRecipientName, openRecipientType) ? [recipientLine(openRecipientName, openRecipientType)!] : []),
     `${t('summaryLang')}: ${langLabel(openCardLang)}`,
   ];
 
@@ -81,16 +82,16 @@ export function ShopGiftCardsPage() {
       label: t('cartOpen'),
       details: [
         `${openEntry.value} €`,
-        ...(openRecipientType === 'gift' && recipientLine(openRecipientName) ? [recipientLine(openRecipientName)!] : []),
+        ...(recipientLine(openRecipientName, openRecipientType) ? [recipientLine(openRecipientName, openRecipientType)!] : []),
         `${t('summaryLang')}: ${langLabel(openCardLang)}`,
       ],
       price: openEntry.value,
-      recipientName: openRecipientType === 'gift' ? openRecipientName.trim() : undefined,
+      recipientName: openRecipientName.trim() || undefined,
       cardLanguage: openCardLang,
     });
   };
 
-  const recipientBlock = (type: RecipientType, setType: (v: RecipientType) => void, name: string, setName: (v: string) => void) => (
+  const recipientBlock = (type: RecipientType, setType: (v: RecipientType) => void, name: string, setName: (v: string) => void, id: string) => (
     <div>
       <StepHeading>{t('stepRecipient')}</StepHeading>
       <Segmented
@@ -101,19 +102,17 @@ export function ShopGiftCardsPage() {
           { value: 'self', label: t('forSelf') },
         ]}
       />
-      {type === 'gift' && (
-        <div className="mt-3">
-          <label htmlFor="recipient-name" className="block font-inter text-[12px] text-[#5A6A7A] mb-1.5">{t('recipientNameLabel')}</label>
-          <input
-            id="recipient-name"
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            className="w-full max-w-[280px] rounded-lg border border-[#E2E8F0] px-4 py-2.5 font-inter text-[14px] text-[#152238] focus:outline-none focus:border-[#152238]/50"
-          />
-          <p className="font-inter text-[11px] text-[#5A6A7A] mt-1.5">{t('recipientHelper')}</p>
-        </div>
-      )}
+      <div className="mt-3">
+        <label htmlFor={id} className="block font-inter text-[12px] text-[#5A6A7A] mb-1.5">{t(type === 'gift' ? 'recipientNameLabel' : 'ownNameLabel')}</label>
+        <input
+          id={id}
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          className="w-full max-w-[280px] rounded-lg border border-[#E2E8F0] px-4 py-2.5 font-inter text-[14px] text-[#152238] focus:outline-none focus:border-[#152238]/50"
+        />
+        <p className="font-inter text-[11px] text-[#5A6A7A] mt-1.5">{t(type === 'gift' ? 'recipientHelper' : 'ownNameHelper')}</p>
+      </div>
     </div>
   );
 
@@ -197,7 +196,7 @@ export function ShopGiftCardsPage() {
                   </div>
                 </div>
 
-                {recipientBlock(recipientType, setRecipientType, recipientName, setRecipientName)}
+                {recipientBlock(recipientType, setRecipientType, recipientName, setRecipientName, 'recipient-name')}
                 {langBlock(cardLang, setCardLang)}
 
                 <div>
@@ -225,7 +224,7 @@ export function ShopGiftCardsPage() {
                   </div>
                 </div>
 
-                {recipientBlock(openRecipientType, setOpenRecipientType, openRecipientName, setOpenRecipientName)}
+                {recipientBlock(openRecipientType, setOpenRecipientType, openRecipientName, setOpenRecipientName, 'open-recipient-name')}
                 {langBlock(openCardLang, setOpenCardLang)}
 
                 <div>

@@ -31,7 +31,7 @@ export const pricingTabs: PricingTab[] = [
   },
   {
     key: 'hotStone',
-    label: 'Kuumakivihieronta',
+    label: 'Kuumakivi- ja klassinen hieronta',
     description: 'Lämpimien kivien avulla tehtävä hieronta, joka rentouttaa syvällä tasolla ja lievittää lihaskireyksiä.',
     items: [
       { duration: '50 min', price: '70' },
@@ -65,7 +65,7 @@ export const pricingTabs: PricingTab[] = [
     shopUrl: '/verkkokauppa/lahjakortit',
     items: [
       { duration: 'Klassinen hieronta 50 min', price: '60', popular: true },
-      { duration: 'Kuumakivihieronta 50 min', price: '70' },
+      { duration: 'Kuumakivi- ja klassinen hieronta 50 min', price: '70' },
       { duration: 'Purentalihashieronta 50 min', price: '70' },
       { duration: 'Faskiarautakäsittely 50 min', price: '75' },
     ],

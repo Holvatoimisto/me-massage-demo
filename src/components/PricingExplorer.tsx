@@ -121,7 +121,7 @@ export function PricingExplorer() {
             </Link>
           ) : (
             <button
-              onClick={openBookingModal}
+              onClick={() => openBookingModal()}
               className="inline-flex min-h-[52px] items-center justify-center px-8 py-3 rounded-lg font-inter text-[14px] font-semibold tracking-wide whitespace-nowrap bg-[#152238] text-white hover:bg-[#1E3A5F] transition-colors duration-300 cursor-pointer border-none"
             >
               {tStr('pricing.bookNow')}

@@ -170,7 +170,7 @@ export function Header() {
 
           {/* CTA Button */}
           <button
-            onClick={openBookingModal}
+            onClick={() => openBookingModal()}
             className="inline-flex min-h-[40px] items-center justify-center px-5 py-2 rounded-md font-inter text-[13px] font-semibold tracking-[0.06em] leading-none whitespace-nowrap bg-white text-[#152238] hover:bg-[#E2E8F0] transition-colors duration-300 shadow-sm cursor-pointer border-none"
           >
             {navigationInfo.ctaButton.label}
@@ -276,7 +276,7 @@ export function Header() {
             {[
               { code: 'fi' as const, label: 'Suomi' },
               { code: 'en' as const, label: 'English' },
-              { code: 'sv' as const, label: 'Sverige' },
+              { code: 'sv' as const, label: 'Svenska' },
             ].map((l) => (
               <button
                 key={l.code}
