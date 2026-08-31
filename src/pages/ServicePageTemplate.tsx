@@ -216,12 +216,9 @@ export function ServicePageTemplate() {
       <section className="bg-white py-16 md:py-20 px-6 md:px-12">
         <div className="max-w-[640px] mx-auto">
           <ScrollReveal>
-            <h2 className="font-cormorant text-[24px] md:text-[30px] text-[#152238] leading-[1.25] mb-3">
+            <h2 className="font-cormorant text-[24px] md:text-[30px] text-[#152238] leading-[1.25] mb-10">
               {tStr('servicePages.chooseDuration')}
             </h2>
-            <p className="font-inter text-[13px] text-[#5A6A7A] leading-[1.7] mb-10">
-              {tStr('servicePages.durationPriceNote')}
-            </p>
           </ScrollReveal>
           <div>
             {durationRows.map((row, i) => (

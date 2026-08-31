@@ -12,6 +12,10 @@ import { businessInfo } from '@/data/site';
 interface FaqItem {
   question: string;
   answer: string;
+  /** Optional structured long-form answer (paragraphs + bullet list). */
+  answerParagraphs?: string[];
+  answerBullets?: string[];
+  answerParagraphsAfter?: string[];
   linkText?: string;
   linkHref?: string;
   [key: string]: unknown;
@@ -68,6 +72,7 @@ export function FAQPage() {
                 {group.faqs.map((faq, fi) => {
                   const key = `${gi}-${fi}`;
                   const isOpen = openKey === key;
+                  const isLong = !!(faq.answerParagraphs || faq.answerBullets);
                   return (
                     <div key={key} className="border-t border-[#E2E8F0]">
                       <button
@@ -82,10 +87,22 @@ export function FAQPage() {
                       </button>
                       <div
                         className="overflow-hidden transition-all duration-[400ms] ease-out"
-                        style={{ maxHeight: isOpen ? '280px' : '0px', opacity: isOpen ? 1 : 0 }}
+                        style={{ maxHeight: isOpen ? (isLong ? '900px' : '280px') : '0px', opacity: isOpen ? 1 : 0 }}
                       >
                         <div className="font-inter text-[14px] text-[#1F2937] leading-[1.75] pb-6 max-w-[540px]">
-                          {faq.answer.replace('{phone}', businessInfo.phone)}
+                          {isLong ? (
+                            <div className="space-y-4">
+                              {faq.answerParagraphs?.map((para, pi) => <p key={pi}>{para}</p>)}
+                              {faq.answerBullets && (
+                                <ul className="list-disc pl-5 space-y-1.5">
+                                  {faq.answerBullets.map((bullet, bi) => <li key={bi}>{bullet}</li>)}
+                                </ul>
+                              )}
+                              {faq.answerParagraphsAfter?.map((para, pi) => <p key={pi}>{para}</p>)}
+                            </div>
+                          ) : (
+                            faq.answer.replace('{phone}', businessInfo.phone)
+                          )}
                           {faq.linkText && faq.linkHref && (
                             <Link
                               to={faq.linkHref}

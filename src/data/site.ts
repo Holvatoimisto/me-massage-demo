@@ -55,7 +55,7 @@ export const footerMeta = {
   // Union of payment methods shown on memassage.fi (location pages) and the
   // previous project copy. NEEDS MATHIAS CONFIRMATION (esp. MobilePay and
   // invoicing) — keep centralized in translations via footer.paymentMethods.
-  paymentMethods: 'Maksutavat: Käteinen, kortti, MobilePay, ePassi, Edenred, Smartum ja laskutus',
+  paymentMethods: 'Maksutavat: Käteinen, kortti, MobilePay, ePassi, Edenred ja laskutus',
   copyright: 'ME massage. Kaikki oikeudet pidätetään.',
 };
 
