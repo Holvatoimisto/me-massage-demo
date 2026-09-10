@@ -21,12 +21,30 @@ export const businessInfo = {
   googleReviewCount: '120+',
 };
 
+// Phone contacts by location, shown in the global Footer. Mathias works at
+// both locations; Janina is associated with Klaukkala.
+export const locationPhoneContacts = [
+  {
+    location: 'Klaukkala',
+    people: [
+      { name: 'Mathias', phone: '040 833 8512', phoneLink: 'tel:+358408338512' },
+      { name: 'Janina', phone: '+358 45 127 2928', phoneLink: 'tel:+358451272928' },
+    ],
+  },
+  {
+    location: 'Vaasa',
+    people: [
+      { name: 'Mathias', phone: '040 833 8512', phoneLink: 'tel:+358408338512' },
+    ],
+  },
+];
+
 export const footerColumns = [
   {
     title: 'Palvelut',
     links: [
       { label: 'Klassinen hieronta', href: '/palvelut/hieronta' },
-      { label: 'Kuumakivi- ja klassinen hieronta', href: '/palvelut/kuumakivihieronta' },
+      { label: 'Kuumakivi ja klassinen hieronta', href: '/palvelut/kuumakivihieronta' },
       { label: 'Purentalihashieronta', href: '/palvelut/purentalihashieronta' },
       { label: 'Faskiarautakäsittely', href: '/palvelut/faskiarautakasittely' },
     ],

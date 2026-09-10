@@ -73,7 +73,7 @@ export const shopServices: ShopService[] = [
   },
   {
     key: 'hotStone',
-    label: 'Kuumakivi- ja klassinen hieronta',
+    label: 'Kuumakivi ja klassinen hieronta',
     durations: [
       {
         duration: '50 min', price: 70, giftProductId: 1266,

@@ -19,7 +19,7 @@ export const translations = {
     hero: {
       eyebrow: 'ME MASSAGE',
       headline: 'Ammattitaitoista hierontaa Klaukkalassa ja Vaasassa',
-      subheadline: 'Klassinen hieronta, kuumakivi- ja klassinen hieronta, purentalihashieronta ja faskiarautakäsittely. Koulutetut hierojat sinua varten.',
+      subheadline: 'Klassinen hieronta, kuumakivi ja klassinen hieronta, purentalihashieronta ja faskiarautakäsittely. Koulutetut hierojat sinua varten.',
       bookNow: 'Varaa aika',
       exploreServices: 'Tutustu palveluihin',
       statRating: 'Google-arvostelu',
@@ -41,9 +41,9 @@ export const translations = {
           link: 'Tutustu hierontaan',
         },
         hotStone: {
-          title: 'Kuumakivi- ja klassinen hieronta',
+          title: 'Kuumakivi ja klassinen hieronta',
           description: 'Lämmittely kuumilla kivillä, joka jatkuu klassisena hierontana.',
-          link: 'Tutustu kuumakivi- ja klassiseen hierontaan',
+          link: 'Tutustu kuumakivi ja klassiseen hierontaan',
         },
       },
       secondaryLabel: 'Myös saatavilla',
@@ -62,7 +62,7 @@ export const translations = {
           description: 'Perinteinen hieronta lihaskireyksiin, palautumiseen ja rentoutumiseen. Hoidon voimakkuus ja käsiteltävät alueet sovitetaan aina tarpeidesi mukaan.',
         },
         hotStone: {
-          label: 'Kuumakivi- ja klassinen hieronta',
+          label: 'Kuumakivi ja klassinen hieronta',
           description: 'Lämmittely kuumilla kivillä, joka jatkuu klassisena hierontana.',
         },
         jaw: {
@@ -104,11 +104,11 @@ export const translations = {
       items: [
         { name: 'Anni K.', text: 'Mathias on ehdottomasti paras hieroja, jolla olen käynyt. Ammattitaitoinen, kuuntelee ja osaa kohdistaa hoidon oikein. Suosittelen lämpimästi!', service: 'Klassinen hieronta' },
         { name: 'Mikael L.', text: 'Upea hierontakokemus! Mathias otti hyvin huomioon toiveeni ja keskittyi juuri niihin kohtiin, jotka kaipasivat huomiota. Tulen ehdottomasti uudelleen.', service: 'Klassinen hieronta' },
-        { name: 'Sanna R.', text: 'Kuumakivihieronta oli aivan mieletön elämys. Lämmin ja rauhallinen tunnelma, ja hieronta rentoutti koko kehon. Kiitos!', service: 'Kuumakivi- ja klassinen hieronta' },
+        { name: 'Sanna R.', text: 'Kuumakivihieronta oli aivan mieletön elämys. Lämmin ja rauhallinen tunnelma, ja hieronta rentoutti koko kehon. Kiitos!', service: 'Kuumakivi ja klassinen hieronta' },
         { name: 'Petri H.', text: 'Purentalihashieronta auttoi minua todella paljon. Olen kärsinyt leukakivuista vuosia ja nyt ne ovat vihdoin helpottaneet. Kiitos Mathias!', service: 'Purentalihashieronta' },
         { name: 'Laura M.', text: 'Faskiarautakäsittely oli tehokasta ja ammattimaista. Mathias osaa kertoa mitä tekee ja miksi. Tulen varmasti uudelleen!', service: 'Faskiarautakäsittely' },
         { name: 'Jussi T.', text: 'Erittäin ammattitaitoinen hieroja. Rentouttava ilmapiiri ja laadukas hoito. Suosittelen kaikille!', service: 'Klassinen hieronta' },
-        { name: 'Tiina S.', text: 'Paras hierontakokemukseni Klaukkalassa. Mathias kuuntelee asiakasta ja räätälöi hoidon tarpeiden mukaan.', service: 'Kuumakivi- ja klassinen hieronta' },
+        { name: 'Tiina S.', text: 'Paras hierontakokemukseni Klaukkalassa. Mathias kuuntelee asiakasta ja räätälöi hoidon tarpeiden mukaan.', service: 'Kuumakivi ja klassinen hieronta' },
         { name: 'Marko P.', text: 'Säännöllinen hieronta Mathiaksen luona on auttanut selkäkipuihin merkittävästi. Ammattitaitoista ja ystävällistä palvelua.', service: 'Klassinen hieronta' },
       ],
     },
@@ -123,7 +123,7 @@ export const translations = {
       },
       janina: {
         title: 'Koulutettu hieroja',
-        bio: 'Janina on koulutettu hieroja, joka liittyi ME massagen tiimiin vuonna 2025. Hän tuo mukanaan lämpöistä ja ammattitaitoista otetta hierontapalveluihin.\n\nJaninalta saat klassista hierontaa ja kuumakivi- ja klassista hierontaa. Hän on erityisen kiinnostunut kokonaisvaltaisesta hyvinvoinnista ja kehonhuollosta.',
+        bio: 'Janina on koulutettu hieroja, joka liittyi ME massagen tiimiin vuonna 2025. Hän tuo mukanaan lämpöistä ja ammattitaitoista otetta hierontapalveluihin.\n\nJaninalta saat klassista hierontaa ja kuumakivi ja klassista hierontaa. Hän on erityisen kiinnostunut kokonaisvaltaisesta hyvinvoinnista ja kehonhuollosta.',
         quote: 'Haluan auttaa asiakkaitani löytämään keinot rentoutumiseen ja kivunlievitykseen.',
       },
     },
@@ -142,8 +142,8 @@ export const translations = {
           answer: 'Kyllä! Hieronta sopii kaikille ikään ja kuntoon katsomatta. Meille ovat tervetulleita niin urheilijat, toimistotyöntekijät kuin senioritkin.',
         },
         {
-          question: 'Mitä eroa on klassisella hieronnalla ja kuumakivi- ja klassisella hieronnalla?',
-          answer: 'Klassinen hieronta on perinteistä lihaskäsittelyä, joka räätälöidään tarpeidesi mukaan. Kuumakivi- ja klassisessa hieronnassa käytetään lämpimiä kiviä, jotka rentouttavat syvällä tasolla ja lievittävät lihaskireyksiä tehokkaasti.',
+          question: 'Mitä eroa on klassisella hieronnalla ja kuumakivi ja klassisella hieronnalla?',
+          answer: 'Klassinen hieronta on perinteistä lihaskäsittelyä, joka räätälöidään tarpeidesi mukaan. Kuumakivi ja klassisessa hieronnassa käytetään lämpimiä kiviä, jotka rentouttavat syvällä tasolla ja lievittävät lihaskireyksiä tehokkaasti.',
         },
         {
           question: 'Miten ajanvaraus toimii?',
@@ -215,7 +215,6 @@ export const translations = {
         arrivalText: 'ME massage Vaasa sijaitsee osoitteessa Rantakatu 11, 65100 Vaasa.',
         arrival: [
           { label: 'Osoite', text: 'Rantakatu 11, 65100 Vaasa' },
-          { label: 'Sijainti', text: 'Toimipiste sijaitsee Vaasanpuistikolla keskustan tuntumassa.' },
           { label: 'Pysäköinti', text: 'Pysäköintipaikkoja löytyy toimipisteen lähialueelta.' },
         ],
         finalEyebrow: 'ME MASSAGE VAASA',
@@ -319,8 +318,8 @@ export const translations = {
           description: 'Niska-hartiaseudun jännitykset ja purentalihasten kuormitus voivat olla yhteydessä päänsärkyihin ja leukojen alueen oireisiin. Purentalihashieronta voi auttaa vähentämään lihasjännitystä ja parantamaan alueen toimintaa.',
         },
         hotStone: {
-          title: 'Suosittelemme kuumakivi- ja klassista hierontaa',
-          description: 'Kuumakivi- ja klassinen hieronta rentouttaa syvällä tasolla ja lievittää lihaskireyksiä tehokkaasti. Lämpimät kivet avaavat lihaksia ja tarjoavat syvällisen rentoutumiskokemuksen.',
+          title: 'Suosittelemme kuumakivi ja klassista hierontaa',
+          description: 'Kuumakivi ja klassinen hieronta rentouttaa syvällä tasolla ja lievittää lihaskireyksiä tehokkaasti. Lämpimät kivet avaavat lihaksia ja tarjoavat syvällisen rentoutumiskokemuksen.',
         },
         iastm: {
           title: 'Suosittelemme faskiarautakäsittelyä',
@@ -383,16 +382,16 @@ export const translations = {
       },
       hotStone: {
         eyebrow: 'KUUMAKIVI- JA KLASSINEN HIERONTA',
-        title: 'Kuumakivi- ja klassinen hieronta',
+        title: 'Kuumakivi ja klassinen hieronta',
         subtitle: 'Syvärentoutumista lämpimillä kivillä',
-        description: 'Kuumakivi- ja klassinen hieronta on erityisen rentouttava hoitomuoto, jossa käytetään lämpimiä, sileitä kiviä hieronnan yhteydessä. Lämpö tunkeutuu syvälle lihaksiin, rentouttaa tehokkaasti ja lievittää lihaskireyksiä. Hoito rauhoittaa hermostoa ja tarjoaa syvällisen rentoutumiskokemuksen.',
-        metaTitle: 'Kuumakivi- ja klassinen hieronta | ME massage',
-        metaDescription: 'Kuumakivi- ja klassinen hieronta Klaukkalassa ja Vaasassa. Lämpimät basalttikivet ja klassisen hieronnan otteet, 50–80 min, alk. 70 €.',
-        introHeading: 'Mitä kuumakivi- ja klassinen hieronta on?',
+        description: 'Kuumakivi ja klassinen hieronta on erityisen rentouttava hoitomuoto, jossa käytetään lämpimiä, sileitä kiviä hieronnan yhteydessä. Lämpö tunkeutuu syvälle lihaksiin, rentouttaa tehokkaasti ja lievittää lihaskireyksiä. Hoito rauhoittaa hermostoa ja tarjoaa syvällisen rentoutumiskokemuksen.',
+        metaTitle: 'Kuumakivi ja klassinen hieronta | ME massage',
+        metaDescription: 'Kuumakivi ja klassinen hieronta Klaukkalassa ja Vaasassa. Lämpimät basalttikivet ja klassisen hieronnan otteet, 50–80 min, alk. 70 €.',
+        introHeading: 'Mitä kuumakivi ja klassinen hieronta on?',
         intro: [
-          'Kuumakivi- ja klassinen hieronta on hoitomuoto, jossa käytetään lämpimiä, sileitä basalttikiviä osana hierontaa. Kivien lämpö valmistaa lihaksia ja syventää hoidon rentouttavaa vaikutusta.',
+          'Kuumakivi ja klassinen hieronta on hoitomuoto, jossa käytetään lämpimiä, sileitä basalttikiviä osana hierontaa. Kivien lämpö valmistaa lihaksia ja syventää hoidon rentouttavaa vaikutusta.',
           'Hoito alkaa lämpimien kivien käsittelyllä ja jatkuu klassisen hieronnan ottein. Näin saat saman käynnin aikana sekä lämmön tuoman syvän rentoutumisen että käsin tehtävän, kohdennetun lihashuollon — ilman tarpeetonta kipua.',
-          'Kuumakivi- ja klassinen hieronta sopii erityisen hyvin sinulle, jos kaipaat rauhallista ja kokonaisvaltaisesti rentouttavaa hoitoa tai normaalista hieronnasta poikkeavaa kokemusta.',
+          'Kuumakivi ja klassinen hieronta sopii erityisen hyvin sinulle, jos kaipaat rauhallista ja kokonaisvaltaisesti rentouttavaa hoitoa tai normaalista hieronnasta poikkeavaa kokemusta.',
         ],
         process: {
           heading: 'Näin hoito etenee',
@@ -412,7 +411,7 @@ export const translations = {
         bestFor: 'Sopii erityisesti, kun kaipaat syvää rentoutumista ja lämmön tuomaa lihasten pehmenemistä.',
         faq: [
           { question: 'Mitkä kivet hoidossa ovat?', answer: 'Hoidossa käytetään lämpimiä, sileitä basalttikiviä. Ne säilyttävät lämmön tasaisesti ja tuntuvat miellyttäviltä iholla.' },
-          { question: 'Miten kuumakivi- ja klassinen hieronta eroaa klassisesta hieronnasta?', answer: 'Kuumakivi- ja klassinen hieronta alkaa lämpimien kivien käsittelyllä ja jatkuu klassisen hieronnan ottein. Jos kaipaat erityisen rentouttavaa kokemusta, valitse kuumakivi- ja klassinen hieronta — jos haluat suoraviivaisemman lihaskäsittelyn, valitse klassinen hieronta.' },
+          { question: 'Miten kuumakivi ja klassinen hieronta eroaa klassisesta hieronnasta?', answer: 'Kuumakivi ja klassinen hieronta alkaa lämpimien kivien käsittelyllä ja jatkuu klassisen hieronnan ottein. Jos kaipaat erityisen rentouttavaa kokemusta, valitse kuumakivi ja klassinen hieronta — jos haluat suoraviivaisemman lihaskäsittelyn, valitse klassinen hieronta.' },
           { question: 'Mikä kesto kannattaa valita?', answer: '50 minuuttia riittää hyvin yhden laajemman alueen, kuten selän ja niska-hartiaseudun, hoitoon. 80 minuuttia antaa enemmän aikaa lämmölle ja laajempaan kokonaisuuteen.' },
         ],
       },
@@ -519,7 +518,7 @@ export const translations = {
           faqs: [
             { question: 'Minkä pituinen hieronta minulle?', answer: '20 minuuttia riittää yhden alueen kohdennettuun hoitoon, 50 minuuttia on suosituin valinta ja antaa aikaa laajempaan kokonaisuuteen, ja 80–110 minuuttia kattaa koko vartalon perusteellisesti. Tarkemmat kestojen erot löydät hinnastosta.', linkText: 'Katso hinnat ja kestot', linkHref: '/hinnasto' },
             { question: 'Sopiiko hieronta minulle?', answer: 'Kyllä! Hieronta sopii kaikille ikään ja kuntoon katsomatta. Meille ovat tervetulleita niin urheilijat, toimistotyöntekijät kuin senioritkin.' },
-            { question: 'Mitä eroa on klassisella hieronnalla ja kuumakivi- ja klassisella hieronnalla?', answer: 'Klassinen hieronta on perinteistä lihaskäsittelyä, joka räätälöidään tarpeidesi mukaan. Kuumakivi- ja klassisessa hieronnassa käytetään lämpimiä kiviä, jotka rentouttavat syvällä tasolla ja lievittävät lihaskireyksiä tehokkaasti.', linkText: 'Vertaile palveluita', linkHref: '/palvelut' },
+            { question: 'Mitä eroa on klassisella hieronnalla ja kuumakivi ja klassisella hieronnalla?', answer: 'Klassinen hieronta on perinteistä lihaskäsittelyä, joka räätälöidään tarpeidesi mukaan. Kuumakivi ja klassisessa hieronnassa käytetään lämpimiä kiviä, jotka rentouttavat syvällä tasolla ja lievittävät lihaskireyksiä tehokkaasti.', linkText: 'Vertaile palveluita', linkHref: '/palvelut' },
             { question: 'Kuinka usein kannattaa käydä hieronnassa?', answer: 'Se riippuu tilanteestasi. Akuuttiin vaivaan suositellaan 1–2 kertaa viikossa, ylläpitohoitona kerran kuukaudessa.' },
           ],
         },
@@ -565,7 +564,7 @@ export const translations = {
     pages: {
       palvelut: {
         metaTitle: 'Palvelut | ME massage',
-        metaDescription: 'Tutustu ME massagen palveluihin: klassinen hieronta, kuumakivi- ja klassinen hieronta, purentalihashieronta ja faskiarautakäsittely Klaukkalassa ja Vaasassa.',
+        metaDescription: 'Tutustu ME massagen palveluihin: klassinen hieronta, kuumakivi ja klassinen hieronta, purentalihashieronta ja faskiarautakäsittely Klaukkalassa ja Vaasassa.',
         eyebrow: 'PALVELUT',
         headline: 'Hoitoa kehosi tarpeisiin',
         supportText: 'Valitse sinulle sopiva hoito tai tutustu palveluihin tarkemmin. Kaikki hoidot räätälöidään yksilöllisesti tarpeidesi mukaan.',
@@ -579,7 +578,7 @@ export const translations = {
       },
       hinnasto: {
         metaTitle: 'Hinnasto | ME massage',
-        metaDescription: 'ME massagen hinnasto: klassinen hieronta, kuumakivi- ja klassinen hieronta, purentalihashieronta ja faskiarautakäsittely sekä lahja- ja sarjakortit.',
+        metaDescription: 'ME massagen hinnasto: klassinen hieronta, kuumakivi ja klassinen hieronta, purentalihashieronta ja faskiarautakäsittely sekä lahja- ja sarjakortit.',
         eyebrow: 'HINNASTO',
         headline: 'Selkeät hinnat, ei yllätyksiä',
         supportText: 'Kaikki hoidot räätälöidään yksilöllisesti tarpeidesi mukaan.',
@@ -729,7 +728,7 @@ export const translations = {
       cartSeries: 'Sarjakortti',
       serviceNames: {
         classic: 'Klassinen hieronta',
-        hotStone: 'Kuumakivi- ja klassinen hieronta',
+        hotStone: 'Kuumakivi ja klassinen hieronta',
         jaw: 'Purentalihashieronta',
         iastm: 'Faskiarautakäsittely',
       },
@@ -891,8 +890,8 @@ export const translations = {
       eyebrow: 'BOOK NOW',
       headline: 'Take Care of Your Body, It Deserves It',
       supportText: 'Book a massage today and start your journey towards better well-being.',
-      bookKlaukkala: 'Book Klaukkala',
-      bookVaasa: 'Book Vaasa',
+      bookKlaukkala: 'Book an appointment for Klaukkala',
+      bookVaasa: 'Book an appointment for Vaasa',
       phoneSupport: 'Call or send an email',
       trustLine: '★ {rating} Google Rating • Certified Masseur • Klaukkala and Vaasa',
     },
@@ -951,7 +950,7 @@ export const translations = {
         arrival: [
           { label: 'Address', text: 'Rantakatu 11, 65100 Vaasa' },
           { label: 'Location', text: 'The location is on Rantakatu near the city centre.' },
-          { label: 'Parking', text: 'Parking in Vaasa city centre parking areas.' },
+          { label: 'Parking', text: 'There are parking spaces in the area around the reception.' },
         ],
         finalEyebrow: 'ME MASSAGE VAASA',
         finalHeading: 'Book Your Appointment in Vaasa',
@@ -1626,8 +1625,8 @@ export const translations = {
       eyebrow: 'BOKA TID',
       headline: 'Ta Hand om Din Kropp, Den Förtjänar Det',
       supportText: 'Boka en massage idag och påbörja din resa mot bättre välbefinnande.',
-      bookKlaukkala: 'Boka Klaukkala',
-      bookVaasa: 'Boka Vaasa',
+      bookKlaukkala: 'Boka tid till Klövskog',
+      bookVaasa: 'Boka tid till Vasa',
       phoneSupport: 'Ring eller skicka e-post',
       trustLine: '★ {rating} Google-betyg • Diplomerad Massör • Klaukkala och Vaasa',
     },
@@ -1686,7 +1685,7 @@ export const translations = {
         arrival: [
           { label: 'Adress', text: 'Rantakatu 11, 65100 Vaasa' },
           { label: 'Läge', text: 'Mottagningen ligger på Rantakatu nära centrum.' },
-          { label: 'Parkering', text: 'Parkering på Vasas centrums parkeringsplatser.' },
+          { label: 'Parkering', text: 'Parkeringsplatser finns intill mottagning.' },
         ],
         finalEyebrow: 'ME MASSAGE VAASA',
         finalHeading: 'Boka Din Tid i Vaasa',

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { MapPin, Phone, Mail, Instagram, Facebook } from 'lucide-react';
 import { useLang } from '@/contexts/LanguageContext';
-import { businessInfo, footerColumns } from '@/data/site';
+import { businessInfo, footerColumns, locationPhoneContacts } from '@/data/site';
 import { locations } from '@/data/locations';
 
 export function Footer() {
@@ -19,16 +19,29 @@ export function Footer() {
                 <MapPin size={14} className="shrink-0" /> {businessInfo.address}
               </li>
               <li>
-                <a href={businessInfo.phoneLink} className="font-inter text-[14px] text-[#94A3B8] hover:text-white transition-colors flex items-center gap-2 no-underline">
-                  <Phone size={14} className="shrink-0" /> {businessInfo.phone}
-                </a>
-              </li>
-              <li>
                 <a href={businessInfo.emailLink} className="font-inter text-[14px] text-[#94A3B8] hover:text-white transition-colors flex items-center gap-2 no-underline">
                   <Mail size={14} className="shrink-0" /> {businessInfo.email}
                 </a>
               </li>
             </ul>
+            <div className="mt-5 space-y-4">
+              {locationPhoneContacts.map((group) => (
+                <div key={group.location}>
+                  <p className="font-inter text-[11px] font-semibold uppercase tracking-[0.08em] text-white/80 mb-1.5">{group.location}</p>
+                  <ul className="space-y-1.5">
+                    {group.people.map((person) => (
+                      <li key={`${group.location}-${person.name}`}>
+                        <a href={person.phoneLink} className="font-inter text-[14px] text-[#94A3B8] hover:text-white transition-colors flex items-center gap-2 no-underline">
+                          <Phone size={14} className="shrink-0" />
+                          <span className="text-white/85">{person.name}</span>
+                          <span>{person.phone}</span>
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
           </div>
           {footerColumns.map((col, i) => (
             <div key={i}>

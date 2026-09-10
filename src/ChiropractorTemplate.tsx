@@ -16,6 +16,7 @@ import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { PricingExplorer } from '@/components/PricingExplorer';
 import { businessInfo } from '@/data/site';
+import { locations } from '@/data/locations';
 
 const templateData = {
   business: businessInfo,
@@ -23,7 +24,7 @@ const templateData = {
     backgroundImage: '/assets/me_hero_new.png',
     eyebrow: 'ME MASSAGE',
     headline: 'Ammattitaitoista hierontaa Klaukkalassa ja Vaasassa',
-    subheadline: 'Klassinen hieronta, kuumakivi- ja klassinen hieronta, purentalihashieronta ja faskiarautakäsittely. Koulutetut hierojat sinua varten.',
+    subheadline: 'Klassinen hieronta, kuumakivi ja klassinen hieronta, purentalihashieronta ja faskiarautakäsittely. Koulutetut hierojat sinua varten.',
     ctaSecondary: { label: 'Tutustu palveluihin', href: '#palvelut' },
     stats: [
       { value: businessInfo.googleRating, label: 'Google-arvostelu' },
@@ -50,9 +51,9 @@ const templateData = {
       },
       {
         image: '/assets/me_service_hot_stone.png',
-        title: 'Kuumakivi- ja klassinen hieronta',
+        title: 'Kuumakivi ja klassinen hieronta',
         description: 'Lämpimillä kivillä tehtävä rauhallinen hoito, joka auttaa rentoutumaan ja pehmentämään lihaskireyksiä.',
-        linkText: 'Tutustu kuumakivi- ja klassiseen hierontaan',
+        linkText: 'Tutustu kuumakivi ja klassiseen hierontaan',
         linkHref: '/palvelut/kuumakivihieronta',
       },
     ],
@@ -86,7 +87,8 @@ const getLocationCards = (tStr: (p: string) => string) => [
   {
     name: 'Klaukkala',
     address: 'Lepsämäntie 1, 2 krs, 01800 Klaukkala',
-    image: '/assets/memassage_klaukkala.webp',
+    image: locations[0].image,
+    hoverImage: locations[0].hoverImage,
     description: tStr('locations.supportingCopy'),
     cta: tStr('locations.ctaKlaukkala'),
     href: '/toimipisteet/klaukkala',
@@ -94,7 +96,8 @@ const getLocationCards = (tStr: (p: string) => string) => [
   {
     name: 'Vaasa',
     address: 'Rantakatu 11, 65100 Vaasa',
-    image: '/assets/memassage_vaasa.webp',
+    image: locations[1].image,
+    hoverImage: locations[1].hoverImage,
     description: tStr('locations.supportingCopy'),
     cta: tStr('locations.ctaVaasa'),
     href: '/toimipisteet/vaasa',
@@ -171,7 +174,7 @@ export function ChiropractorTemplate() {
             transition={{ duration: 0.7, delay: 0.1 }}
             src="/assets/me_logo.png"
             alt="ME massage"
-            className="h-9 md:h-10 w-auto translate-y-1 mb-4"
+            className="h-[72px] md:h-20 w-auto translate-y-1 mb-6"
           />
 
           {/* Headline */}
@@ -482,12 +485,19 @@ export function ChiropractorTemplate() {
                   to={loc.href}
                   className="group block rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#152238]/40 focus-visible:ring-offset-4"
                 >
-                  <div className="overflow-hidden rounded-lg mb-6">
+                  <div className="relative overflow-hidden rounded-lg mb-6 aspect-[4/3]">
                     <img
                       src={loc.image}
                       alt={loc.name}
                       loading="lazy"
-                      className="w-full aspect-[4/3] object-cover object-center transition-transform duration-500 ease-out group-hover:scale-[1.02]"
+                      className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-500 ease-out [@media(hover:hover)]:group-hover:-translate-x-full"
+                    />
+                    <img
+                      src={loc.hoverImage}
+                      alt=""
+                      aria-hidden="true"
+                      loading="lazy"
+                      className="absolute inset-0 h-full w-full object-cover object-center translate-x-full transition-transform duration-500 ease-out [@media(hover:hover)]:group-hover:translate-x-0"
                     />
                   </div>
                   <h3 className="font-cormorant text-[24px] md:text-[26px] text-[#152238] leading-[1.2] mb-1">{loc.name}</h3>

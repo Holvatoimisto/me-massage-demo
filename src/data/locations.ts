@@ -5,6 +5,8 @@ export interface LocationData {
   /** Address split for hero display. */
   addressLines: string[];
   image: string;
+  /** Secondary interior image revealed on hover (homepage location cards). */
+  hoverImage: string;
   /** Ajas office id (Klaukkala 3, Vaasa 4) — used for deep links. */
   officeId: number;
   /**
@@ -38,6 +40,7 @@ export const locations: LocationData[] = [
     address: 'Lepsämäntie 1, 2 krs, 01800 Klaukkala',
     addressLines: ['Lepsämäntie 1, 2 krs', '01800 Klaukkala'],
     image: '/assets/memassage_klaukkala.webp',
+    hoverImage: '/assets/memassage_klaukkala_interior.jpg',
     officeId: 3,
     bookingUrl: 'https://nettivaraus6.ajas.fi/fi/b1b0cf6443b6?offices=3',
     bookingLabelKey: 'finalCta.bookKlaukkala',
@@ -56,6 +59,7 @@ export const locations: LocationData[] = [
     address: 'Rantakatu 11, 65100 Vaasa',
     addressLines: ['Rantakatu 11', '65100 Vaasa'],
     image: '/assets/memassage_vaasa.webp',
+    hoverImage: '/assets/memassage_vaasa_interior.jpg',
     officeId: 4,
     bookingUrl: 'https://nettivaraus6.ajas.fi/fi/b1b0cf6443b6?offices=4',
     bookingLabelKey: 'finalCta.bookVaasa',
