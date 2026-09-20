@@ -8,7 +8,8 @@ export const translations = {
       services: 'Palvelut',
       pricing: 'Hinnasto',
       contact: 'Yhteystiedot',
-      reviews: 'Asiakkaiden kokemuksia',
+      reviews: 'Kokemuksia',
+      about: 'Meistä',
       faq: 'Usein kysyttyä',
       bookNow: 'Varaa aika',
       allServices: 'Kaikki palvelut',
@@ -25,9 +26,14 @@ export const translations = {
       statRating: 'Google-arvostelu',
       statSince: 'Vuodesta lähtien',
       statLocations: 'Toimipistettä',
+      statTrained: 'Koulutetut hierojat',
     },
-    // Intro
-    intro: 'Ammattitaitoista hierontaa ja kehonhuoltoa',
+    // Brand intro
+    brandIntro: {
+      headline: 'Tervetuloa ME Massagelle',
+      p1: 'Klaukkalassa ja Vaasassa sinua palvelevat koulutetut hierojat, joiden työssä yhdistyvät vuosien kokemus, vahva osaaminen ja yksilöllinen ote.',
+      p2: 'Meillä hieronta ei ole vain hetki rentoutumista. Hoito rakennetaan sen mukaan, mitä juuri sinä tarvitset, jotta saat toimivaa hoitoa ja lähdet vastaanotolta paremmalla ololla.',
+    },
     // Services
     services: {
       eyebrow: 'PALVELUT',
@@ -50,6 +56,10 @@ export const translations = {
       jaw: 'Purentalihashieronta',
       iastm: 'Faskiarautakäsittely',
       giftCards: 'Lahja- ja sarjakortit',
+      jawDesc: 'Kohdennettu hoito leuan ja purennan alueen kireyksiin ja jännityksiin.',
+      iastmDesc: 'Instrumenttiavusteinen käsittely lihaskireyksiin ja liikkuvuuden tueksi.',
+      giftCardsDesc: 'Anna hyvää oloa lahjaksi tai säästä säännöllisillä hoitokerroilla.',
+      secondaryCta: 'Tutustu',
     },
     // Pricing
     pricing: {
@@ -576,6 +586,22 @@ export const translations = {
         unsureText: 'Soita {phone} tai katso usein kysytyt kysymykset — autamme valitsemaan oikean hoidon.',
         faqLink: 'Usein kysyttyä',
       },
+      meista: {
+        metaTitle: 'Meistä | ME massage',
+        metaDescription: 'Tutustu ME massageen — koulutetut hierojat Mathias ja Janina palvelevat yksilöllisesti Klaukkalassa ja Vaasassa.',
+        eyebrow: 'MEISTÄ',
+        headline: 'Tutustu ME Massageen',
+        supportText: 'Palvelemme Klaukkalassa ja Vaasassa — yksilöllisesti ja koulutetulla otteella.',
+        introEyebrow: 'KEITÄ OLEMME',
+        introHeading: 'Ammattitaitoista hierontaa ihmiseltä ihmiselle',
+        introText: 'ME massage tarjoaa ammattitaitoista hierontaa ja kehonhuoltoa Klaukkalassa ja Vaasassa. Jokainen hoito rakennetaan yksilöllisesti asiakkaan tarpeen mukaan — koulutettujen hierojiemme tavoitteena on käytännöllinen apu, joka tuntuu arjessa.',
+        teamHeading: 'Mathias ja Janina',
+        teamText: 'Vastaanotoillamme sinua palvelevat koulutetut hierojat Mathias Eklund ja Janina Honkanen. Mathias valmistui koulutetuksi hierojaksi Suomen hierojakoulusta 2023 ja vastaanottaa asiakkaita Klaukkalassa ja Vaasassa. Janina liittyi tiimiin vuonna 2025 ja tuo mukanaan lämpöisen ja ammattitaitoisen otteen. Molemmille yhteistä on halu kohdata jokainen asiakas henkilökohtaisesti.',
+        storyHeading: 'Mistä nimi ME tulee?',
+        storyText: 'ME tulee alun perin nimestä Mathias Eklund — mutta samalla se tarkoittaa meitä kaikkia. Suomeksi ”me” ja englanniksi ”me” tekevät nimestä sekä henkilökohtaisen että yhteisöllisen: jokainen hoito rakennetaan ihmisestä käsin.',
+        philosophyHeading: 'Hoitofilosofiamme',
+        philosophyText: 'Hoito rakennetaan aina asiakkaan tarpeen mukaan. Tavoitteenamme ei ole pelkkä rentoutuminen, vaan toimiva, tilanteeseen sopiva hoito — haluamme aidosti parantaa sitä, miten voit.',
+      },
       hinnasto: {
         metaTitle: 'Hinnasto | ME massage',
         metaDescription: 'ME massagen hinnasto: klassinen hieronta, kuumakivi ja klassinen hieronta, purentalihashieronta ja faskiarautakäsittely sekä lahja- ja sarjakortit.',
@@ -742,7 +768,8 @@ export const translations = {
       services: 'Services',
       pricing: 'Pricing',
       contact: 'Contact',
-      reviews: 'Customer Reviews',
+      reviews: 'Reviews',
+      about: 'About us',
       faq: 'FAQ',
       bookNow: 'Book Now',
       allServices: 'All Services',
@@ -759,9 +786,14 @@ export const translations = {
       statRating: 'Google Rating',
       statSince: 'Since',
       statLocations: 'Locations',
+      statTrained: 'Trained massage therapists',
     },
-    // Intro
-    intro: 'Professional massage and body care',
+    // Brand intro
+    brandIntro: {
+      headline: 'Welcome to ME Massage',
+      p1: 'In Klaukkala and Vaasa you are served by trained massage therapists whose work combines years of experience, strong expertise and an individual approach.',
+      p2: 'For us, massage is more than just a moment of relaxation. The treatment is built around what you need, so that you receive effective treatment and leave feeling better.',
+    },
     // Services
     services: {
       eyebrow: 'SERVICES',
@@ -784,6 +816,10 @@ export const translations = {
       jaw: 'Massage for Occlusal Muscles',
       iastm: 'Fascia Treatment with the IASTM Method',
       giftCards: 'Gift & Series Cards',
+      jawDesc: 'Targeted treatment for tension and tightness in the jaw and bite area.',
+      iastmDesc: 'Instrument-assisted treatment for muscle tightness and mobility support.',
+      giftCardsDesc: 'Give the gift of wellbeing or save with regular treatment sessions.',
+      secondaryCta: 'Learn more',
     },
     // Pricing
     pricing: {
@@ -1311,6 +1347,22 @@ export const translations = {
         unsureText: 'Call {phone} or see the frequently asked questions — we\'ll help you choose the right treatment.',
         faqLink: 'FAQ',
       },
+      meista: {
+        metaTitle: 'About us | ME massage',
+        metaDescription: 'Get to know ME massage — trained massage therapists Mathias and Janina serve you individually in Klaukkala and Vaasa.',
+        eyebrow: 'ABOUT US',
+        headline: 'Meet ME Massage',
+        supportText: 'We serve you in Klaukkala and Vaasa — individually and with a trained touch.',
+        introEyebrow: 'WHO WE ARE',
+        introHeading: 'Professional massage, from person to person',
+        introText: 'ME massage offers professional massage and body maintenance in Klaukkala and Vaasa. Every treatment is built individually around the client\'s needs — our trained massage therapists aim for practical help that makes a difference in everyday life.',
+        teamHeading: 'Mathias and Janina',
+        teamText: 'At our clinics you are served by trained massage therapists Mathias Eklund and Janina Honkanen. Mathias graduated as a trained massage therapist from Suomen hierojakoulu in 2023 and sees clients in Klaukkala and Vaasa. Janina joined the team in 2025, bringing a warm and professional touch. What they share is the desire to meet every client personally.',
+        storyHeading: 'Where does the name ME come from?',
+        storyText: 'ME originally comes from the name Mathias Eklund — but at the same time it means all of us. In Finnish "me" and in English "me" make the name both personal and communal: every treatment is built starting from the person.',
+        philosophyHeading: 'Our treatment philosophy',
+        philosophyText: 'Every treatment is built around the client\'s needs. Our goal is not only relaxation, but a functional treatment suited to your situation — we genuinely want to improve how you feel.',
+      },
       hinnasto: {
         metaTitle: 'Pricing | ME massage',
         metaDescription: 'ME massage pricing: classic massage, hot stone and classical massage, massage for occlusal muscles and fascia treatment with the IASTM method, plus gift cards and series cards.',
@@ -1477,7 +1529,8 @@ export const translations = {
       services: 'Tjänster',
       pricing: 'Priser',
       contact: 'Kontakt',
-      reviews: 'Kundrecensioner',
+      reviews: 'Omdömen',
+      about: 'Om oss',
       faq: 'Vanliga frågor',
       bookNow: 'Boka Tid',
       allServices: 'Alla Tjänster',
@@ -1494,9 +1547,14 @@ export const translations = {
       statRating: 'Google-betyg',
       statSince: 'Sedan',
       statLocations: 'Platser',
+      statTrained: 'Utbildade massörer',
     },
-    // Intro
-    intro: 'Professionell massage och kroppsvård',
+    // Brand intro
+    brandIntro: {
+      headline: 'Välkommen till ME Massage',
+      p1: 'I Klaukkala och Vasa möter dig utbildade massörer vars arbete förenar mångårig erfarenhet, stark kompetens och ett individuellt förhållningssätt.',
+      p2: 'För oss är massage mer än bara en stunds avkoppling. Behandlingen byggs utifrån just det du behöver, så att du får en verkningsfull behandling och lämnar mottagningen med bättre mående.',
+    },
     // Services
     services: {
       eyebrow: 'TJÄNSTER',
@@ -1519,6 +1577,10 @@ export const translations = {
       jaw: 'Massage av tuggmusklerna',
       iastm: 'Fasciabehandling med IASTM',
       giftCards: 'Present- och Seriekort',
+      jawDesc: 'Målinriktad behandling av spänningar och stelhet i käk- och tuggeområdet.',
+      iastmDesc: 'Instrumentassisterad behandling för muskelspänningar och stöd för rörligheten.',
+      giftCardsDesc: 'Ge bort välmående i present eller spara med regelbundna behandlingar.',
+      secondaryCta: 'Läs mer',
     },
     // Pricing
     pricing: {
@@ -2045,6 +2107,22 @@ export const translations = {
         unsureHeading: 'Osäker på vilken behandling som passar dig?',
         unsureText: 'Ring {phone} eller se vanliga frågor — vi hjälper dig att välja rätt behandling.',
         faqLink: 'Vanliga frågor',
+      },
+      meista: {
+        metaTitle: 'Om oss | ME massage',
+        metaDescription: 'Bekanta dig med ME massage — utbildade massörerna Mathias och Janina betjänar dig individuellt i Klaukkala och Vasa.',
+        eyebrow: 'OM OSS',
+        headline: 'Bekanta dig med ME Massage',
+        supportText: 'Vi betjänar i Klaukkala och Vasa — individuellt och med ett utbildat grepp.',
+        introEyebrow: 'VILKA VI ÄR',
+        introHeading: 'Professionell massage, från människa till människa',
+        introText: 'ME massage erbjuder professionell massage och kroppsvård i Klaukkala och Vasa. Varje behandling byggs individuellt utifrån kundens behov — våra utbildade massörer siktar på praktisk hjälp som märks i vardagen.',
+        teamHeading: 'Mathias och Janina',
+        teamText: 'På våra mottagningar betjänas du av de utbildade massörerna Mathias Eklund och Janina Honkanen. Mathias utexaminerades som utbildad massör från Suomen hierojakoulu 2023 och tar emot kunder i Klaukkala och Vasa. Janina anslöt sig till teamet 2025 och för med sig ett varmt och professionellt grepp. Gemensamt för dem båda är viljan att möta varje kund personligen.',
+        storyHeading: 'Var kommer namnet ME ifrån?',
+        storyText: 'ME kommer ursprungligen från namnet Mathias Eklund — men samtidigt betyder det oss alla. På finska "me" och på engelska "me" gör namnet både personligt och gemensamt: varje behandling byggs med människan som utgångspunkt.',
+        philosophyHeading: 'Vår behandlingsfilosofi',
+        philosophyText: 'Behandlingen byggs alltid utifrån kundens behov. Vårt mål är inte bara avslappning, utan en fungerande behandling som passar din situation — vi vill genuint förbättra hur du mår.',
       },
       hinnasto: {
         metaTitle: 'Priser | ME massage',

@@ -21,7 +21,7 @@ export const teamMembers: TeamMember[] = [
     name: 'Mathias Eklund',
     titleKey: 'team.mathias.title',
     bioKey: 'team.mathias.bio',
-    image: '/assets/me_mathias.jpg',
+    image: '/mathias-esittely-kuva-uusi.png',
     locations: ['klaukkala', 'vaasa'],
   },
   {

@@ -9,6 +9,7 @@ import { FinalCtaSection } from '@/components/FinalCtaSection';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import { locations } from '@/data/locations';
 import { businessInfo } from '@/data/site';
+import { bookingPrimaryOnLightClasses } from '@/lib/bookingCta';
 
 export function ContactPage() {
   const { tStr } = useLang();
@@ -100,7 +101,7 @@ export function ContactPage() {
                     <div className="mt-auto flex flex-col gap-3">
                       <a
                         href={location.bookingUrl}
-                        className="inline-flex min-h-[48px] items-center justify-center px-6 py-3 rounded-lg font-inter text-[13px] font-semibold tracking-wide bg-[#152238] text-white hover:bg-[#1E3A5F] transition-colors duration-300"
+                        className={`inline-flex min-h-[48px] items-center justify-center px-6 py-3 rounded-lg font-inter text-[13px] font-semibold tracking-wide ${bookingPrimaryOnLightClasses}`}
                       >
                         {tStr(location.bookingLabelKey)}
                       </a>

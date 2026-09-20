@@ -12,6 +12,7 @@ import { locationReviews, type LocationReviewsData } from '@/data/reviews';
 import { teamAtLocation, type TeamMember } from '@/data/team';
 import { buildAjasBookingUrl } from '@/data/ajas';
 import { businessInfo } from '@/data/site';
+import { bookingGlassOnDarkClasses } from '@/lib/bookingCta';
 
 const INITIAL_REVIEWS = 6;
 
@@ -243,7 +244,7 @@ export function ReviewsPage() {
                 href={bookingUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex w-full max-w-[280px] min-h-[56px] items-center justify-center px-8 py-3 rounded-lg font-inter text-[16px] font-semibold tracking-wide bg-[#F6F8FB] text-[#152238] border border-[#152238]/15 shadow-[0_4px_16px_rgba(0,0,0,0.25)] hover:bg-white hover:-translate-y-[2px] hover:shadow-[0_10px_28px_rgba(0,0,0,0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/90 transition-all duration-300"
+                className={`inline-flex w-full max-w-[280px] min-h-[56px] items-center justify-center px-8 py-3 rounded-lg font-inter text-[16px] font-semibold tracking-wide focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/90 ${bookingGlassOnDarkClasses}`}
               >
                 {bookingLabel}
               </a>

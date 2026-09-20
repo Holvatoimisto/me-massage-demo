@@ -28,7 +28,7 @@ export const locationPhoneContacts = [
     location: 'Klaukkala',
     people: [
       { name: 'Mathias', phone: '040 833 8512', phoneLink: 'tel:+358408338512' },
-      { name: 'Janina', phone: '+358 45 127 2928', phoneLink: 'tel:+358451272928' },
+      { name: 'Janina', phone: '045 127 2928', phoneLink: 'tel:+358451272928' },
     ],
   },
   {

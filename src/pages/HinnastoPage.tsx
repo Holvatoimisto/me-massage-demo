@@ -129,8 +129,8 @@ export function HinnastoPage() {
           </ScrollReveal>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
             {[
-              { image: '/assets/memassage_lahjakortti.png', text: t('giftCardText'), cta: t('giftCardCta'), href: '/verkkokauppa/lahjakortit' },
-              { image: '/assets/memassage-sarjakortti.png', text: t('seriesCardText'), cta: t('seriesCardCta'), href: '/verkkokauppa/sarjakortit' },
+              { image: '/assets/lahjakortti-oikea2.png', text: t('giftCardText'), cta: t('giftCardCta'), href: '/verkkokauppa/lahjakortit' },
+              { image: '/assets/sarjakortti-oikea2.png', text: t('seriesCardText'), cta: t('seriesCardCta'), href: '/verkkokauppa/sarjakortit' },
             ].map((card, i) => (
               <ScrollReveal key={card.href} delay={0.05 + i * 0.08} className="h-full">
                 <Link
@@ -142,7 +142,7 @@ export function HinnastoPage() {
                       src={card.image}
                       alt={card.cta}
                       loading="lazy"
-                      className="w-full aspect-[16/9] object-cover object-center transition-transform duration-500 group-hover:scale-[1.02]"
+                      className="w-full aspect-[16/9] object-contain object-center transition-transform duration-500 group-hover:scale-[1.02]"
                     />
                   </div>
                   <div className="p-6 md:p-7">

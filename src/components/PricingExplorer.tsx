@@ -5,6 +5,13 @@ import { useLang } from '@/contexts/LanguageContext';
 import { useBookingModal } from '@/contexts/BookingModalContext';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import { pricingTabs, pricingTabGroups } from '@/data/pricing';
+import { ajasServiceDurations, type ServiceKey } from '@/data/ajas';
+
+/** Treatment tabs share their key with the centralized Ajas service keys. */
+const isServiceKey = (key: string): key is ServiceKey => key in ajasServiceDurations;
+
+/** "50 min" → 50. NaN when the label does not start with a number. */
+const parseDuration = (label: string): number => parseInt(label, 10);
 
 /**
  * Interactive pricing explorer shared by the homepage pricing section and
@@ -121,8 +128,19 @@ export function PricingExplorer() {
             </Link>
           ) : (
             <button
-              onClick={() => openBookingModal()}
-              className="inline-flex min-h-[52px] items-center justify-center px-8 py-3 rounded-lg font-inter text-[14px] font-semibold tracking-wide whitespace-nowrap bg-[#152238] text-white hover:bg-[#1E3A5F] transition-colors duration-300 cursor-pointer border-none"
+              onClick={() => {
+                // Treatment tab: the customer already picked treatment +
+                // duration from the pricing cards, so open the booking modal
+                // directly on the location picker with a service deep link.
+                const item = activeTab.items[selectedPrices[activePricingTab]];
+                const duration = item ? parseDuration(item.duration) : NaN;
+                if (isServiceKey(activeTab.key) && Number.isFinite(duration)) {
+                  openBookingModal({ serviceKey: activeTab.key, recommendedDuration: duration, skipDurationStep: true });
+                } else {
+                  openBookingModal();
+                }
+              }}
+              className="inline-flex min-h-[52px] items-center justify-center px-8 py-3 rounded-lg font-inter text-[14px] font-semibold tracking-wide whitespace-nowrap bg-[#152238] text-white border border-transparent shadow-[0_8px_28px_rgba(0,0,0,0.22)] hover:bg-[#1E3A5F] transition-colors duration-300 cursor-pointer"
             >
               {tStr('pricing.bookNow')}
             </button>

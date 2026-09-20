@@ -8,6 +8,7 @@ import { ArrowLeft, ArrowRight, MapPin } from 'lucide-react';
 import { useLang } from '@/contexts/LanguageContext';
 import { useBookingModal } from '@/contexts/BookingModalContext';
 import { businessInfo } from '@/data/site';
+import { bookingGlassOnDarkClasses } from '@/lib/bookingCta';
 import { pricingTabs } from '@/data/pricing';
 import { teamMembers } from '@/data/team';
 
@@ -122,7 +123,7 @@ export function ServicePageTemplate() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <button
                 onClick={() => openBookingModal()}
-                className="inline-flex min-h-[52px] items-center justify-center px-8 py-3 rounded-lg font-inter text-[14px] font-semibold tracking-wide bg-white text-[#152238] shadow-[0_4px_20px_rgba(0,0,0,0.2)] hover:bg-[#E2E8F0] transition-colors duration-300 cursor-pointer border-none"
+                className={`inline-flex min-h-[52px] items-center justify-center px-8 py-3 rounded-lg font-inter text-[14px] font-semibold tracking-wide cursor-pointer ${bookingGlassOnDarkClasses}`}
               >
                 {tStr('pricing.bookNow')}
               </button>

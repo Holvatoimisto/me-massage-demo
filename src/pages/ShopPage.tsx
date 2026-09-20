@@ -115,7 +115,7 @@ export function ShopPage() {
                     <img
                       src={card.image}
                       alt={card.imageAlt}
-                      className="w-full aspect-[1586/992] object-cover object-center transition-transform duration-500 group-hover:scale-[1.02]"
+                      className="w-full aspect-[1586/992] object-contain object-center transition-transform duration-500 group-hover:scale-[1.02]"
                     />
                   </div>
                   <div className="p-7">

@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, Check } from 'lucide-react';
 import { useLang } from '@/contexts/LanguageContext';
 import { locations } from '@/data/locations';
+import { bookingPrimaryOnLightClasses } from '@/lib/bookingCta';
 import { ajasServiceDurations, buildAjasBookingUrl, type ServiceKey } from '@/data/ajas';
 import type { BookingModalOptions } from '@/contexts/BookingModalContext';
 
@@ -24,6 +25,10 @@ interface BookingLocationModalProps {
  * Guided mode (questionnaire): the service is already decided, so the modal
  * first asks for duration (recommended one preselected) and then location,
  * and deep-links into Ajas with locale + office + service preselected.
+ *
+ * Pricing mode (skipDurationStep): the duration was already selected in the
+ * PricingExplorer, so the guided flow opens directly on the location picker
+ * and uses the same Ajas deep link.
  */
 export function BookingLocationModal({ open, onClose, triggerRef, options }: BookingLocationModalProps) {
   const { tStr, lang } = useLang();
@@ -31,14 +36,16 @@ export function BookingLocationModal({ open, onClose, triggerRef, options }: Boo
   const firstButtonRef = useRef<HTMLElement>(null);
 
   const guided = !!options?.serviceKey;
+  const skipDurationStep = guided && !!options?.skipDurationStep;
   const serviceKey = options?.serviceKey as ServiceKey | undefined;
   const durationOptions = serviceKey ? ajasServiceDurations[serviceKey] : [];
   const initialDuration =
     options?.recommendedDuration && durationOptions.some((o) => o.duration === options.recommendedDuration)
       ? options.recommendedDuration
       : durationOptions[0]?.duration;
+  const initialStep: 'duration' | 'location' = guided && !skipDurationStep ? 'duration' : 'location';
 
-  const [step, setStep] = useState<'duration' | 'location'>('duration');
+  const [step, setStep] = useState<'duration' | 'location'>(initialStep);
   const [duration, setDuration] = useState<number | undefined>(initialDuration);
   const [prevOpen, setPrevOpen] = useState(false);
 
@@ -46,7 +53,7 @@ export function BookingLocationModal({ open, onClose, triggerRef, options }: Boo
   if (open !== prevOpen) {
     setPrevOpen(open);
     if (open) {
-      setStep('duration');
+      setStep(initialStep);
       setDuration(initialDuration);
     }
   }
@@ -195,13 +202,13 @@ export function BookingLocationModal({ open, onClose, triggerRef, options }: Boo
                       key={loc.slug}
                       ref={i === 0 ? (firstButtonRef as React.RefObject<HTMLAnchorElement>) : undefined}
                       href={locationHref(loc.officeId)}
-                      className="inline-flex w-full min-h-[52px] items-center justify-center px-6 py-3 rounded-lg font-inter text-[15px] font-semibold tracking-wide bg-[#152238] text-white hover:bg-[#1E3A5F] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#152238]/60 transition-colors duration-300"
+                      className={`inline-flex w-full min-h-[52px] items-center justify-center px-6 py-3 rounded-lg font-inter text-[15px] font-semibold tracking-wide focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#152238]/60 ${bookingPrimaryOnLightClasses}`}
                     >
                       {tStr(`bookingModal.${loc.slug}`)}
                     </a>
                   ))}
                 </div>
-                {guided && (
+                {guided && !skipDurationStep && (
                   <button
                     onClick={() => setStep('duration')}
                     className="font-inter text-[13px] text-[#5A6A7A] hover:text-[#152238] transition-colors mt-5 cursor-pointer bg-transparent border-none"

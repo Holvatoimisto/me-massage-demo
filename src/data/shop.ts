@@ -169,6 +169,6 @@ export const openGiftCardValues: OpenGiftCardValue[] = [
 export const seriesSavings: Record<SeriesVisits, number> = { 3: 10, 6: 15, 12: 20 };
 
 export const shopAssets = {
-  giftCardImage: '/assets/memassage_lahjakortti.png',
-  seriesCardImage: '/assets/memassage-sarjakortti.png',
+  giftCardImage: '/assets/lahjakortti-oikea2.png',
+  seriesCardImage: '/assets/sarjakortti-oikea2.png',
 };

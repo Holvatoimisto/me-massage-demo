@@ -5,6 +5,7 @@ import { useLang } from '@/contexts/LanguageContext';
 import { useBookingModal } from '@/contexts/BookingModalContext';
 import { serviceOverviews } from '@/data/services';
 import { ajasServiceDurations, type ServiceKey } from '@/data/ajas';
+import { bookingPrimaryOnLightClasses } from '@/lib/bookingCta';
 
 type AreaKey = 'niska' | 'selka' | 'leuka' | 'kasi' | 'jalka';
 
@@ -164,7 +165,7 @@ export function SymptomSurvey() {
           <p className="font-inter text-[14px] text-[#5A6A7A] leading-[1.7] mb-6">{tStr('survey.description')}</p>
           <button
             onClick={() => { setSurveyStep(1); }}
-            className="inline-flex min-h-[52px] items-center justify-center px-8 py-3 rounded-lg font-inter text-[14px] font-semibold tracking-wide bg-[#152238] text-white hover:bg-[#1E3A5F] transition-colors duration-300 cursor-pointer"
+            className="inline-flex min-h-[52px] items-center justify-center px-8 py-3 rounded-lg font-inter text-[14px] font-semibold tracking-wide whitespace-nowrap bg-[#152238] text-white border border-transparent shadow-[0_8px_28px_rgba(0,0,0,0.22)] hover:bg-[#1E3A5F] transition-colors duration-300 cursor-pointer"
           >
             {tStr('survey.startButton')}
           </button>
@@ -302,7 +303,7 @@ export function SymptomSurvey() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <button
               onClick={() => openBookingModal({ serviceKey: current.serviceKey, recommendedDuration: current.duration })}
-              className="inline-flex min-h-[52px] items-center justify-center px-8 py-3 rounded-lg font-inter text-[14px] font-semibold tracking-wide bg-[#152238] text-white hover:bg-[#1E3A5F] transition-colors duration-300 cursor-pointer border-none"
+              className={`inline-flex min-h-[52px] items-center justify-center px-8 py-3 rounded-lg font-inter text-[14px] font-semibold tracking-wide cursor-pointer ${bookingPrimaryOnLightClasses}`}
             >
               {tStr('survey.bookNow')}
             </button>

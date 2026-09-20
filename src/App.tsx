@@ -9,6 +9,7 @@ import { ServicePageTemplate } from '@/pages/ServicePageTemplate';
 import { LocationPageTemplate } from '@/pages/LocationPageTemplate';
 import { FAQPage } from '@/pages/FAQPage';
 import { PalvelutPage } from '@/pages/PalvelutPage';
+import { MeistaPage } from '@/pages/MeistaPage';
 import { HinnastoPage } from '@/pages/HinnastoPage';
 import { ReviewsPage } from '@/pages/ReviewsPage';
 import { ContactPage } from '@/pages/ContactPage';
@@ -29,6 +30,7 @@ function App() {
             <Routes>
               <Route path="/" element={<ChiropractorTemplate />} />
               <Route path="/palvelut" element={<PalvelutPage />} />
+              <Route path="/meista" element={<MeistaPage />} />
               <Route path="/palvelut/:slug" element={<ServicePageTemplate />} />
               <Route path="/hinnasto" element={<HinnastoPage />} />
               <Route path="/asiakkaiden-kokemuksia" element={<ReviewsPage />} />

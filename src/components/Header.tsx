@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Menu, X, ChevronDown, Globe, ShoppingBag } from 'lucide-react';
@@ -25,9 +25,22 @@ export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   useClickOutside(langRef, () => setLangOpen(false));
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
   const isHome = pathname === '/';
+  const isAbout = pathname === '/meista';
+  // Homepage hero top state: translucent premium glass header + oversized
+  // logo. Everything else (scrolled homepage, all subpages) uses the stable
+  // dark navy surface and normal logo.
+  const isHomeTop = isHome && !scrolled;
   const isServices = pathname.startsWith('/palvelut');
   const isPricing = pathname === '/hinnasto';
   const isContact = pathname === '/yhteystiedot';
@@ -39,18 +52,43 @@ export function Header() {
     }`;
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#152238] shadow-[0_1px_12px_rgba(0,0,0,0.18)]">
-      <div className="max-w-[1200px] mx-auto px-5 md:px-10 h-[60px] md:h-[68px] flex items-center justify-between">
-        <Link to="/" className="relative z-10 shrink-0">
+    <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-[#152238]/95 shadow-[0_1px_12px_rgba(0,0,0,0.18)]">
+      <div className="relative max-w-[1500px] mx-auto px-5 md:px-10 min-[1200px]:pl-28 min-[1200px]:pr-12 h-[60px] md:h-[68px] flex items-center justify-between">
+        {/* Spacer keeps the flex geometry identical to the old in-flow logo, so
+            nav link positions never change. Both logo layers below are absolute
+            and anchored to the container's left content edge — the same x line
+            the homepage hero content column uses (logo acts as the hero's brand
+            anchor). */}
+        <div className="h-9 md:h-10 w-9 md:w-10 xl:w-[110px] shrink-0" aria-hidden="true" />
+        <Link to="/" className="absolute left-5 md:left-10 min-[1200px]:left-28 top-1/2 -translate-y-1/2 z-10">
           <img
             src={navigationInfo.logo}
             alt={businessInfo.name}
-            className="h-9 md:h-10 w-auto transition-opacity duration-300"
+            className={`h-9 md:h-10 w-auto transition-opacity duration-300 ease-out ${
+              isHomeTop ? 'md:opacity-0' : 'opacity-100'
+            }`}
           />
         </Link>
 
-        {/* Desktop nav */}
-        <div className="hidden md:flex items-center gap-4">
+        {/* Homepage hero top state (desktop only): oversized brand mark anchored
+            to the header container's bottom edge — the header baseline cuts the
+            logo at the ME / MASSAGE boundary (~58% of the square asset), so
+            "ME" reads as part of the header while "MASSAGE" overlaps the hero.
+            transform-origin sits exactly on the small logo's top-left point in
+            this layer's coordinates, so shrinking never moves it sideways. */}
+        <img
+          src={navigationInfo.logo}
+          alt=""
+          aria-hidden="true"
+          className={`hidden md:block absolute left-5 md:left-10 min-[1200px]:left-28 bottom-[-44px] w-[104px] h-[104px] pointer-events-none transition-all duration-300 ease-out origin-[0px_10px] ${
+            isHomeTop ? 'opacity-100 scale-100' : 'opacity-0 scale-[0.385]'
+          }`}
+        />
+
+        {/* Desktop nav — centered in the space between the fixed left (logo)
+            and right (language + CTA) areas. Shown from xl up: below that the
+            link set no longer fits balanced, so the mobile menu takes over. */}
+        <div className="hidden xl:flex flex-1 items-center justify-center gap-4 2xl:gap-5">
           {/* Etusivu */}
           <Link to="/" className={navLinkClass(isHome)}>
             Etusivu
@@ -104,6 +142,11 @@ export function Header() {
             Hinnasto
           </Link>
 
+          {/* Meistä */}
+          <Link to="/meista" className={navLinkClass(isAbout)}>
+            {tStr('nav.about')}
+          </Link>
+
           {/* Yhteystiedot */}
           <Link to="/yhteystiedot" className={navLinkClass(isContact)}>
             Yhteystiedot
@@ -126,11 +169,14 @@ export function Header() {
                 to={link.href}
                 className={navLinkClass(active)}
               >
-                {link.label}
+                {tStr(`nav.${link.key}`)}
               </Link>
             );
           })}
+        </div>
 
+        {/* Right actions — language + CTA stay in their fixed position */}
+        <div className="hidden xl:flex items-center gap-3 shrink-0">
           {/* Language selector */}
           <div ref={langRef} className="relative hidden lg:block">
             <button
@@ -171,14 +217,18 @@ export function Header() {
           {/* CTA Button */}
           <button
             onClick={() => openBookingModal()}
-            className="inline-flex min-h-[40px] items-center justify-center px-5 py-2 rounded-md font-inter text-[13px] font-semibold tracking-[0.06em] leading-none whitespace-nowrap bg-white text-[#152238] hover:bg-[#E2E8F0] transition-colors duration-300 shadow-sm cursor-pointer border-none"
+            className={`inline-flex min-h-[40px] items-center justify-center px-5 py-2 rounded-md font-inter text-[13px] font-semibold tracking-[0.06em] leading-none whitespace-nowrap transition-all duration-300 cursor-pointer border ${
+              isHomeTop
+                ? 'bg-white/10 backdrop-blur-sm text-white border-white/30 hover:bg-white/20'
+                : 'bg-white text-[#152238] hover:bg-[#E2E8F0] shadow-sm border-transparent'
+            }`}
           >
             {navigationInfo.ctaButton.label}
           </button>
         </div>
 
         {/* Mobile: language + menu buttons */}
-        <div className="md:hidden flex items-center gap-2 relative z-10">
+        <div className="xl:hidden flex items-center gap-2 relative z-10">
           <button
             onClick={() => setLangOpen(!langOpen)}
             className="flex items-center gap-0.5 font-inter text-[11px] font-semibold uppercase tracking-wider text-[#FFFFFF]/70 bg-transparent border-none cursor-pointer px-1.5 py-1"
@@ -222,7 +272,7 @@ export function Header() {
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="md:hidden absolute top-full left-0 right-0 bg-[#152238] border-t border-white/[0.08] px-5 py-6"
+          className="xl:hidden absolute top-full left-0 right-0 bg-[#152238] border-t border-white/[0.08] px-5 py-6"
         >
           <Link to="/" onClick={() => setMobileOpen(false)} className="block font-inter text-[14px] font-semibold uppercase tracking-wider text-[#FFFFFF]/90 py-3 border-b border-[#E2E8F0]/[0.06]">{tStr('nav.home')}</Link>
 
@@ -253,6 +303,7 @@ export function Header() {
           </div>
 
           <Link to="/hinnasto" onClick={() => setMobileOpen(false)} className="block font-inter text-[14px] font-semibold uppercase tracking-wider text-[#FFFFFF]/90 py-3 border-b border-[#E2E8F0]/[0.06]">{tStr('nav.pricing')}</Link>
+          <Link to="/meista" onClick={() => setMobileOpen(false)} className="block font-inter text-[14px] font-semibold uppercase tracking-wider text-[#FFFFFF]/90 py-3 border-b border-[#E2E8F0]/[0.06]">{tStr('nav.about')}</Link>
           <Link to="/yhteystiedot" onClick={() => setMobileOpen(false)} className="block font-inter text-[14px] font-semibold uppercase tracking-wider text-[#FFFFFF]/90 py-3 border-b border-[#E2E8F0]/[0.06]">{tStr('nav.contact')}</Link>
           <Link to="/verkkokauppa" onClick={() => setMobileOpen(false)} className="flex items-center gap-2 font-inter text-[14px] font-semibold uppercase tracking-wider text-[#FFFFFF]/90 py-3 border-b border-[#E2E8F0]/[0.06]">
             <ShoppingBag size={15} strokeWidth={1.5} />
@@ -266,7 +317,7 @@ export function Header() {
               onClick={() => setMobileOpen(false)}
               className="block font-inter text-[14px] text-[#FFFFFF]/60 py-3 border-b border-[#E2E8F0]/[0.06] last:border-0"
             >
-              {link.label}
+              {tStr(`nav.${link.key}`)}
             </Link>
           ))}
 

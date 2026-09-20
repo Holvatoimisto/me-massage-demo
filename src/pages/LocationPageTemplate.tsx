@@ -11,6 +11,7 @@ import { teamAtLocation } from '@/data/team';
 import { serviceOverviews } from '@/data/services';
 import { pricingTabs } from '@/data/pricing';
 import { businessInfo } from '@/data/site';
+import { bookingGlassOnDarkClasses, bookingPrimaryOnLightClasses } from '@/lib/bookingCta';
 
 type ReviewItem = {
   name: string;
@@ -118,7 +119,7 @@ function LocationPage({ location }: { location: LocationData }) {
                 </p>
                 <a
                   href={location.bookingUrl}
-                  className="inline-flex min-h-[52px] items-center justify-center px-8 py-3 rounded-lg font-inter text-[14px] font-semibold tracking-wide bg-[#152238] text-white hover:bg-[#1E3A5F] transition-colors duration-300"
+                  className={`inline-flex min-h-[52px] items-center justify-center px-8 py-3 rounded-lg font-inter text-[14px] font-semibold tracking-wide ${bookingPrimaryOnLightClasses}`}
                 >
                   {bookingLabel}
                 </a>
@@ -245,7 +246,7 @@ function LocationPage({ location }: { location: LocationData }) {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
                 href={location.bookingUrl}
-                className="inline-flex min-h-[52px] items-center justify-center px-8 py-3 rounded-lg font-inter text-[14px] font-semibold tracking-wide bg-[#152238] text-white hover:bg-[#1E3A5F] transition-colors duration-300"
+                className={`inline-flex min-h-[52px] items-center justify-center px-8 py-3 rounded-lg font-inter text-[14px] font-semibold tracking-wide ${bookingPrimaryOnLightClasses}`}
               >
                 {bookingLabel}
               </a>
@@ -316,7 +317,7 @@ function LocationPage({ location }: { location: LocationData }) {
             <div className="flex flex-col items-center gap-3">
               <a
                 href={location.bookingUrl}
-                className="inline-flex w-full sm:w-auto min-h-[52px] items-center justify-center px-8 py-3 rounded-lg font-inter text-[14px] font-semibold tracking-wide bg-white text-[#152238] shadow-[0_4px_20px_rgba(0,0,0,0.2)] hover:-translate-y-[2px] hover:shadow-[0_8px_24px_rgba(0,0,0,0.28)] transition-all duration-300"
+                className={`inline-flex w-full sm:w-auto min-h-[52px] items-center justify-center px-8 py-3 rounded-lg font-inter text-[14px] font-semibold tracking-wide ${bookingGlassOnDarkClasses}`}
               >
                 {bookingLabel}
               </a>

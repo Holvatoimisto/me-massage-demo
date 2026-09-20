@@ -38,7 +38,7 @@ export function PurchaseSummary({
       <div className="hidden md:block md:sticky md:top-[92px]">
         <div className="rounded-xl border border-[#E2E8F0]/60 bg-white p-6 shadow-[0_4px_20px_rgba(21,34,56,0.06)]">
           <div className="overflow-hidden rounded-lg mb-6">
-            <img src={image} alt={imageAlt} className="w-full aspect-[1586/992] object-cover object-center" />
+            <img src={image} alt={imageAlt} className="w-full aspect-[1586/992] object-contain object-center" />
           </div>
 
           {title === null || price === null ? (

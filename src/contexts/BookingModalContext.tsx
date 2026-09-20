@@ -6,6 +6,12 @@ export interface BookingModalOptions {
   /** Questionnaire-guided booking: preselected service + recommended duration. */
   serviceKey?: ServiceKey;
   recommendedDuration?: number;
+  /**
+   * Pricing-explorer booking: the duration was already picked from the pricing
+   * card, so the modal skips the duration step and opens directly on the
+   * location picker. Questionnaire bookings omit this and keep duration first.
+   */
+  skipDurationStep?: boolean;
 }
 
 interface BookingModalContextValue {
