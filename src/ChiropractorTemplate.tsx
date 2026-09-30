@@ -23,8 +23,8 @@ import { locations } from '@/data/locations';
 const templateData = {
   business: businessInfo,
   hero: {
-    backgroundImage: '/assets/me_hero_new.png',
-    backgroundImages: ['/assets/me_hero_new.png'],
+    backgroundImage: '/assets/hero-kuva-muokattu.png',
+    backgroundImages: ['/assets/hero-kuva-muokattu.png'],
     eyebrow: 'ME MASSAGE',
     headline: 'Ammattitaitoista hierontaa Klaukkalassa ja Vaasassa',
     subheadline: 'Klassinen hieronta, kuumakivi ja klassinen hieronta, purentalihashieronta ja faskiarautakäsittely. Koulutetut hierojat sinua varten.',
@@ -140,6 +140,9 @@ export function ChiropractorTemplate() {
       role: 'Hieroja',
       image: '/mathias-esittely-kuva-uusi.png',
       avatar: '/mathias-esittely-kuva-uusi.png',
+      imagePosition: 'center top',
+      avatarPosition: 'center top',
+      avatarTransform: 'translateY(18%)',
       bio: tStr('team.mathias.bio'),
       testimonial: tStr('team.mathias.quote'),
     },
@@ -150,6 +153,8 @@ export function ChiropractorTemplate() {
       role: 'Hieroja',
       image: '/assets/me_janina.png',
       avatar: '/assets/me_janina.png',
+      imagePosition: 'center 20%',
+      avatarPosition: 'center center',
       bio: tStr('team.janina.bio'),
       testimonial: tStr('team.janina.quote'),
     },
@@ -168,12 +173,12 @@ export function ChiropractorTemplate() {
 
       {/* Hero */}
       <section className="relative overflow-hidden">
-        <div className="absolute inset-0 scale-110" aria-hidden="true">
+        <div className="absolute inset-0 scale-110 min-[1200px]:scale-[1.45] min-[1200px]:-translate-x-[4%] min-[1200px]:origin-[50%_10%]" aria-hidden="true">
           <img
             src={templateData.hero.backgroundImages[0]}
             alt=""
             loading="eager"
-            className="absolute inset-0 w-full h-full object-cover object-center"
+            className="absolute inset-0 w-full h-full object-cover object-[85%_10%] min-[1200px]:object-[50%_10%]"
           />
         </div>
         <div className="absolute inset-0 bg-[#152238]/65" />
@@ -464,7 +469,7 @@ export function ChiropractorTemplate() {
           <div className="grid grid-cols-1 md:grid-cols-[38%_1fr] gap-8 md:gap-14 items-start">
             <div style={{ opacity: teamTransitioning ? 0 : 1, transform: teamTransitioning ? 'translateY(8px)' : 'translateY(0)', transition: 'opacity 350ms ease-in-out, transform 350ms ease-out' }}>
               <div className="relative overflow-hidden rounded-lg mx-auto md:mx-0 max-w-[320px] md:max-w-none">
-                <img src={activeTeamMember.image} alt={activeTeamMember.name} loading="lazy" className="w-full aspect-[4/5] object-cover object-[center_20%]" />
+                <img src={activeTeamMember.image} alt={activeTeamMember.name} loading="lazy" className="w-full aspect-[4/5] object-cover" style={{ objectPosition: activeTeamMember.imagePosition }} />
                 <div className="absolute inset-0 pointer-events-none bg-[#152238]/[0.08]" />
               </div>
             </div>
@@ -491,7 +496,7 @@ export function ChiropractorTemplate() {
                 {teamMembers.map((t, i) => (
                   <button key={i} onClick={() => handleTeamSelect(i)} className="group flex flex-col items-center text-center cursor-pointer bg-transparent border-none p-0">
                     <div className={`rounded-full overflow-hidden mb-2 transition-all duration-300 ${i === activeTeamIndex ? 'w-12 h-12 md:w-14 md:h-14 border-2 border-white opacity-100 scale-105' : 'w-10 h-10 md:w-11 md:h-11 border border-white/20 opacity-70 group-hover:opacity-100 scale-100'}`}>
-                      <img src={t.avatar} alt={t.name} loading="lazy" className="w-full h-full object-cover" />
+                      <img src={t.avatar} alt={t.name} loading="lazy" className="w-full h-full object-cover" style={{ objectPosition: t.avatarPosition, transform: t.avatarTransform }} />
                     </div>
                     <p className={`font-inter text-[11px] mb-px transition-colors duration-300 ${i === activeTeamIndex ? 'text-white' : 'text-white/60 group-hover:text-white'}`}>{t.name.split(' ')[0]}</p>
                   </button>

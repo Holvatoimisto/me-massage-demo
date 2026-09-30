@@ -44,7 +44,7 @@ export function MeistaPage() {
                   src="/mathias-ja-janina.png"
                   alt={t('teamHeading')}
                   loading="lazy"
-                  className="w-full aspect-[4/3] object-cover object-center"
+                  className="w-full aspect-square object-cover object-center"
                 />
               </div>
             </ScrollReveal>

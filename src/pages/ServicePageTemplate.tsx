@@ -39,7 +39,7 @@ interface ServiceDetail {
 }
 
 const SERVICES: ServiceDetail[] = [
-  { key: 'classic', slug: 'hieronta', image: '/assets/me_service_classic.png' },
+  { key: 'classic', slug: 'hieronta', image: '/assets/klassinen-hieronta-sininen-pyyhe.png' },
   { key: 'hotStone', slug: 'kuumakivihieronta', image: '/assets/me_service_hot_stone.png' },
   { key: 'jaw', slug: 'purentalihashieronta', image: '/assets/me_service_jaw.png' },
   { key: 'iastm', slug: 'faskiarautakasittely', image: '/assets/me_service_iastm.png' },

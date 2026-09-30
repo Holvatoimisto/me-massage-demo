@@ -112,8 +112,9 @@ export function Header() {
                 initial={{ opacity: 0, y: -4 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.2 }}
-                className="absolute top-full left-0 mt-1 w-[240px] bg-[#1E3A5F] rounded-lg shadow-[0_8px_32px_rgba(0,0,0,0.28)] border border-white/10 py-2 overflow-hidden"
+                className="absolute top-full left-0 pt-1 w-[240px]"
               >
+                <div className="bg-[#1E3A5F] rounded-lg shadow-[0_8px_32px_rgba(0,0,0,0.28)] border border-white/10 py-2 overflow-hidden">
                 {getServiceDropdownItems(tStr).map((item) => (
                   <Link
                     key={item.href}
@@ -132,6 +133,7 @@ export function Header() {
                   >
                     {tStr('nav.allServices')} →
                   </Link>
+                </div>
                 </div>
               </motion.div>
             )}
