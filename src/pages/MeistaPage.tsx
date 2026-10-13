@@ -40,7 +40,7 @@ export function MeistaPage() {
       {/* Header spacer */}
       <div className="h-[60px] md:h-[68px]" />
 
-      <PageHero eyebrow={t('eyebrow')} title={t('headline')} support={t('supportText')} />
+      <PageHero eyebrow={t('eyebrow')} title={t('headline')} support={t('supportText')} logoSrc="/assets/me-massage-sininen.png" logoAlt="ME Massage" />
 
       {/* Intro — who we are */}
       <section className="bg-white py-16 md:py-20 px-6 md:px-12">
