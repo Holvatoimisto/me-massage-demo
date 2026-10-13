@@ -8,6 +8,9 @@ import { useLang } from '@/contexts/LanguageContext';
 export function PurchaseSummary({
   image,
   imageAlt,
+  serviceImage,
+  serviceImageAlt,
+  selectionBadge,
   title,
   subtitle,
   price,
@@ -18,6 +21,12 @@ export function PurchaseSummary({
 }: {
   image: string;
   imageAlt: string;
+  /** Selected treatment image; when set, it becomes the main visual and `image`
+   *  (the card artwork) is shown as a smaller overlay. Omit for open-value cards. */
+  serviceImage?: string;
+  serviceImageAlt?: string;
+  /** Small selection badge on the composed visual, e.g. "50 min" or "6 käyntiä". */
+  selectionBadge?: string;
   /** e.g. "Klassinen hieronta" — null until selections are made. */
   title: string | null;
   /** e.g. "50 min" or "6 käyntiä · 50 min". */
@@ -37,9 +46,29 @@ export function PurchaseSummary({
       {/* Desktop sticky panel */}
       <div className="hidden md:block md:sticky md:top-[92px]">
         <div className="rounded-xl border border-[#E2E8F0]/60 bg-white p-6 shadow-[0_4px_20px_rgba(21,34,56,0.06)]">
-          <div className="overflow-hidden rounded-lg mb-6">
-            <img src={image} alt={imageAlt} className="w-full aspect-[1586/992] object-contain object-center" />
-          </div>
+          {serviceImage ? (
+            <div className="relative overflow-hidden rounded-lg mb-6 bg-[#F7F5F2] aspect-[1586/992]">
+              <img
+                src={serviceImage}
+                alt={serviceImageAlt ?? ''}
+                className="absolute inset-0 w-full h-full object-contain object-center p-4"
+              />
+              {selectionBadge && (
+                <span className="absolute top-3 left-3 rounded-full bg-[#152238] px-3 py-1 font-inter text-[12px] font-semibold text-white tracking-wide">
+                  {selectionBadge}
+                </span>
+              )}
+              <img
+                src={image}
+                alt={imageAlt}
+                className="absolute bottom-3 right-3 w-[42%] rounded-md shadow-[0_8px_24px_rgba(21,34,56,0.22)] rotate-[3deg]"
+              />
+            </div>
+          ) : (
+            <div className="overflow-hidden rounded-lg mb-6">
+              <img src={image} alt={imageAlt} className="w-full aspect-[1586/992] object-contain object-center" />
+            </div>
+          )}
 
           {title === null || price === null ? (
             <p className="font-inter text-[13px] text-[#5A6A7A] text-center py-6">{tStr('shop.selectPrompt')}</p>
@@ -72,7 +101,10 @@ export function PurchaseSummary({
 
       {/* Mobile bottom purchase bar */}
       {title !== null && price !== null && (
-        <div className="md:hidden fixed bottom-0 inset-x-0 z-40 bg-white border-t border-[#E2E8F0] shadow-[0_-4px_20px_rgba(21,34,56,0.12)] px-5 py-3">
+        <div className="md:hidden fixed bottom-0 inset-x-0 z-40 bg-white border-t border-[#E2E8F0] shadow-[0_-4px_20px_rgba(21,34,56,0.12)] px-5 pt-2.5 pb-3">
+          <p className="font-inter text-[12px] text-[#5A6A7A] text-center truncate mb-2">
+            {title}{subtitle ? ` · ${subtitle}` : ''} · {price} &euro;
+          </p>
           <button
             type="button"
             onClick={onAdd}

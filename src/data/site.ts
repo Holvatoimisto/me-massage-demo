@@ -2,7 +2,6 @@
 // global Footer so they stay in one place.
 export const businessInfo = {
   name: 'ME massage',
-  tagline: 'Hierontaa ja kehonhuoltoa',
   fullTagline: 'ME MASSAGE — HIERONTAA JA KEHONHUOLTOA',
   address: 'Lepsämäntie 1, 2 krs, 01800 Klaukkala',
   phone: '040 833 8512',
@@ -39,32 +38,26 @@ export const locationPhoneContacts = [
   },
 ];
 
+// Footer navigation metadata is language-neutral: labels render through
+// translation keys (see Footer.tsx). Contact facts live in `locations` and
+// `locationPhoneContacts`, not here.
 export const footerColumns = [
   {
-    title: 'Palvelut',
+    titleKey: 'footer.services',
     links: [
-      { label: 'Klassinen hieronta', href: '/palvelut/hieronta' },
-      { label: 'Kuumakivi ja klassinen hieronta', href: '/palvelut/kuumakivihieronta' },
-      { label: 'Purentalihashieronta', href: '/palvelut/purentalihashieronta' },
-      { label: 'Faskiarautakäsittely', href: '/palvelut/faskiarautakasittely' },
+      { labelKey: 'services.primary.classic.title', href: '/palvelut/hieronta' },
+      { labelKey: 'services.primary.hotStone.title', href: '/palvelut/kuumakivihieronta' },
+      { labelKey: 'services.jaw', href: '/palvelut/purentalihashieronta' },
+      { labelKey: 'services.iastm', href: '/palvelut/faskiarautakasittely' },
     ],
   },
   {
-    title: 'Yritys',
+    titleKey: 'footer.company',
     links: [
-      { label: 'Tutustu tiimiin', href: '/#tiimi' },
-      { label: 'Asiakkaiden kokemuksia', href: '/asiakkaiden-kokemuksia' },
-      { label: 'Usein kysyttyä', href: '/usein-kysyttya' },
-      { label: 'Verkkokauppa', href: '/verkkokauppa' },
-    ],
-  },
-  {
-    title: 'Yhteystiedot',
-    links: [
-      { label: '040 833 8512', href: 'tel:+358408338512' },
-      { label: 'info.klaukkala@memassage.fi', href: 'mailto:info.klaukkala@memassage.fi' },
-      { label: 'Lepsämäntie 1, 2 krs, Klaukkala', href: '/toimipisteet/klaukkala' },
-      { label: 'Rantakatu 11, Vaasa', href: '/toimipisteet/vaasa' },
+      { labelKey: 'footer.team', href: '/#tiimi' },
+      { labelKey: 'footer.customerReviews', href: '/asiakkaiden-kokemuksia' },
+      { labelKey: 'nav.faq', href: '/usein-kysyttya' },
+      { labelKey: 'nav.webshop', href: '/verkkokauppa' },
     ],
   },
 ];

@@ -10,49 +10,48 @@ export function Footer() {
   return (
     <footer id="yhteystiedot" className="bg-[#152238] pt-14 md:pt-16 pb-10 md:pb-12 px-6 md:px-12">
       <div className="max-w-[1200px] mx-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12 mb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 md:gap-12 mb-10">
           <div>
             <h3 className="font-cormorant text-[18px] text-white mb-1">{businessInfo.name}</h3>
-            <p className="font-inter text-[13px] text-[#94A3B8] mb-4">{businessInfo.tagline}</p>
-            <ul className="space-y-2">
-              <li className="font-inter text-[14px] text-[#94A3B8] flex items-center gap-2">
-                <MapPin size={14} className="shrink-0" /> {businessInfo.address}
-              </li>
-              <li>
-                <a href={businessInfo.emailLink} className="font-inter text-[14px] text-[#94A3B8] hover:text-white transition-colors flex items-center gap-2 no-underline">
-                  <Mail size={14} className="shrink-0" /> {businessInfo.email}
-                </a>
-              </li>
-            </ul>
-            <div className="mt-5 space-y-4">
-              {locationPhoneContacts.map((group) => (
-                <div key={group.location}>
-                  <p className="font-inter text-[11px] font-semibold uppercase tracking-[0.08em] text-white/80 mb-1.5">{group.location}</p>
-                  <ul className="space-y-1.5">
-                    {group.people.map((person) => (
-                      <li key={`${group.location}-${person.name}`}>
-                        <a href={person.phoneLink} className="font-inter text-[14px] text-[#94A3B8] hover:text-white transition-colors flex items-center gap-2 no-underline">
-                          <Phone size={14} className="shrink-0" />
-                          <span className="text-white/85">{person.name}</span>
-                          <span>{person.phone}</span>
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
+            <p className="font-inter text-[13px] text-[#94A3B8]">{tStr('footer.tagline')}</p>
           </div>
-          {footerColumns.map((col, i) => (
-            <div key={i}>
-              <h4 className="font-inter text-[13px] font-semibold uppercase tracking-[0.08em] text-white mb-4">{tStr(`footer.${col.title === 'Palvelut' ? 'services' : col.title === 'Yritys' ? 'company' : 'contact'}`)}</h4>
+          {locations.map((loc) => {
+            const phoneGroup = locationPhoneContacts.find((group) => group.location === loc.name);
+            return (
+              <div key={loc.slug}>
+                <h4 className="font-inter text-[13px] font-semibold uppercase tracking-[0.08em] text-white mb-4">{loc.name}</h4>
+                <ul className="space-y-2">
+                  <li className="font-inter text-[14px] text-[#94A3B8] flex items-center gap-2">
+                    <MapPin size={14} className="shrink-0" /> {loc.address}
+                  </li>
+                  <li>
+                    <a href={`mailto:${loc.email}`} className="font-inter text-[14px] text-[#94A3B8] hover:text-white transition-colors flex items-center gap-2 no-underline">
+                      <Mail size={14} className="shrink-0" /> {loc.email}
+                    </a>
+                  </li>
+                  {phoneGroup?.people.map((person) => (
+                    <li key={`${loc.slug}-${person.name}`}>
+                      <a href={person.phoneLink} className="font-inter text-[14px] text-[#94A3B8] hover:text-white transition-colors flex items-center gap-2 no-underline">
+                        <Phone size={14} className="shrink-0" />
+                        <span className="text-white/85">{person.name}</span>
+                        <span>{person.phone}</span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            );
+          })}
+          {footerColumns.map((col) => (
+            <div key={col.titleKey}>
+              <h4 className="font-inter text-[13px] font-semibold uppercase tracking-[0.08em] text-white mb-4">{tStr(col.titleKey)}</h4>
               <ul className="space-y-2">
                 {col.links.map((link) => (
-                  <li key={link.label}>
+                  <li key={link.labelKey}>
                     {link.href.startsWith('/') ? (
-                      <Link to={link.href} className="font-inter text-[14px] text-[#94A3B8] hover:text-white transition-colors no-underline">{link.label}</Link>
+                      <Link to={link.href} className="font-inter text-[14px] text-[#94A3B8] hover:text-white transition-colors no-underline">{tStr(link.labelKey)}</Link>
                     ) : (
-                      <a href={link.href} className="font-inter text-[14px] text-[#94A3B8] hover:text-white transition-colors no-underline">{link.label}</a>
+                      <a href={link.href} className="font-inter text-[14px] text-[#94A3B8] hover:text-white transition-colors no-underline">{tStr(link.labelKey)}</a>
                     )}
                   </li>
                 ))}

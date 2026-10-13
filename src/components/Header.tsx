@@ -91,7 +91,7 @@ export function Header() {
         <div className="hidden xl:flex flex-1 items-center justify-center gap-4 2xl:gap-5">
           {/* Etusivu */}
           <Link to="/" className={navLinkClass(isHome)}>
-            Etusivu
+            {tStr('nav.home')}
           </Link>
 
           {/* Palvelut dropdown */}
@@ -104,7 +104,7 @@ export function Header() {
               className={`flex items-center gap-1 bg-transparent border-none cursor-pointer ${navLinkClass(isServices)}`}
               onClick={() => setServicesOpen(!servicesOpen)}
             >
-              Palvelut
+              {tStr('nav.services')}
               <ChevronDown size={14} strokeWidth={1.5} className={`transition-transform duration-200 ${servicesOpen ? 'rotate-180' : ''}`} />
             </button>
             {servicesOpen && (
@@ -141,7 +141,7 @@ export function Header() {
 
           {/* Hinnasto */}
           <Link to="/hinnasto" className={navLinkClass(isPricing)}>
-            Hinnasto
+            {tStr('nav.pricing')}
           </Link>
 
           {/* Meistä */}
@@ -151,7 +151,7 @@ export function Header() {
 
           {/* Yhteystiedot */}
           <Link to="/yhteystiedot" className={navLinkClass(isContact)}>
-            Yhteystiedot
+            {tStr('nav.contact')}
           </Link>
 
           {/* Kauppa */}
@@ -225,7 +225,7 @@ export function Header() {
                 : 'bg-white text-[#152238] hover:bg-[#E2E8F0] shadow-sm border-transparent'
             }`}
           >
-            {navigationInfo.ctaButton.label}
+            {tStr('nav.bookNow')}
           </button>
         </div>
 
@@ -262,7 +262,7 @@ export function Header() {
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
             className="text-[#FFFFFF] transition-colors bg-transparent border-none cursor-pointer"
-            aria-label={mobileOpen ? 'Sulje valikko' : 'Avaa valikko'}
+            aria-label={mobileOpen ? tStr('nav.closeMenu') : tStr('nav.openMenu')}
           >
             {mobileOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -350,7 +350,7 @@ export function Header() {
               onClick={() => { setMobileOpen(false); openBookingModal(); }}
               className="inline-flex min-h-[40px] items-center justify-center w-full px-5 py-2 rounded-md font-inter text-[14px] font-semibold tracking-wide leading-none whitespace-nowrap bg-white text-[#152238] hover:bg-[#E2E8F0] transition-colors duration-300 shadow-sm cursor-pointer border-none"
             >
-              {navigationInfo.ctaButton.label}
+              {tStr('nav.bookNow')}
             </button>
           </div>
         </motion.div>

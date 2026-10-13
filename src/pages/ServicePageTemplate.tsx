@@ -36,13 +36,15 @@ interface ServiceDetail {
   key: ServiceKey;
   slug: string;
   image: string;
+  /** Optional object-position for the hero image. */
+  imagePosition?: string;
 }
 
 const SERVICES: ServiceDetail[] = [
   { key: 'classic', slug: 'hieronta', image: '/assets/klassinen-hieronta-sininen-pyyhe.png' },
-  { key: 'hotStone', slug: 'kuumakivihieronta', image: '/assets/me_service_hot_stone.png' },
-  { key: 'jaw', slug: 'purentalihashieronta', image: '/assets/me_service_jaw.png' },
-  { key: 'iastm', slug: 'faskiarautakasittely', image: '/assets/me_service_iastm.png' },
+  { key: 'hotStone', slug: 'kuumakivihieronta', image: '/assets/kuuma-kivi-mathias.png' },
+  { key: 'jaw', slug: 'purentalihashieronta', image: '/assets/purenta-lihas-hieronta-kuva.png' },
+  { key: 'iastm', slug: 'faskiarautakasittely', image: '/assets/fasciarauta hoitokuva.jpg', imagePosition: 'center 78%' },
 ];
 
 const locationNames = (memberLocations: ('klaukkala' | 'vaasa')[]): string =>
@@ -107,7 +109,7 @@ export function ServicePageTemplate() {
 
       {/* Hero */}
       <section className="relative h-[52vh] md:h-[56vh] overflow-hidden">
-        <img src={service.image} alt={title} className="w-full h-full object-cover" />
+        <img src={service.image} alt={title} className="w-full h-full object-cover" style={service.imagePosition ? { objectPosition: service.imagePosition } : undefined} />
         <div className="absolute inset-0 bg-[#152238]/65" />
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-center px-6">
@@ -162,6 +164,49 @@ export function ServicePageTemplate() {
           </ScrollReveal>
         </div>
       </section>
+
+      {/* Fascia tool explainer (IASTM only) */}
+      {service.key === 'iastm' && (
+        <section className="bg-white py-16 md:py-20 px-6 md:px-12 border-t border-[#E2E8F0]">
+          <div className="max-w-[900px] mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14 items-center">
+              <ScrollReveal>
+                <div className="rounded-xl overflow-hidden bg-[#F7F5F2]">
+                  <img
+                    src="/assets/fascia-raudat.png"
+                    alt={tStr(p('tool.heading'))}
+                    loading="lazy"
+                    className="w-full h-auto object-contain"
+                  />
+                </div>
+              </ScrollReveal>
+              <ScrollReveal delay={0.08}>
+                <p className="font-inter text-[11px] font-semibold uppercase tracking-[0.12em] text-[#5A6A7A] mb-4">
+                  {tStr(p('tool.eyebrow'))}
+                </p>
+                <h2 className="font-cormorant text-[24px] md:text-[30px] text-[#152238] leading-[1.25] mb-5">
+                  {tStr(p('tool.heading'))}
+                </h2>
+                <p className="font-inter text-[15px] text-[#1F2937] leading-[1.8] mb-8">
+                  {tStr(p('tool.intro'))}
+                </p>
+                <div className="space-y-6">
+                  {(['how', 'what', 'why'] as const).map((part) => (
+                    <div key={part} className="border-t border-[#E2E8F0] pt-5">
+                      <h3 className="font-inter text-[14px] font-semibold text-[#152238] leading-[1.5] mb-2">
+                        {tStr(p(`tool.${part}Heading`))}
+                      </h3>
+                      <p className="font-inter text-[14px] text-[#1F2937] leading-[1.75]">
+                        {tStr(p(`tool.${part}Text`))}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </ScrollReveal>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Treatment process */}
       <section className="bg-[#F7F5F2] py-16 md:py-20 px-6 md:px-12">

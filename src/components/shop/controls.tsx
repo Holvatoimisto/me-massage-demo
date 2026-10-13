@@ -1,5 +1,7 @@
 // Shared selection controls for the shop configurators.
 
+import { Check } from 'lucide-react';
+
 export function StepHeading({ children }: { children: React.ReactNode }) {
   return (
     <h3 className="font-inter text-[13px] font-semibold uppercase tracking-[0.12em] text-[#152238] mb-3">
@@ -36,6 +38,35 @@ export function Choice({
     >
       {children}
     </button>
+  );
+}
+
+/** Visual service selection card — treatment image + name, Choice semantics. */
+export function ServiceChoice({
+  selected,
+  onClick,
+  image,
+  label,
+}: {
+  selected: boolean;
+  onClick: () => void;
+  /** Treatment image asset path. */
+  image: string;
+  /** Translated service name. */
+  label: string;
+}) {
+  return (
+    <Choice selected={selected} onClick={onClick} ariaLabel={label} className="p-0 overflow-hidden">
+      <span className="relative block bg-[#F7F5F2] aspect-[4/3]">
+        <img src={image} alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-contain p-3" />
+        {selected && (
+          <span className="absolute top-2 right-2 w-6 h-6 rounded-full bg-[#152238] flex items-center justify-center">
+            <Check size={13} strokeWidth={2.5} className="text-white" />
+          </span>
+        )}
+      </span>
+      <span className="block px-4 py-3 font-inter text-[14px] font-medium text-[#152238] leading-[1.4]">{label}</span>
+    </Choice>
   );
 }
 

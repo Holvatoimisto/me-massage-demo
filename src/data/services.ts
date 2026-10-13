@@ -10,8 +10,8 @@ export interface ServiceOverview {
 }
 
 export const serviceOverviews: ServiceOverview[] = [
-  { key: 'classic', pricingKey: 'classic', href: '/palvelut/hieronta', image: '/assets/me_service_classic.png' },
-  { key: 'hotStone', pricingKey: 'hotStone', href: '/palvelut/kuumakivihieronta', image: '/assets/me_service_hot_stone.png' },
-  { key: 'jaw', pricingKey: 'jaw', href: '/palvelut/purentalihashieronta', image: '/assets/me_service_jaw.png' },
-  { key: 'iastm', pricingKey: 'iastm', href: '/palvelut/faskiarautakasittely', image: '/assets/me_service_iastm.png' },
+  { key: 'classic', pricingKey: 'classic', href: '/palvelut/hieronta', image: '/assets/klassinen-hieronta-kuva-ilman-taustaa.png' },
+  { key: 'hotStone', pricingKey: 'hotStone', href: '/palvelut/kuumakivihieronta', image: '/assets/kuuma-kivi-mathias.png' },
+  { key: 'jaw', pricingKey: 'jaw', href: '/palvelut/purentalihashieronta', image: '/assets/purenta-lihas-hieronta-kuva.png' },
+  { key: 'iastm', pricingKey: 'iastm', href: '/palvelut/faskiarautakasittely', image: '/assets/mathias-fascia-hoito.png' },
 ];

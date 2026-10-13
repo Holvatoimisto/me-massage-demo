@@ -15,6 +15,8 @@ export const translations = {
       allServices: 'Kaikki palvelut',
       shop: 'Kauppa',
       webshop: 'Verkkokauppa',
+      openMenu: 'Avaa valikko',
+      closeMenu: 'Sulje valikko',
     },
     // Hero
     hero: {
@@ -27,6 +29,7 @@ export const translations = {
       statSince: 'Vuodesta lähtien',
       statLocations: 'Toimipistettä',
       statTrained: 'Koulutetut hierojat',
+      statReviews: 'arvostelua',
     },
     // Brand intro
     brandIntro: {
@@ -133,7 +136,7 @@ export const translations = {
       },
       janina: {
         title: 'Koulutettu hieroja',
-        bio: 'Janina on koulutettu hieroja, joka liittyi ME massagen tiimiin vuonna 2025. Hän tuo mukanaan lämpöistä ja ammattitaitoista otetta hierontapalveluihin.\n\nJaninalta saat klassista hierontaa ja kuumakivi ja klassista hierontaa. Hän on erityisen kiinnostunut kokonaisvaltaisesta hyvinvoinnista ja kehonhuollosta.',
+        bio: 'Janina on koulutettu hieroja, joka liittyi ME massagen tiimiin vuonna 2025. Hän tuo mukanaan lämpöistä ja ammattitaitoista otetta hierontapalveluihin.\n\nJaninalta saat klassista hierontaa, kuumakivi ja klassista hierontaa sekä purentalihashierontaa. Hän on erityisen kiinnostunut kokonaisvaltaisesta hyvinvoinnista ja kehonhuollosta.',
         quote: 'Haluan auttaa asiakkaitani löytämään keinot rentoutumiseen ja kivunlievitykseen.',
       },
     },
@@ -145,11 +148,11 @@ export const translations = {
       items: [
         {
           question: 'Minkä pituinen hieronta minulle?',
-          answer: 'Ensikertalaisille suosittelemme 45–60 minuutin hoitoa. 30 min riittää, jos haluat keskittyä vain yhteen alueeseen. 90 min antaa aikaa koko keholle perusteellisesti.',
+          answer: '20 minuuttia riittää yhden alueen kohdennettuun hoitoon, 50 minuuttia on suosituin valinta ja antaa aikaa laajempaan kokonaisuuteen, ja 80–110 minuuttia kattaa koko vartalon perusteellisesti.',
         },
         {
           question: 'Sopiiko hieronta minulle?',
-          answer: 'Kyllä! Hieronta sopii kaikille ikään ja kuntoon katsomatta. Meille ovat tervetulleita niin urheilijat, toimistotyöntekijät kuin senioritkin.',
+          answer: 'Kyllä! Hieronta sopii kaikille ikään ja kuntoon katsomatta. Meille ovat tervetulleita niin urheilijat, toimistotyöntekijät, juniorit kuin senioritkin.',
         },
         {
           question: 'Mitä eroa on klassisella hieronnalla ja kuumakivi ja klassisella hieronnalla?',
@@ -236,6 +239,7 @@ export const translations = {
     },
     // Footer
     footer: {
+      tagline: 'Hierontaa ja kehonhuoltoa',
       services: 'Palvelut',
       company: 'Yritys',
       contact: 'Yhteystiedot',
@@ -483,6 +487,17 @@ export const translations = {
             'Osa asiakkaista huomaa muutoksen jo ensimmäisen hoitokerran jälkeen, toisilla vaikutus vaatii useampia hoitokertoja.',
           ],
         },
+        tool: {
+          eyebrow: 'FASKIARAUTA',
+          heading: 'Mikä faskiarauta on?',
+          intro: 'Faskiarauta on pehmytkudosten käsittelyyn tarkoitettu väline, jota hieroja käyttää osana faskiarautakäsittelyä. Välineen avulla kudosta voidaan käsitellä tarkasti ja kohdennetusti eri kehon alueilla.',
+          howHeading: 'Miten sitä käytetään?',
+          howText: 'Faskiarautaa liu\'utetaan ja käytetään hallitusti käsiteltävällä alueella osana muuta hoitoa. Käsittelyn voimakkuus sovitetaan asiakkaan tilanteeseen.',
+          whatHeading: 'Mitä sillä tehdään?',
+          whatText: 'Väline mahdollistaa pehmytkudosten ja lihaskireyksien kohdennetun käsittelyn sekä tukee liikkuvuuden parantamiseen tähtäävää hoitoa.',
+          whyHeading: 'Miksi sitä käytetään?',
+          whyText: 'Faskiarauta antaa hierojalle yhden lisätyökalun tilanteisiin, joissa käsittelyä halutaan kohdentaa tarkasti esimerkiksi pitkään jatkuneisiin kireyksiin tai kuormittuneisiin alueisiin.',
+        },
         process: {
           heading: 'Näin käsittely etenee',
           steps: [
@@ -527,9 +542,9 @@ export const translations = {
           title: 'Hoidot ja hoidon valinta',
           faqs: [
             { question: 'Minkä pituinen hieronta minulle?', answer: '20 minuuttia riittää yhden alueen kohdennettuun hoitoon, 50 minuuttia on suosituin valinta ja antaa aikaa laajempaan kokonaisuuteen, ja 80–110 minuuttia kattaa koko vartalon perusteellisesti. Tarkemmat kestojen erot löydät hinnastosta.', linkText: 'Katso hinnat ja kestot', linkHref: '/hinnasto' },
-            { question: 'Sopiiko hieronta minulle?', answer: 'Kyllä! Hieronta sopii kaikille ikään ja kuntoon katsomatta. Meille ovat tervetulleita niin urheilijat, toimistotyöntekijät kuin senioritkin.' },
+            { question: 'Sopiiko hieronta minulle?', answer: 'Kyllä! Hieronta sopii kaikille ikään ja kuntoon katsomatta. Meille ovat tervetulleita niin urheilijat, toimistotyöntekijät, juniorit kuin senioritkin.' },
             { question: 'Mitä eroa on klassisella hieronnalla ja kuumakivi ja klassisella hieronnalla?', answer: 'Klassinen hieronta on perinteistä lihaskäsittelyä, joka räätälöidään tarpeidesi mukaan. Kuumakivi ja klassisessa hieronnassa käytetään lämpimiä kiviä, jotka rentouttavat syvällä tasolla ja lievittävät lihaskireyksiä tehokkaasti.', linkText: 'Vertaile palveluita', linkHref: '/palvelut' },
-            { question: 'Kuinka usein kannattaa käydä hieronnassa?', answer: 'Se riippuu tilanteestasi. Akuuttiin vaivaan suositellaan 1–2 kertaa viikossa, ylläpitohoitona kerran kuukaudessa.' },
+            { question: 'Kuinka usein kannattaa käydä hieronnassa?', answer: 'Se riippuu tilanteestasi. Akuuttiin vaivaan suositellaan kerran viikossa siihen asti, kunnes vaiva helpottuu. Ylläpitohoitona 1–2 kertaa kuukaudessa.' },
           ],
         },
         {
@@ -595,8 +610,9 @@ export const translations = {
         introEyebrow: 'KEITÄ OLEMME',
         introHeading: 'Ammattitaitoista hierontaa ihmiseltä ihmiselle',
         introText: 'ME massage tarjoaa ammattitaitoista hierontaa ja kehonhuoltoa Klaukkalassa ja Vaasassa. Jokainen hoito rakennetaan yksilöllisesti asiakkaan tarpeen mukaan — koulutettujen hierojiemme tavoitteena on käytännöllinen apu, joka tuntuu arjessa.',
-        teamHeading: 'Mathias ja Janina',
-        teamText: 'Vastaanotoillamme sinua palvelevat koulutetut hierojat Mathias Eklund ja Janina Honkanen. Mathias valmistui koulutetuksi hierojaksi Suomen hierojakoulusta 2023 ja vastaanottaa asiakkaita Klaukkalassa ja Vaasassa. Janina liittyi tiimiin vuonna 2025 ja tuo mukanaan lämpöisen ja ammattitaitoisen otteen. Molemmille yhteistä on halu kohdata jokainen asiakas henkilökohtaisesti.',
+        profileEyebrow: 'ME MASSAGE',
+        teamEyebrow: 'TIIMI',
+        teamHeading: 'Mathias ja Janina Klaukkalassa',
         storyHeading: 'Mistä nimi ME tulee?',
         storyText: 'ME tulee alun perin nimestä Mathias Eklund — mutta samalla se tarkoittaa meitä kaikkia. Suomeksi ”me” ja englanniksi ”me” tekevät nimestä sekä henkilökohtaisen että yhteisöllisen: jokainen hoito rakennetaan ihmisestä käsin.',
         philosophyHeading: 'Hoitofilosofiamme',
@@ -771,10 +787,12 @@ export const translations = {
       reviews: 'Reviews',
       about: 'About us',
       faq: 'FAQ',
-      bookNow: 'Book Now',
+      bookNow: 'Book an appointment',
       allServices: 'All Services',
       shop: 'Shop',
       webshop: 'Online Store',
+      openMenu: 'Open menu',
+      closeMenu: 'Close menu',
     },
     // Hero
     hero: {
@@ -787,6 +805,7 @@ export const translations = {
       statSince: 'Since',
       statLocations: 'Locations',
       statTrained: 'Trained massage therapists',
+      statReviews: 'reviews',
     },
     // Brand intro
     brandIntro: {
@@ -893,7 +912,7 @@ export const translations = {
       },
       janina: {
         title: 'Certified Masseur',
-        bio: 'Janina is a certified masseur who joined the ME massage team in 2025. She brings a warm and professional touch to massage services.\n\nFrom Janina, you can receive classic massage and hot stone and classical massage. She is particularly interested in holistic well-being and body care.',
+        bio: 'Janina is a certified masseur who joined the ME massage team in 2025. She brings a warm and professional touch to massage services.\n\nFrom Janina, you can receive classic massage, hot stone and classical massage, and massage for the occlusal muscles. She is particularly interested in holistic well-being and body care.',
         quote: 'I want to help my clients find ways to relax and relieve pain.',
       },
     },
@@ -905,11 +924,11 @@ export const translations = {
       items: [
         {
           question: 'What length of massage should I choose?',
-          answer: 'For first-time clients, we recommend a 45–60 minute treatment. 30 minutes is enough if you want to focus on just one area. 90 minutes allows time for a thorough full-body treatment.',
+          answer: '20 minutes is enough for a targeted treatment of one area, 50 minutes is the most popular choice and allows time for a broader session, and 80–110 minutes covers the whole body thoroughly.',
         },
         {
           question: 'Is massage suitable for me?',
-          answer: 'Yes! Massage is suitable for everyone regardless of age or fitness level. Athletes, office workers, and seniors are all welcome.',
+          answer: 'Yes! Massage is suitable for everyone regardless of age or fitness level. Athletes, office workers, juniors, and seniors are all welcome.',
         },
         {
           question: 'What is the difference between classic massage and hot stone and classical massage?',
@@ -997,6 +1016,7 @@ export const translations = {
     },
     // Footer
     footer: {
+      tagline: 'Massage and body care',
       services: 'Services',
       company: 'Company',
       contact: 'Contact',
@@ -1244,6 +1264,17 @@ export const translations = {
             'Some clients notice a change already after the first session; for others the effect requires several treatments.',
           ],
         },
+        tool: {
+          eyebrow: 'FASCIA TOOL',
+          heading: 'What is the fascia tool?',
+          intro: 'The fascia tool is an instrument designed for soft tissue treatment, which the masseur uses as part of IASTM treatment. The instrument allows tissue to be worked precisely and in a targeted way on different areas of the body.',
+          howHeading: 'How is it used?',
+          howText: 'The fascia tool is glided and used in a controlled manner on the treated area as part of the rest of the treatment. The intensity is always adjusted to your situation.',
+          whatHeading: 'What does it do?',
+          whatText: 'The instrument enables targeted treatment of soft tissue and muscle tension and supports treatment that aims to improve mobility.',
+          whyHeading: 'Why is it used?',
+          whyText: 'The fascia tool gives the masseur an additional tool for situations where treatment needs to be focused precisely — for example with long-standing tension or heavily loaded areas.',
+        },
         process: {
           heading: 'How the treatment proceeds',
           steps: [
@@ -1288,9 +1319,9 @@ export const translations = {
           title: 'Treatments and choosing a treatment',
           faqs: [
             { question: 'What length of massage should I choose?', answer: '20 minutes is enough for a targeted treatment of one area, 50 minutes is the most popular choice and allows time for a broader session, and 80–110 minutes covers the whole body thoroughly. You can find a more detailed comparison of the durations in the price list.', linkText: 'See prices and durations', linkHref: '/hinnasto' },
-            { question: 'Is massage suitable for me?', answer: 'Yes! Massage is suitable for everyone regardless of age or fitness level. Athletes, office workers, and seniors are all welcome.' },
+            { question: 'Is massage suitable for me?', answer: 'Yes! Massage is suitable for everyone regardless of age or fitness level. Athletes, office workers, juniors, and seniors are all welcome.' },
             { question: 'What is the difference between classic massage and hot stone and classical massage?', answer: 'Classic massage is traditional manual therapy tailored to your needs. Hot stone and classical massage uses warm stones that relax at a deep level and effectively relieve muscle tension.', linkText: 'Compare services', linkHref: '/palvelut' },
-            { question: 'How often should I get a massage?', answer: 'It depends on your situation. For acute issues, 1–2 times a week is recommended; as maintenance, once a month.' },
+            { question: 'How often should I get a massage?', answer: 'It depends on your situation. For acute issues, once a week is recommended until the issue eases. As maintenance, 1–2 times a month.' },
           ],
         },
         {
@@ -1356,8 +1387,9 @@ export const translations = {
         introEyebrow: 'WHO WE ARE',
         introHeading: 'Professional massage, from person to person',
         introText: 'ME massage offers professional massage and body maintenance in Klaukkala and Vaasa. Every treatment is built individually around the client\'s needs — our trained massage therapists aim for practical help that makes a difference in everyday life.',
-        teamHeading: 'Mathias and Janina',
-        teamText: 'At our clinics you are served by trained massage therapists Mathias Eklund and Janina Honkanen. Mathias graduated as a trained massage therapist from Suomen hierojakoulu in 2023 and sees clients in Klaukkala and Vaasa. Janina joined the team in 2025, bringing a warm and professional touch. What they share is the desire to meet every client personally.',
+        profileEyebrow: 'ME MASSAGE',
+        teamEyebrow: 'TEAM',
+        teamHeading: 'Mathias and Janina in Klaukkala',
         storyHeading: 'Where does the name ME come from?',
         storyText: 'ME originally comes from the name Mathias Eklund — but at the same time it means all of us. In Finnish "me" and in English "me" make the name both personal and communal: every treatment is built starting from the person.',
         philosophyHeading: 'Our treatment philosophy',
@@ -1532,10 +1564,12 @@ export const translations = {
       reviews: 'Omdömen',
       about: 'Om oss',
       faq: 'Vanliga frågor',
-      bookNow: 'Boka Tid',
+      bookNow: 'Boka tid',
       allServices: 'Alla Tjänster',
       shop: 'Butik',
       webshop: 'Webbutik',
+      openMenu: 'Öppna menyn',
+      closeMenu: 'Stäng menyn',
     },
     // Hero
     hero: {
@@ -1548,6 +1582,7 @@ export const translations = {
       statSince: 'Sedan',
       statLocations: 'Platser',
       statTrained: 'Utbildade massörer',
+      statReviews: 'omdömen',
     },
     // Brand intro
     brandIntro: {
@@ -1654,7 +1689,7 @@ export const translations = {
       },
       janina: {
         title: 'Diplomerad Massör',
-        bio: 'Janina är en diplomerad massör som gick med i ME massage-teamet 2025. Hon bidrar med en varm och professionell touch till massagetjänsterna.\n\nHos Janina kan du få klassisk massage samt hotstone och klassisk massage. Hon är särskilt intresserad av holistiskt välbefinnande och kroppsvård.',
+        bio: 'Janina är en diplomerad massör som gick med i ME massage-teamet 2025. Hon bidrar med en varm och professionell touch till massagetjänsterna.\n\nHos Janina kan du få klassisk massage, hotstone och klassisk massage samt massage av tuggmusklerna. Hon är särskilt intresserad av holistiskt välbefinnande och kroppsvård.',
         quote: 'Jag vill hjälpa mina kunder att hitta vägar till avkoppling och smärtlindring.',
       },
     },
@@ -1666,11 +1701,11 @@ export const translations = {
       items: [
         {
           question: 'Hur lång massage ska jag välja?',
-          answer: 'För förstagångskunder rekommenderar vi en 45–60 minuters behandling. 30 minuter räcker om du vill fokusera på ett område. 90 minuter ger tid för en grundlig helkroppsbehandling.',
+          answer: '20 minuter räcker för en riktad behandling av ett område, 50 minuter är det mest populära valet och ger tid för en större helhet, och 80–110 minuter täcker hela kroppen grundligt.',
         },
         {
           question: 'Passar massage för mig?',
-          answer: 'Ja! Massage passar alla oavsett ålder eller kondition. Atleter, kontorsarbetare och seniorer är alla välkomna.',
+          answer: 'Ja! Massage passar alla oavsett ålder eller kondition. Atleter, kontorsarbetare, juniorer och seniorer är alla välkomna.',
         },
         {
           question: 'Vad är skillnaden mellan klassisk massage och hotstone och klassisk massage?',
@@ -1758,6 +1793,7 @@ export const translations = {
     },
     // Footer
     footer: {
+      tagline: 'Massage och kroppsvård',
       services: 'Tjänster',
       company: 'Företag',
       contact: 'Kontakt',
@@ -2005,6 +2041,17 @@ export const translations = {
             'Vissa kunder märker en förändring redan efter första behandlingen, hos andra kräver effekten flera behandlingar.',
           ],
         },
+        tool: {
+          eyebrow: 'FASCIAVERKTYG',
+          heading: 'Vad är ett fasciaverktyg?',
+          intro: 'Fasciaverktyget är ett instrument avsett för mjukvävnadsbehandling, som massören använder som en del av fasciabehandlingen. Med instrumentet kan vävnaden behandlas noggrant och riktat på olika områden i kroppen.',
+          howHeading: 'Hur används det?',
+          howText: 'Fasciaverktyget förs glidande och kontrollerat över det behandlade området som en del av den övriga behandlingen. Styrkan anpassas efter din situation.',
+          whatHeading: 'Vad gör det?',
+          whatText: 'Instrumentet möjliggör riktad behandling av mjukvävnad och muskelspänningar och stödjer behandling som syftar till att förbättra rörligheten.',
+          whyHeading: 'Varför används det?',
+          whyText: 'Fasciaverktyget ger massören ett extra verktyg i situationer där behandlingen vill riktas exakt, till exempel vid långvariga spänningar eller belastade områden.',
+        },
         process: {
           heading: 'Så fortskrider behandlingen',
           steps: [
@@ -2049,9 +2096,9 @@ export const translations = {
           title: 'Behandlingar och val av behandling',
           faqs: [
             { question: 'Hur lång massage ska jag välja?', answer: '20 minuter räcker för en riktad behandling av ett område, 50 minuter är det mest populära valet och ger tid för en större helhet, och 80–110 minuter täcker hela kroppen grundligt. Mer detaljerade skillnader i längderna hittar du i prislistan.', linkText: 'Se priser och längder', linkHref: '/hinnasto' },
-            { question: 'Passar massage för mig?', answer: 'Ja! Massage passar alla oavsett ålder eller kondition. Atleter, kontorsarbetare och seniorer är alla välkomna.' },
+            { question: 'Passar massage för mig?', answer: 'Ja! Massage passar alla oavsett ålder eller kondition. Atleter, kontorsarbetare, juniorer och seniorer är alla välkomna.' },
             { question: 'Vad är skillnaden mellan klassisk massage och hotstone och klassisk massage?', answer: 'Klassisk massage är traditionell manuell terapi anpassad efter dina behov. Hotstone och klassisk massage använder varma stenar som slappnar av på djupet och effektivt lindrar muskelspänningar.', linkText: 'Jämför tjänsterna', linkHref: '/palvelut' },
-            { question: 'Hur ofta lönar det sig att gå på massage?', answer: 'Det beror på din situation. Vid akuta besvär rekommenderas 1–2 gånger i veckan, som underhållsbehandling en gång i månaden.' },
+            { question: 'Hur ofta lönar det sig att gå på massage?', answer: 'Det beror på din situation. Vid akuta besvär rekommenderas en gång i veckan tills besvären lättar. Som underhållsbehandling 1–2 gånger i månaden.' },
           ],
         },
         {
@@ -2117,8 +2164,9 @@ export const translations = {
         introEyebrow: 'VILKA VI ÄR',
         introHeading: 'Professionell massage, från människa till människa',
         introText: 'ME massage erbjuder professionell massage och kroppsvård i Klaukkala och Vasa. Varje behandling byggs individuellt utifrån kundens behov — våra utbildade massörer siktar på praktisk hjälp som märks i vardagen.',
-        teamHeading: 'Mathias och Janina',
-        teamText: 'På våra mottagningar betjänas du av de utbildade massörerna Mathias Eklund och Janina Honkanen. Mathias utexaminerades som utbildad massör från Suomen hierojakoulu 2023 och tar emot kunder i Klaukkala och Vasa. Janina anslöt sig till teamet 2025 och för med sig ett varmt och professionellt grepp. Gemensamt för dem båda är viljan att möta varje kund personligen.',
+        profileEyebrow: 'ME MASSAGE',
+        teamEyebrow: 'TEAMET',
+        teamHeading: 'Mathias och Janina i Klaukkala',
         storyHeading: 'Var kommer namnet ME ifrån?',
         storyText: 'ME kommer ursprungligen från namnet Mathias Eklund — men samtidigt betyder det oss alla. På finska "me" och på engelska "me" gör namnet både personligt och gemensamt: varje behandling byggs med människan som utgångspunkt.',
         philosophyHeading: 'Vår behandlingsfilosofi',

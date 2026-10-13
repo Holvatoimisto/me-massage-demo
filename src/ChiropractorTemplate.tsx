@@ -253,7 +253,7 @@ export function ChiropractorTemplate() {
                     <Star size={12} fill="currentColor" strokeWidth={1.6} className="text-[#F2D890]" />
                   )}
                   <span className="text-white/65">
-                    {stat.label === 'Google-arvostelu' ? tStr('hero.statRating') : stat.label === 'Vuodesta lähtien' ? tStr('hero.statSince') : stat.label === 'Koulutetut hierojat' ? tStr('hero.statTrained') : stat.label}
+                    {stat.label === 'Google-arvostelu' ? tStr('hero.statRating') : stat.label === 'arvostelua' ? tStr('hero.statReviews') : stat.label === 'Vuodesta lähtien' ? tStr('hero.statSince') : stat.label === 'Koulutetut hierojat' ? tStr('hero.statTrained') : stat.label}
                   </span>
                 </span>
               </span>
@@ -273,6 +273,14 @@ export function ChiropractorTemplate() {
                 <h2 className="font-cormorant text-[32px] md:text-[40px] text-[#152238] leading-[1.12] tracking-[-0.01em] mb-6 max-w-[420px]">{tStr('brandIntro.headline')}</h2>
                 <p className="font-inter text-[14px] text-[#5A6A7A] leading-[1.8] max-w-[460px] mb-5">{tStr('brandIntro.p1')}</p>
                 <p className="font-inter text-[14px] text-[#5A6A7A] leading-[1.8] max-w-[460px]">{tStr('brandIntro.p2')}</p>
+                <div className="mt-8">
+                  <img
+                    src="/assets/koulutettujenhierojienliitto.jfif"
+                    alt="Koulutettujen Hierojien Liitto"
+                    loading="lazy"
+                    className="w-14 h-14 md:w-16 md:h-16 rounded-full border border-[#152238]/10 bg-white object-cover"
+                  />
+                </div>
               </div>
               <div className="md:order-2">
                 <div className="relative">

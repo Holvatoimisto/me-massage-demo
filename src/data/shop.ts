@@ -29,6 +29,8 @@ export interface ShopService {
   key: ShopServiceKey;
   /** Finnish display label; other languages come from shop.serviceNames translations. */
   label: string;
+  /** Treatment image shown in the configurator (same assets as the homepage). */
+  image: string;
   durations: ShopDurationOption[];
 }
 
@@ -36,6 +38,7 @@ export const shopServices: ShopService[] = [
   {
     key: 'classic',
     label: 'Klassinen hieronta',
+    image: '/assets/klassinen-hieronta-kuva-ilman-taustaa.png',
     durations: [
       {
         duration: '20 min', price: 35, giftProductId: 1245,
@@ -74,6 +77,7 @@ export const shopServices: ShopService[] = [
   {
     key: 'hotStone',
     label: 'Kuumakivi ja klassinen hieronta',
+    image: '/assets/kuuma-kivi-mathias.png',
     durations: [
       {
         duration: '50 min', price: 70, giftProductId: 1266,
@@ -96,6 +100,7 @@ export const shopServices: ShopService[] = [
   {
     key: 'jaw',
     label: 'Purentalihashieronta',
+    image: '/assets/purenta-lihas-hieronta-kuva.png',
     durations: [
       {
         duration: '50 min', price: 70, giftProductId: 1268,
@@ -110,6 +115,7 @@ export const shopServices: ShopService[] = [
   {
     key: 'iastm',
     label: 'Faskiarautakäsittely',
+    image: '/assets/mathias-fascia-hoito.png',
     durations: [
       {
         duration: '20 min', price: 50, giftProductId: 1917,

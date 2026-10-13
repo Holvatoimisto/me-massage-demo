@@ -6,7 +6,7 @@ import { useCart } from '@/contexts/CartContext';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { ScrollReveal } from '@/components/ScrollReveal';
-import { StepHeading, Choice, Segmented } from '@/components/shop/controls';
+import { StepHeading, Choice, Segmented, ServiceChoice } from '@/components/shop/controls';
 import { PurchaseSummary } from '@/components/shop/PurchaseSummary';
 import { ShopInfoSections } from '@/components/shop/ShopInfoSections';
 import { shopServices, openGiftCardValues, shopAssets, type ShopServiceKey } from '@/data/shop';
@@ -171,15 +171,15 @@ export function ShopGiftCardsPage() {
               <div className="flex flex-col gap-8">
                 <div>
                   <StepHeading>{t('stepService')}</StepHeading>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                  <div className="grid grid-cols-2 gap-2.5">
                     {shopServices.map((s) => (
-                      <Choice
+                      <ServiceChoice
                         key={s.key}
                         selected={s.key === serviceKey}
                         onClick={() => { setServiceKey(s.key); setDurationIdx(Math.min(durationIdx, s.durations.length - 1)); }}
-                      >
-                        <span className="font-inter text-[14px] font-medium text-[#152238]">{t(`serviceNames.${s.key}`)}</span>
-                      </Choice>
+                        image={s.image}
+                        label={t(`serviceNames.${s.key}`)}
+                      />
                     ))}
                   </div>
                 </div>
@@ -245,6 +245,9 @@ export function ShopGiftCardsPage() {
               <PurchaseSummary
                 image={shopAssets.giftCardImage}
                 imageAlt="ME massage lahjakortti"
+                serviceImage={service.image}
+                serviceImageAlt={serviceLabel}
+                selectionBadge={duration.duration}
                 title={serviceLabel}
                 subtitle={duration.duration}
                 price={duration.price}
