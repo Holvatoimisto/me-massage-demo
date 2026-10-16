@@ -173,12 +173,12 @@ export function ChiropractorTemplate() {
 
       {/* Hero */}
       <section className="relative overflow-hidden">
-        <div className="absolute inset-0 scale-110 min-[1200px]:scale-[1.45] min-[1200px]:-translate-x-[4%] min-[1200px]:origin-[50%_10%]" aria-hidden="true">
+        <div className="absolute inset-0 min-[1200px]:scale-[1.45] min-[1200px]:-translate-x-[4%] min-[1200px]:origin-[50%_10%]" aria-hidden="true">
           <img
             src={templateData.hero.backgroundImages[0]}
             alt=""
             loading="eager"
-            className="absolute inset-0 w-full h-full object-cover object-[85%_10%] min-[1200px]:object-[50%_10%]"
+            className="absolute inset-0 w-full h-full object-cover object-[62%_32%] min-[1200px]:object-[50%_10%]"
           />
         </div>
         <div className="absolute inset-0 bg-[#152238]/65" />
@@ -221,17 +221,17 @@ export function ChiropractorTemplate() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.55 }}
-            className="flex flex-col sm:flex-row items-center gap-4 mb-11 md:[@media(max-height:800px)]:mb-6"
+            className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-11 md:[@media(max-height:800px)]:mb-6"
           >
             <button
               onClick={() => openBookingModal()}
-              className={`inline-flex min-h-[52px] items-center justify-center px-8 py-3 rounded-lg font-inter text-[14px] font-semibold tracking-wide cursor-pointer bg-white text-[#152238] border border-white shadow-[0_4px_20px_rgba(0,0,0,0.25)] hover:bg-[#F3F0EB] hover:shadow-[0_8px_28px_rgba(0,0,0,0.32)] transition-all duration-300`}
+              className={`inline-flex w-full sm:w-auto min-h-[52px] items-center justify-center px-8 py-3 rounded-lg font-inter text-[14px] font-semibold tracking-wide cursor-pointer bg-white text-[#152238] border border-white shadow-[0_4px_20px_rgba(0,0,0,0.25)] hover:bg-[#F3F0EB] hover:shadow-[0_8px_28px_rgba(0,0,0,0.32)] transition-all duration-300`}
             >
               {tStr('hero.bookNow')}
             </button>
             <a
               href={templateData.hero.ctaSecondary.href}
-              className="inline-flex min-h-[52px] items-center justify-center px-8 py-3 rounded-lg font-inter text-[14px] font-semibold tracking-wide text-white border border-white/30 hover:bg-white/10 transition-colors duration-300"
+              className="inline-flex w-full sm:w-auto min-h-[52px] items-center justify-center px-8 py-3 rounded-lg font-inter text-[14px] font-semibold tracking-wide text-white border border-white/30 hover:bg-white/10 transition-colors duration-300"
             >
               {tStr('hero.exploreServices')}
             </a>
@@ -242,11 +242,13 @@ export function ChiropractorTemplate() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.75 }}
-            className="flex flex-wrap items-center justify-start gap-x-4 gap-y-2 font-inter text-[13px] text-white/85 tracking-[0.02em]"
+            className="flex flex-col items-start gap-2.5 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-4 sm:gap-y-2 font-inter text-[13px] text-white/85 tracking-[0.02em]"
           >
             {templateData.hero.stats.map((stat, i) => (
-              <span key={i} className="inline-flex items-center gap-4">
-                {i > 0 && <span className="text-white/30" aria-hidden="true">•</span>}
+              <span key={i} className="inline-flex items-center gap-2.5 sm:gap-4">
+                {/* Mobile: own bullet per row; sm+: separator only between items */}
+                <span className="w-1 h-1 rounded-full bg-white/30 sm:hidden" aria-hidden="true" />
+                {i > 0 && <span className="hidden sm:inline text-white/30" aria-hidden="true">•</span>}
                 <span className="inline-flex items-center gap-1.5">
                   {stat.value && <span className="font-semibold text-white/95">{stat.value}</span>}
                   {stat.value === '5.0' && (
