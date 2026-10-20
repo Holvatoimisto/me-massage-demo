@@ -7,7 +7,7 @@ import { Footer } from '@/components/Footer';
 import { PageHero } from '@/components/PageHero';
 import { FinalCtaSection } from '@/components/FinalCtaSection';
 import { ScrollReveal } from '@/components/ScrollReveal';
-import { locations } from '@/data/locations';
+import { locations, localizedLocation } from '@/data/locations';
 import { businessInfo } from '@/data/site';
 import { bookingPrimaryOnLightClasses } from '@/lib/bookingCta';
 
@@ -73,20 +73,22 @@ export function ContactPage() {
             <h2 className="font-cormorant text-[24px] md:text-[28px] text-[#152238] leading-[1.3] mb-10 text-center">{t('locationsHeading')}</h2>
           </ScrollReveal>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-            {locations.map((location, i) => (
+            {locations.map((location, i) => {
+              const localized = localizedLocation(location.slug, tStr);
+              return (
               <ScrollReveal key={location.slug} delay={0.05 + i * 0.08} className="h-full">
                 <article className="bg-white rounded-xl border border-[#E2E8F0]/60 overflow-hidden h-full flex flex-col">
                   <img
                     src={location.image}
-                    alt={`ME massage ${location.name}`}
+                    alt={`ME massage ${localized.name}`}
                     className="w-full aspect-[16/10] object-cover object-center"
                   />
                   <div className="p-7 flex flex-col flex-1">
-                    <h3 className="font-cormorant text-[24px] text-[#152238] leading-[1.2] mb-3">{location.name}</h3>
+                    <h3 className="font-cormorant text-[24px] text-[#152238] leading-[1.2] mb-3">{localized.name}</h3>
                     <p className="font-inter text-[13px] text-[#5A6A7A] leading-[1.7] mb-2 flex items-start gap-2">
                       <MapPin size={14} strokeWidth={1.5} className="shrink-0 mt-[3px]" />
                       <span>
-                        {location.addressLines.map((line) => (
+                        {localized.addressLines.map((line) => (
                           <span key={line} className="block">{line}</span>
                         ))}
                       </span>
@@ -115,7 +117,8 @@ export function ContactPage() {
                   </div>
                 </article>
               </ScrollReveal>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

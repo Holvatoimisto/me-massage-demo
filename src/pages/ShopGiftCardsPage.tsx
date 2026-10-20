@@ -109,6 +109,8 @@ export function ShopGiftCardsPage() {
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
+          required
+          aria-required="true"
           className="w-full max-w-[280px] rounded-lg border border-[#E2E8F0] px-4 py-2.5 font-inter text-[14px] text-[#152238] focus:outline-none focus:border-[#152238]/50"
         />
         <p className="font-inter text-[11px] text-[#5A6A7A] mt-1.5">{t(type === 'gift' ? 'recipientHelper' : 'ownNameHelper')}</p>
@@ -255,6 +257,7 @@ export function ShopGiftCardsPage() {
                 note={t('deliveryNote')}
                 addLabel={t('addToCart').replace('{price}', String(duration.price))}
                 onAdd={addServiceCard}
+                addDisabled={!recipientName.trim()}
               />
             ) : (
               <PurchaseSummary
@@ -267,6 +270,7 @@ export function ShopGiftCardsPage() {
                 note={t('deliveryNote')}
                 addLabel={openEntry ? t('addToCart').replace('{price}', String(openEntry.value)) : t('addToCart').replace('{price}', '—')}
                 onAdd={addOpenCard}
+                addDisabled={!openRecipientName.trim()}
               />
             )}
           </ScrollReveal>

@@ -33,6 +33,43 @@ export interface LocationData {
   reviewNames: string[];
 }
 
+export type LocationSlug = LocationData['slug'];
+
+/**
+ * Translation keys for the user-visible location name and address. The
+ * factual Finnish data above (used for map URLs, emails and internal
+ * matching) stays canonical; renderers localize via these keys + tStr.
+ */
+export const locationTranslationKeys: Record<
+  LocationSlug,
+  { name: string; address: string; addressLine1: string; addressLine2: string }
+> = {
+  klaukkala: {
+    name: 'locations.nameKlaukkala',
+    address: 'locations.addressKlaukkala',
+    addressLine1: 'locations.addressKlaukkalaLine1',
+    addressLine2: 'locations.addressKlaukkalaLine2',
+  },
+  vaasa: {
+    name: 'locations.nameVaasa',
+    address: 'locations.addressVaasa',
+    addressLine1: 'locations.addressVaasaLine1',
+    addressLine2: 'locations.addressVaasaLine2',
+  },
+};
+
+export const localizedLocation = (
+  slug: LocationSlug,
+  tStr: (path: string) => string,
+): { name: string; address: string; addressLines: string[] } => {
+  const keys = locationTranslationKeys[slug];
+  return {
+    name: tStr(keys.name),
+    address: tStr(keys.address),
+    addressLines: [tStr(keys.addressLine1), tStr(keys.addressLine2)],
+  };
+};
+
 export const locations: LocationData[] = [
   {
     slug: 'klaukkala',

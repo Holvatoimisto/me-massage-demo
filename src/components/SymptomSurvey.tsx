@@ -4,7 +4,7 @@ import { Check } from 'lucide-react';
 import { useLang } from '@/contexts/LanguageContext';
 import { useBookingModal } from '@/contexts/BookingModalContext';
 import { serviceOverviews } from '@/data/services';
-import { ajasServiceDurations, type ServiceKey } from '@/data/ajas';
+import { type ServiceKey } from '@/data/ajas';
 import { bookingPrimaryOnLightClasses } from '@/lib/bookingCta';
 
 type AreaKey = 'niska' | 'selka' | 'leuka' | 'kasi' | 'jalka';
@@ -20,40 +20,35 @@ interface Recommendation {
 }
 
 /**
- * Generic appointment-time guidance before service-specific clamping.
- * Strongest signal is the number of selected body areas; symptom duration
- * raises the recommendation for broader/longer situations.
+ * Area-based appointment length (client-confirmed Oct 19 rules).
+ * Body-area breadth — not symptom duration — now drives the duration.
+ * Jaw is excluded: it is always its own 50 min treatment.
  */
-const genericDuration = (areaCount: number, durationKey?: string): number => {
-  if (areaCount >= 3) {
-    return durationKey === 'yli6kk' || durationKey === 'toistuu' ? 110 : 80;
-  }
-  if (areaCount === 2) {
-    return durationKey === '6kk' || durationKey === 'yli6kk' || durationKey === 'toistuu' ? 80 : 50;
-  }
-  // One area: 20 min only for a clearly limited, short-lived situation.
-  return durationKey === 'viikko' ? 20 : 50;
-};
-
-/** Clamp a generic duration to durations that actually exist for the service. */
-const clampDuration = (serviceKey: ServiceKey, generic: number): number => {
-  const allowed = ajasServiceDurations[serviceKey].map((o) => o.duration);
-  // Prefer the smallest allowed duration that still covers the generic estimate;
-  // if none covers it, take the longest available.
-  return allowed.find((d) => d >= generic) ?? allowed[allowed.length - 1];
+const getAreaBasedDuration = (nonJawAreas: AreaKey[]): number => {
+  // One area below the waist + any upper-body area → broad combination.
+  if (nonJawAreas.includes('jalka') && nonJawAreas.some((a) => a !== 'jalka')) return 80;
+  // Three or more non-jaw areas → 80.
+  if (nonJawAreas.length >= 3) return 80;
+  // One area or upper-body-only pairs → 50.
+  return 50;
 };
 
 /**
- * Lightweight guidance rules — baseline preserved from the original
- * questionnaire, extended with explicit client rules. Not a diagnostic tool.
+ * Lightweight guidance rules — client-confirmed final rule set (Oct 19).
+ * Not a diagnostic tool.
  *
- * Priority order (specific rules beat general ones):
- * 1. headache (niska + paansarky) → Jaw 50 / Classic 50
- * 2. jaw selected → Jaw 50 (baseline Classic alternative for jaw+niska)
- * 3. back-only long/recurring → IASTM 50 / Hot Stone 50 (order by relaxation)
- * 4. leg-only over 6 months → IASTM 50 / Hot Stone 50 (order by relaxation)
- * 5. relaxation goal → Hot Stone primary (real durations via clampDuration)
- * 6. baseline recommendation behavior
+ * Explicit priority order (specific rules beat general ones):
+ * 1. niska + paansarky → Jaw 50 / Classic 50 (relaxation never overrides)
+ * 2. jaw selected → Jaw 50 (Classic alternative for the compatible jaw+niska combo)
+ * 3. urheiluvamma → Classic primary at area-based duration (single area = 50)
+ * 4. all four non-jaw areas → Classic 110 / Hot Stone 80 (fixed — Hot Stone has no 110)
+ * 5. selka-only yli6kk/toistuu → IASTM 50 / Hot Stone 50 (relaxation swaps order)
+ * 6. jalka-only yli6kk → IASTM 50 / Hot Stone 50 (relaxation swaps order)
+ * 7. relaxation goal → Hot Stone primary (real durations 50/80 only, never 110)
+ * 8. toistuu → Classic primary / Hot Stone alternative
+ * 9. niska-only kireys, short-lived → Classic 20
+ * 10. single-area defaults (kasi also gets a Classic 20 alternative)
+ * Multi-area non-jaw combinations → Classic/Hot Stone at the area-based duration.
  */
 const getRecommendation = (
   areas: AreaKey[],
@@ -62,8 +57,10 @@ const getRecommendation = (
   wish?: string,
 ): Recommendation => {
   const relax = wish === 'rentoutuminen';
+  const nonJaw = areas.filter((a) => a !== 'leuka');
+  const areaDuration = getAreaBasedDuration(nonJaw);
 
-  // 1. Explicit headache rule — fixed durations, no generic conversion.
+  // 1. Headache rule — fixed durations.
   if (areas.includes('niska') && symptom === 'paansarky') {
     return {
       primary: { serviceKey: 'jaw', duration: 50 },
@@ -73,61 +70,92 @@ const getRecommendation = (
 
   // 2. Jaw selected → Jaw 50 (its only bookable duration in the funnel).
   if (areas.includes('leuka')) {
-    const primary: RecommendationOption = { serviceKey: 'jaw', duration: 50 };
-    // Baseline alternative for jaw combined with another (compatible) area.
-    const generic = genericDuration(areas.length, durationKey);
     return {
-      primary,
-      alternative:
-        areas.length >= 2 && areas.some((a) => a !== 'leuka')
-          ? { serviceKey: 'classic', duration: clampDuration('classic', generic) }
-          : undefined,
+      primary: { serviceKey: 'jaw', duration: 50 },
+      // Jaw is only compatible with niska; Classic alternative for that combo.
+      alternative: nonJaw.length > 0 ? { serviceKey: 'classic', duration: getAreaBasedDuration(nonJaw) } : undefined,
     };
   }
 
-  // 3. Back-only, long-standing or recurring → IASTM 50 / Hot Stone 50.
-  if (areas.length === 1 && areas[0] === 'selka' && (durationKey === 'yli6kk' || durationKey === 'toistuu')) {
+  // 3. Sports injury → Classic primary, area-based duration (duration question
+  // is skipped, so breadth alone determines length; single area = 50).
+  if (symptom === 'urheiluvamma') {
+    return {
+      primary: { serviceKey: 'classic', duration: areaDuration },
+    };
+  }
+
+  // 4. All four non-jaw areas → Classic 110 / Hot Stone 80 (fixed rule).
+  if (nonJaw.length === 4) {
+    return {
+      primary: { serviceKey: 'classic', duration: 110 },
+      alternative: { serviceKey: 'hotStone', duration: 80 },
+    };
+  }
+
+  // 5. Back-only, long-standing or recurring → IASTM 50 / Hot Stone 50.
+  if (nonJaw.length === 1 && nonJaw[0] === 'selka' && (durationKey === 'yli6kk' || durationKey === 'toistuu')) {
     return relax
       ? { primary: { serviceKey: 'hotStone', duration: 50 }, alternative: { serviceKey: 'iastm', duration: 50 } }
       : { primary: { serviceKey: 'iastm', duration: 50 }, alternative: { serviceKey: 'hotStone', duration: 50 } };
   }
 
-  // 4. Leg-only, over 6 months → IASTM 50 / Hot Stone 50.
-  if (areas.length === 1 && areas[0] === 'jalka' && durationKey === 'yli6kk') {
+  // 6. Leg-only, over 6 months → IASTM 50 / Hot Stone 50.
+  // (Recurring-but-not-yli6kk leg stays Classic/Hot Stone via the general rules.)
+  if (nonJaw.length === 1 && nonJaw[0] === 'jalka' && durationKey === 'yli6kk') {
     return relax
       ? { primary: { serviceKey: 'hotStone', duration: 50 }, alternative: { serviceKey: 'iastm', duration: 50 } }
       : { primary: { serviceKey: 'iastm', duration: 50 }, alternative: { serviceKey: 'hotStone', duration: 50 } };
   }
 
-  let primaryKey: ServiceKey = 'classic';
-  // 5. Relaxation goal → Hot Stone primary.
+  // 7. Relaxation → Hot Stone primary at the area-based duration (50/80 only).
   if (relax) {
-    primaryKey = 'hotStone';
-  } else if (areas.includes('selka') && symptom === 'kireys') {
-    // 6. Baseline tendency: back + muscle tension favors IASTM.
-    primaryKey = 'iastm';
+    return {
+      primary: { serviceKey: 'hotStone', duration: areaDuration },
+      alternative: { serviceKey: 'classic', duration: areaDuration },
+    };
   }
 
-  let generic = genericDuration(areas.length, durationKey);
-  // Niska-hartia + lihaskireys may be 20 min for short-lived situations
-  // (6kk / yli6kk / toistuu never produce 20 min via genericDuration).
+  // 8. Recurring symptom (outside higher-priority rules) → Classic / Hot Stone.
+  if (durationKey === 'toistuu') {
+    return {
+      primary: { serviceKey: 'classic', duration: areaDuration },
+      alternative: { serviceKey: 'hotStone', duration: areaDuration },
+    };
+  }
+
+  // 9. Niska-only short-lived muscle tension → Classic 20.
   if (
-    areas.length === 1 && areas[0] === 'niska' && symptom === 'kireys' &&
+    nonJaw.length === 1 && nonJaw[0] === 'niska' && symptom === 'kireys' &&
     (durationKey === 'viikko' || durationKey === '4vko')
   ) {
-    generic = 20;
-  }
-  const primary: RecommendationOption = { serviceKey: primaryKey, duration: clampDuration(primaryKey, generic) };
-
-  // Baseline alternative only where there is a genuine, defensible overlap.
-  let altKey: ServiceKey | undefined;
-  if (primaryKey === 'hotStone' || primaryKey === 'iastm') {
-    altKey = 'classic';
+    return { primary: { serviceKey: 'classic', duration: 20 } };
   }
 
+  // 10. Single-area and multi-area defaults.
+  if (nonJaw.length === 1) {
+    const area = nonJaw[0];
+    if (area === 'kasi') {
+      // Hand/shoulder: Classic 50 with a shorter Classic 20 alternative.
+      return {
+        primary: { serviceKey: 'classic', duration: 50 },
+        alternative: { serviceKey: 'classic', duration: 20 },
+      };
+    }
+    if (area === 'niska') {
+      return { primary: { serviceKey: 'classic', duration: 50 } };
+    }
+    // selka / jalka normal: Classic 50 with Hot Stone 50 alternative.
+    return {
+      primary: { serviceKey: 'classic', duration: 50 },
+      alternative: { serviceKey: 'hotStone', duration: 50 },
+    };
+  }
+
+  // Two/three non-jaw combinations → Classic / Hot Stone at area-based duration.
   return {
-    primary,
-    alternative: altKey ? { serviceKey: altKey, duration: clampDuration(altKey, generic) } : undefined,
+    primary: { serviceKey: 'classic', duration: areaDuration },
+    alternative: { serviceKey: 'hotStone', duration: areaDuration },
   };
 };
 

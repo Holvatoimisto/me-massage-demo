@@ -92,8 +92,8 @@ function ScrollReveal({ children, delay = 0, className = '' }: { children: React
 
 const getLocationCards = (tStr: (p: string) => string) => [
   {
-    name: 'Klaukkala',
-    address: 'Lepsämäntie 1, 2 krs, 01800 Klaukkala',
+    name: tStr('locations.nameKlaukkala'),
+    address: tStr('locations.addressKlaukkala'),
     image: locations[0].image,
     hoverImage: locations[0].hoverImage,
     description: tStr('locations.supportingCopy'),
@@ -101,8 +101,8 @@ const getLocationCards = (tStr: (p: string) => string) => [
     href: '/toimipisteet/klaukkala',
   },
   {
-    name: 'Vaasa',
-    address: 'Rantakatu 11, 65100 Vaasa',
+    name: tStr('locations.nameVaasa'),
+    address: tStr('locations.addressVaasa'),
     image: locations[1].image,
     hoverImage: locations[1].hoverImage,
     description: tStr('locations.supportingCopy'),
@@ -237,6 +237,22 @@ export function ChiropractorTemplate() {
             </a>
           </motion.div>
 
+          {/* KHL trust badge — mobile: in the left content flow between the
+              CTA stack and the trust list; sm+: rendered as a lower-right badge. */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.65 }}
+            className="sm:hidden mb-6"
+          >
+            <img
+              src="/assets/koulutettujenhierojienliitto.jfif"
+              alt="Koulutettujen Hierojien Liitto"
+              loading="lazy"
+              className="w-12 h-12 rounded-full border border-white/20 bg-white object-cover shadow-[0_4px_16px_rgba(0,0,0,0.25)]"
+            />
+          </motion.div>
+
           {/* Trust row — minimal inline */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -263,6 +279,17 @@ export function ChiropractorTemplate() {
           </motion.div>
           </div>
         </div>
+
+        {/* KHL trust badge — tablet/desktop: restrained lower-right badge that
+            stays clear of the headline and the treatment action. */}
+        <div className="hidden sm:block absolute bottom-8 right-6 md:bottom-10 md:right-10 z-10">
+          <img
+            src="/assets/koulutettujenhierojienliitto.jfif"
+            alt="Koulutettujen Hierojien Liitto"
+            loading="lazy"
+            className="w-14 h-14 md:w-16 md:h-16 rounded-full border border-white/25 bg-white object-cover shadow-[0_6px_20px_rgba(0,0,0,0.3)]"
+          />
+        </div>
       </section>
 
       {/* Brand intro */}
@@ -275,14 +302,6 @@ export function ChiropractorTemplate() {
                 <h2 className="font-cormorant text-[32px] md:text-[40px] text-[#152238] leading-[1.12] tracking-[-0.01em] mb-6 max-w-[420px]">{tStr('brandIntro.headline')}</h2>
                 <p className="font-inter text-[14px] text-[#5A6A7A] leading-[1.8] max-w-[460px] mb-5">{tStr('brandIntro.p1')}</p>
                 <p className="font-inter text-[14px] text-[#5A6A7A] leading-[1.8] max-w-[460px]">{tStr('brandIntro.p2')}</p>
-                <div className="mt-8">
-                  <img
-                    src="/assets/koulutettujenhierojienliitto.jfif"
-                    alt="Koulutettujen Hierojien Liitto"
-                    loading="lazy"
-                    className="w-14 h-14 md:w-16 md:h-16 rounded-full border border-[#152238]/10 bg-white object-cover"
-                  />
-                </div>
               </div>
               <div className="md:order-2">
                 <div className="relative">

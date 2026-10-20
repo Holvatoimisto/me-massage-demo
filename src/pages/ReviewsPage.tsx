@@ -7,7 +7,7 @@ import { Footer } from '@/components/Footer';
 import { PageHero } from '@/components/PageHero';
 import { ReviewCard, type ReviewCardData } from '@/components/ReviewCard';
 import { ScrollReveal } from '@/components/ScrollReveal';
-import { locations, type LocationData } from '@/data/locations';
+import { locations, localizedLocation, locationTranslationKeys, type LocationData } from '@/data/locations';
 import { locationReviews, type LocationReviewsData } from '@/data/reviews';
 import { teamAtLocation, type TeamMember } from '@/data/team';
 import { buildAjasBookingUrl } from '@/data/ajas';
@@ -156,7 +156,7 @@ export function ReviewsPage() {
                           : 'text-[#5A6A7A] hover:text-[#152238] cursor-pointer'
                       }`}
                     >
-                      {l.name}
+                      {tStr(locationTranslationKeys[l.slug].name)}
                     </button>
                   );
                 })}
@@ -168,7 +168,7 @@ export function ReviewsPage() {
           <ScrollReveal>
             <div className="text-center mb-12 md:mb-14">
               <h3 className="font-cormorant text-[22px] md:text-[26px] text-[#152238] leading-[1.25] mb-4">
-                {businessInfo.name} {location.name}
+                {businessInfo.name} {localizedLocation(location.slug, tStr).name}
               </h3>
               <div className="flex items-center justify-center gap-1 mb-2 text-[#152238]" aria-hidden="true">
                 {Array.from({ length: 5 }).map((_, s) => (

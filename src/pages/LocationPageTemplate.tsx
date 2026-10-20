@@ -6,7 +6,7 @@ import { ScrollReveal } from '@/components/ScrollReveal';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { useLang } from '@/contexts/LanguageContext';
-import { locations, type LocationData } from '@/data/locations';
+import { locations, localizedLocation, type LocationData } from '@/data/locations';
 import { teamAtLocation } from '@/data/team';
 import { serviceOverviews } from '@/data/services';
 import { pricingTabs } from '@/data/pricing';
@@ -78,6 +78,7 @@ function LocationPage({ location }: { location: LocationData }) {
   const therapists = teamAtLocation(location.slug);
 
   const bookingLabel = tStr(location.bookingLabelKey);
+  const localized = localizedLocation(location.slug, tStr);
 
   return (
     <div className="bg-white min-h-[100dvh]">
@@ -112,7 +113,7 @@ function LocationPage({ location }: { location: LocationData }) {
                 <p className="font-inter text-[14px] text-[#1F2937] leading-[1.7] mb-8 flex items-start gap-2">
                   <MapPin size={15} strokeWidth={1.5} className="shrink-0 mt-[3px] text-[#5A6A7A]" />
                   <span>
-                    {location.addressLines.map((line) => (
+                    {localized.addressLines.map((line) => (
                       <span key={line} className="block">{line}</span>
                     ))}
                   </span>
@@ -130,7 +131,7 @@ function LocationPage({ location }: { location: LocationData }) {
               <div className="overflow-hidden rounded-lg">
                 <img
                   src={location.image}
-                  alt={location.name}
+                  alt={localized.name}
                   className="w-full aspect-[4/3] object-cover object-center"
                 />
               </div>
@@ -169,7 +170,7 @@ function LocationPage({ location }: { location: LocationData }) {
             <div className="rounded-lg overflow-hidden border border-[#E2E8F0]" style={{ filter: 'grayscale(25%) contrast(95%) brightness(95%)' }}>
               <iframe
                 src={location.mapEmbedSrc}
-                title={`ME massage ${location.name}`}
+                title={`ME massage ${localized.name}`}
                 loading="lazy"
                 allowFullScreen
                 referrerPolicy="no-referrer-when-downgrade"
@@ -281,7 +282,7 @@ function LocationPage({ location }: { location: LocationData }) {
                   <MapPin size={12} strokeWidth={1.5} /> {tStr('locationPage.addressLabel')}
                 </p>
                 <p className="font-inter text-[14px] text-[#1F2937] leading-[1.7]">
-                  {location.addressLines.map((line) => (
+                  {localized.addressLines.map((line) => (
                     <span key={line} className="block">{line}</span>
                   ))}
                 </p>

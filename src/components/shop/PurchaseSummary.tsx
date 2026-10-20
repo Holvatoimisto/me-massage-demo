@@ -18,6 +18,7 @@ export function PurchaseSummary({
   note,
   addLabel,
   onAdd,
+  addDisabled = false,
 }: {
   image: string;
   imageAlt: string;
@@ -38,6 +39,7 @@ export function PurchaseSummary({
   note: string;
   addLabel: string;
   onAdd: () => void;
+  addDisabled?: boolean;
 }) {
   const { tStr } = useLang();
 
@@ -89,7 +91,8 @@ export function PurchaseSummary({
               <button
                 type="button"
                 onClick={onAdd}
-                className="inline-flex w-full min-h-[52px] items-center justify-center px-8 py-3 rounded-lg font-inter text-[14px] font-semibold tracking-wide whitespace-nowrap bg-[#152238] text-white hover:bg-[#1E3A5F] transition-colors duration-300 cursor-pointer"
+                disabled={addDisabled}
+                className="inline-flex w-full min-h-[52px] items-center justify-center px-8 py-3 rounded-lg font-inter text-[14px] font-semibold tracking-wide whitespace-nowrap bg-[#152238] text-white hover:bg-[#1E3A5F] transition-colors duration-300 cursor-pointer disabled:bg-[#152238]/40 disabled:hover:bg-[#152238]/40 disabled:cursor-not-allowed"
               >
                 {addLabel}
               </button>
@@ -108,7 +111,8 @@ export function PurchaseSummary({
           <button
             type="button"
             onClick={onAdd}
-            className="inline-flex w-full min-h-[50px] items-center justify-center px-6 py-3 rounded-lg font-inter text-[14px] font-semibold tracking-wide whitespace-nowrap bg-[#152238] text-white hover:bg-[#1E3A5F] transition-colors duration-300 cursor-pointer"
+            disabled={addDisabled}
+            className="inline-flex w-full min-h-[50px] items-center justify-center px-6 py-3 rounded-lg font-inter text-[14px] font-semibold tracking-wide whitespace-nowrap bg-[#152238] text-white hover:bg-[#1E3A5F] transition-colors duration-300 cursor-pointer disabled:bg-[#152238]/40 disabled:hover:bg-[#152238]/40 disabled:cursor-not-allowed"
           >
             {addLabel}
           </button>

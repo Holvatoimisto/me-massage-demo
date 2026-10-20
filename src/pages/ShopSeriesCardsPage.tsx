@@ -152,6 +152,8 @@ export function ShopSeriesCardsPage() {
                     type="text"
                     value={recipientName}
                     onChange={(e) => setRecipientName(e.target.value)}
+                    required
+                    aria-required="true"
                     className="w-full max-w-[280px] rounded-lg border border-[#E2E8F0] px-4 py-2.5 font-inter text-[14px] text-[#152238] focus:outline-none focus:border-[#152238]/50"
                   />
                   <p className="font-inter text-[11px] text-[#5A6A7A] mt-1.5">{t(recipientType === 'gift' ? 'recipientHelper' : 'ownNameHelper')}</p>
@@ -198,6 +200,7 @@ export function ShopSeriesCardsPage() {
               note={t('deliveryNote')}
               addLabel={t('addToCart').replace('{price}', String(selected.price))}
               onAdd={addSeriesCard}
+              addDisabled={!recipientName.trim()}
             />
           </ScrollReveal>
         </div>

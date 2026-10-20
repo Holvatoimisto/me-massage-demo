@@ -36,19 +36,25 @@ interface ServiceDetail {
   key: ServiceKey;
   slug: string;
   image: string;
-  /** Optional object-position for the hero image. */
-  imagePosition?: string;
+  /**
+   * Optional object-position for the hero image, as Tailwind arbitrary-value
+   * classes. `positionClass` applies to mobile, `desktopPositionClass`
+   * overrides it from lg up so the desktop letterbox crop can show the
+   * treatment action without changing the approved mobile crop.
+   */
+  positionClass?: string;
+  desktopPositionClass?: string;
 }
 
 const SERVICES: ServiceDetail[] = [
-  { key: 'classic', slug: 'hieronta', image: '/assets/klassinen-hieronta-sininen-pyyhe.png' },
-  { key: 'hotStone', slug: 'kuumakivihieronta', image: '/assets/kuuma-kivi-mathias.png' },
+  { key: 'classic', slug: 'hieronta', image: '/assets/klassinen-hieronta-sininen-pyyhe.png', desktopPositionClass: 'lg:object-[center_28%]' },
+  { key: 'hotStone', slug: 'kuumakivihieronta', image: '/assets/kuuma-kivi-mathias.png', desktopPositionClass: 'lg:object-[center_88%]' },
   { key: 'jaw', slug: 'purentalihashieronta', image: '/assets/purenta-lihas-hieronta-kuva.png' },
-  { key: 'iastm', slug: 'faskiarautakasittely', image: '/assets/fasciarauta hoitokuva.jpg', imagePosition: 'center 78%' },
+  { key: 'iastm', slug: 'faskiarautakasittely', image: '/assets/fasciarauta hoitokuva.jpg', positionClass: 'object-[center_78%]', desktopPositionClass: 'lg:object-[center_92%]' },
 ];
 
-const locationNames = (memberLocations: ('klaukkala' | 'vaasa')[]): string =>
-  memberLocations.length === 2 ? 'Klaukkala ja Vaasa' : 'Klaukkala';
+const locationNames = (memberLocations: ('klaukkala' | 'vaasa')[], tStr: (p: string) => string): string =>
+  memberLocations.length === 2 ? tStr('locations.namesBoth') : tStr('locations.nameKlaukkala');
 
 export function ServicePageTemplate() {
   const { t, tStr, tArr } = useLang();
@@ -109,7 +115,7 @@ export function ServicePageTemplate() {
 
       {/* Hero */}
       <section className="relative h-[52vh] md:h-[56vh] overflow-hidden">
-        <img src={service.image} alt={title} className="w-full h-full object-cover" style={service.imagePosition ? { objectPosition: service.imagePosition } : undefined} />
+        <img src={service.image} alt={title} className={`w-full h-full object-cover ${service.positionClass ?? ''} ${service.desktopPositionClass ?? ''}`} />
         <div className="absolute inset-0 bg-[#152238]/65" />
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-center px-6">
@@ -346,7 +352,7 @@ export function ServicePageTemplate() {
                     <p className="font-inter text-[12px] text-[#94A3B8] leading-[1.5] mb-1.5">{tStr(member.titleKey)}</p>
                     <p className="font-inter text-[11px] text-white/50 tracking-wide flex items-center gap-1.5">
                       <MapPin size={11} strokeWidth={1.5} />
-                      {locationNames(member.locations)}
+                      {locationNames(member.locations, tStr)}
                     </p>
                   </div>
                 </div>

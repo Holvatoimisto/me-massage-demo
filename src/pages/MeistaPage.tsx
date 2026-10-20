@@ -11,6 +11,7 @@ const mathias = teamMembers.find((m) => m.id === 'mathias')!;
 const janina = teamMembers.find((m) => m.id === 'janina')!;
 
 function LocationPills({ locations }: { locations: readonly string[] }) {
+  const { tStr } = useLang();
   return (
     <div className="flex flex-wrap gap-2">
       {locations.map((loc) => (
@@ -18,7 +19,7 @@ function LocationPills({ locations }: { locations: readonly string[] }) {
           key={loc}
           className="inline-flex items-center rounded-full border border-[#152238]/20 bg-white px-3 py-1 font-inter text-[11px] font-semibold uppercase tracking-[0.08em] text-[#152238]"
         >
-          {loc === 'klaukkala' ? 'Klaukkala' : 'Vaasa'}
+          {loc === 'klaukkala' ? tStr('locations.nameKlaukkala') : tStr('locations.nameVaasa')}
         </span>
       ))}
     </div>

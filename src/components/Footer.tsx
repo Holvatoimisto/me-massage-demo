@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { MapPin, Phone, Mail, Instagram, Facebook } from 'lucide-react';
 import { useLang } from '@/contexts/LanguageContext';
 import { businessInfo, footerColumns, locationPhoneContacts } from '@/data/site';
-import { locations } from '@/data/locations';
+import { locations, localizedLocation } from '@/data/locations';
 
 export function Footer() {
   const { tStr } = useLang();
@@ -17,12 +17,13 @@ export function Footer() {
           </div>
           {locations.map((loc) => {
             const phoneGroup = locationPhoneContacts.find((group) => group.location === loc.name);
+            const localized = localizedLocation(loc.slug, tStr);
             return (
               <div key={loc.slug}>
-                <h4 className="font-inter text-[13px] font-semibold uppercase tracking-[0.08em] text-white mb-4">{loc.name}</h4>
+                <h4 className="font-inter text-[13px] font-semibold uppercase tracking-[0.08em] text-white mb-4">{localized.name}</h4>
                 <ul className="space-y-2">
                   <li className="font-inter text-[14px] text-[#94A3B8] flex items-center gap-2">
-                    <MapPin size={14} className="shrink-0" /> {loc.address}
+                    <MapPin size={14} className="shrink-0" /> {localized.address}
                   </li>
                   <li>
                     <a href={`mailto:${loc.email}`} className="font-inter text-[14px] text-[#94A3B8] hover:text-white transition-colors flex items-center gap-2 no-underline">
@@ -76,7 +77,7 @@ export function Footer() {
                     allowFullScreen
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
-                    title={`ME massage ${loc.name}`}
+                    title={`ME massage ${localizedLocation(loc.slug, tStr).name}`}
                   />
                 </div>
               </div>
