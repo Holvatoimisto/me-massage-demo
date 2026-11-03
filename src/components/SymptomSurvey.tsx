@@ -182,8 +182,8 @@ const symptomOptions: { value: string; labelKey: string }[] = [
 const areaSymptomAllowlist: Record<AreaKey, string[]> = {
   niska: ['kireys', 'kipu', 'paansarky', 'urheiluvamma', 'palautuminen'],
   selka: ['kireys', 'kipu', 'urheiluvamma', 'palautuminen'],
-  leuka: ['kireys', 'kipu', 'paansarky', 'puutuminen'],
-  kasi: ['kireys', 'kipu', 'paansarky', 'puutuminen', 'urheiluvamma', 'palautuminen'],
+  leuka: ['kireys', 'kipu', 'paansarky'],
+  kasi: ['kireys', 'kipu', 'puutuminen', 'urheiluvamma', 'palautuminen'],
   jalka: ['kireys', 'kipu', 'puutuminen', 'urheiluvamma', 'palautuminen'],
 };
 
@@ -209,6 +209,22 @@ const singleQuestions: { questionKey: string; values: string[] }[] = [
     values: ['kivunlievitys', 'liikkuvuus', 'kireydenhelpotus', 'palautuminen', 'selvyys', 'rentoutuminen'],
   },
 ];
+
+/**
+ * Client-confirmed goal filtering (translations stay global, only this flow
+ * hides options):
+ * - sports injury: kireydenhelpotus and rentoutuminen are not offered
+ * - jaw alone: rentoutuminen is not offered
+ * Values are returned paired with their original label index.
+ */
+const visibleGoalOptions = (areas: AreaKey[], symptom: string | undefined) =>
+  singleQuestions[1].values
+    .map((value, i) => ({ value, i }))
+    .filter(({ value }) => {
+      if (symptom === 'urheiluvamma' && (value === 'kireydenhelpotus' || value === 'rentoutuminen')) return false;
+      if (areas.length === 1 && areas[0] === 'leuka' && value === 'rentoutuminen') return false;
+      return true;
+    });
 
 export function SymptomSurvey() {
   const { tStr } = useLang();
@@ -377,11 +393,16 @@ export function SymptomSurvey() {
             /* Steps 3–4: duration and goal questions */
             (() => {
               const q = singleQuestions[surveyStep - 3];
+              // The goal question is filtered per client rules; duration is not.
+              const options =
+                surveyStep === 4
+                  ? visibleGoalOptions(areas, answers[2])
+                  : q.values.map((value, i) => ({ value, i }));
               return (
                 <div>
                   <h3 className="font-cormorant text-[22px] md:text-[24px] text-[#152238] leading-[1.35] mb-6">{tStr(`${q.questionKey}.question`)}</h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
-                    {q.values.map((value, i) => (
+                    {options.map(({ value, i }) => (
                       <button
                         key={value}
                         onClick={() => answerSingle(surveyStep, value)}

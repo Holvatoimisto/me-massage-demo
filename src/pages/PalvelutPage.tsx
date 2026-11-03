@@ -39,12 +39,21 @@ export function PalvelutPage() {
               return (
                 <ScrollReveal key={service.key} delay={0.05 + (i % 2) * 0.08} className="h-full">
                   <article className="h-full flex flex-col">
-                    <Link to={service.href} className="block overflow-hidden rounded-lg mb-6 group">
-                      <img
-                        src={service.image}
-                        alt={tStr(`servicePages.${service.key}.title`)}
-                        className="w-full aspect-[16/10] object-cover object-center transition-transform duration-500 group-hover:scale-[1.02]"
-                      />
+                    <Link to={service.href} className={`block overflow-hidden rounded-lg mb-6 group ${service.contain ? 'bg-white' : ''}`}>
+                      {/* Same presentation as the homepage service cards:
+                          transparent PNGs get a white slot, fillScale crops
+                          them; cover photos use object-position. */}
+                      <div
+                        className="w-full aspect-[16/10]"
+                        style={service.fillScale ? { transform: `scale(${service.fillScale})`, transformOrigin: service.fillOrigin || 'top center' } : undefined}
+                      >
+                        <img
+                          src={service.image}
+                          alt={tStr(`servicePages.${service.key}.title`)}
+                          className={`w-full h-full ${service.contain ? 'object-contain' : 'object-cover'} transition-transform duration-500 group-hover:scale-[1.02]`}
+                          style={service.position ? { objectPosition: service.position } : undefined}
+                        />
+                      </div>
                     </Link>
                     <h2 className="font-cormorant text-[24px] md:text-[26px] text-[#152238] leading-[1.2] mb-2">
                       {tStr(`servicePages.${service.key}.title`)}

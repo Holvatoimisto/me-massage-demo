@@ -11,9 +11,18 @@ export function Footer() {
     <footer id="yhteystiedot" className="bg-[#152238] pt-14 md:pt-16 pb-10 md:pb-12 px-6 md:px-12">
       <div className="max-w-[1200px] mx-auto">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 md:gap-12 mb-10">
-          <div>
-            <h3 className="font-cormorant text-[18px] text-white mb-1">{businessInfo.name}</h3>
-            <p className="font-inter text-[13px] text-[#94A3B8]">{tStr('footer.tagline')}</p>
+          <div className="flex items-center justify-between gap-4 sm:block">
+            <div>
+              <h3 className="font-cormorant text-[18px] text-white mb-1">{businessInfo.name}</h3>
+              <p className="font-inter text-[13px] text-[#94A3B8]">{tStr('footer.tagline')}</p>
+            </div>
+            {/* KHL logo — mobile: right of the brand text; sm+: beneath it */}
+            <img
+              src="/assets/koulutettujenhierojienliitto.jfif"
+              alt="Koulutettujen Hierojien Liitto"
+              loading="lazy"
+              className="w-11 h-11 sm:w-28 sm:h-28 sm:mt-5 rounded-full border border-white/15 bg-white object-cover shrink-0"
+            />
           </div>
           {locations.map((loc) => {
             const phoneGroup = locationPhoneContacts.find((group) => group.location === loc.name);

@@ -67,12 +67,9 @@ const templateData = {
     secondaryLabel: 'Myös saatavilla',
     secondaryServices: [
       { image: '/assets/purenta-lihas-hieronta-kuva.png', position: 'center center', title: 'Purentalihashieronta', titleKey: 'services.jaw', descKey: 'services.jawDesc', linkHref: '/palvelut/purentalihashieronta' },
-      { image: '/assets/mathias-fascia-hoito.png', position: 'center 78%', title: 'Faskiarautakäsittely', titleKey: 'services.iastm', descKey: 'services.iastmDesc', linkHref: '/palvelut/faskiarautakasittely' },
+      { image: '/assets/mathias-fascia-hoito.png', position: 'center 100%', imageScale: 1.20, title: 'Faskiarautakäsittely', titleKey: 'services.iastm', descKey: 'services.iastmDesc', linkHref: '/palvelut/faskiarautakasittely' },
       { image: '/assets/lahjakortti-taustalla.png', position: 'center center', contain: true, title: 'Lahja- ja sarjakortit', titleKey: 'services.giftCards', descKey: 'services.giftCardsDesc', linkHref: '/verkkokauppa' },
     ],
-  },
-  finalCta: {
-    backgroundImage: '/assets/me_hero.jpg',
   },
 };
 
@@ -151,8 +148,8 @@ export function ChiropractorTemplate() {
       firstName: lang === 'sv' ? 'från Janina' : lang === 'en' ? 'from Janina' : 'Janinalta',
       title: tStr('team.janina.title'),
       role: 'Hieroja',
-      image: '/assets/me_janina.png',
-      avatar: '/assets/me_janina.png',
+      image: '/assets/janina-uusi-kuva.jpg',
+      avatar: '/assets/janina-uusi-kuva.jpg',
       imagePosition: 'center 20%',
       avatarPosition: 'center center',
       bio: tStr('team.janina.bio'),
@@ -165,6 +162,11 @@ export function ChiropractorTemplate() {
     translatedReviews[reviewIndex % translatedReviews.length],
     translatedReviews[(reviewIndex + 1) % translatedReviews.length],
     translatedReviews[(reviewIndex + 2) % translatedReviews.length],
+  ];
+  const trustLogos = [
+    { src: '/assets/edenred-logo.png', alt: 'Edenred', className: 'max-h-[18px] md:max-h-[22px] max-w-[88px] opacity-90' },
+    { src: '/assets/epassi-logo.png', alt: 'ePassi', className: 'max-h-[16px] md:max-h-[20px] max-w-[82px] opacity-90' },
+    { src: '/assets/mobilepay-logo.jfif', alt: 'MobilePay', className: 'max-h-[18px] md:max-h-[22px] max-w-[76px] opacity-90' },
   ];
   return (
     <div className="min-h-[100dvh] font-inter antialiased">
@@ -237,22 +239,6 @@ export function ChiropractorTemplate() {
             </a>
           </motion.div>
 
-          {/* KHL trust badge — mobile: in the left content flow between the
-              CTA stack and the trust list; sm+: rendered as a lower-right badge. */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.65 }}
-            className="sm:hidden mb-6"
-          >
-            <img
-              src="/assets/koulutettujenhierojienliitto.jfif"
-              alt="Koulutettujen Hierojien Liitto"
-              loading="lazy"
-              className="w-12 h-12 rounded-full border border-white/20 bg-white object-cover shadow-[0_4px_16px_rgba(0,0,0,0.25)]"
-            />
-          </motion.div>
-
           {/* Trust row — minimal inline */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -278,17 +264,6 @@ export function ChiropractorTemplate() {
             ))}
           </motion.div>
           </div>
-        </div>
-
-        {/* KHL trust badge — tablet/desktop: restrained lower-right badge that
-            stays clear of the headline and the treatment action. */}
-        <div className="hidden sm:block absolute bottom-8 right-6 md:bottom-10 md:right-10 z-10">
-          <img
-            src="/assets/koulutettujenhierojienliitto.jfif"
-            alt="Koulutettujen Hierojien Liitto"
-            loading="lazy"
-            className="w-14 h-14 md:w-16 md:h-16 rounded-full border border-white/25 bg-white object-cover shadow-[0_6px_20px_rgba(0,0,0,0.3)]"
-          />
         </div>
       </section>
 
@@ -369,7 +344,11 @@ export function ChiropractorTemplate() {
                         alt={service.title}
                         loading="lazy"
                         className={`absolute inset-0 w-full h-full ${service.contain ? 'object-contain' : 'object-cover'} transition-transform duration-500 ease-out group-hover:scale-[1.03]`}
-                        style={service.position ? { objectPosition: service.position } : undefined}
+                        style={service.position || service.imageScale ? {
+                          objectPosition: service.position,
+                          transform: service.imageScale ? `scale(${service.imageScale})` : undefined,
+                          transformOrigin: service.imageScale ? 'center bottom' : undefined,
+                        } : undefined}
                       />
                       <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(21,34,56,0.92)_0%,rgba(21,34,56,0.5)_36%,rgba(21,34,56,0)_66%)]" aria-hidden="true" />
                       <div className="absolute inset-x-0 bottom-0 p-3.5 md:p-5">
@@ -632,17 +611,23 @@ export function ChiropractorTemplate() {
       </section>
 
       {/* Final CTA */}
-      <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-110" style={{ backgroundImage: `url(${templateData.finalCta.backgroundImage})` }} />
-        <div className="absolute inset-0 bg-[#152238]/80" style={{ backdropFilter: 'blur(3px)', WebkitBackdropFilter: 'blur(3px)' }} />
-        <div className="relative z-10 w-full max-w-[480px] mx-auto px-6 pt-[2vh]">
+      <section className="relative flex items-center justify-center overflow-hidden bg-[#152238]">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: "linear-gradient(180deg, rgba(9, 16, 27, 0.78), rgba(9, 16, 27, 0.82)), url('/assets/vaasa-interior.png')",
+          }}
+        />
+        <div className="absolute inset-0 bg-[#152238]/75" />
+
+        <div className="relative z-10 w-full max-w-[760px] mx-auto px-6 py-16 md:py-20">
           <ScrollReveal>
             <div className="text-center">
-              <p className="font-inter text-[11px] font-semibold uppercase tracking-[0.12em] text-[#94A3B8] mb-4">{tStr('finalCta.eyebrow')}</p>
-              <h2 className="font-cormorant text-[28px] md:text-[34px] text-[#FFFFFF] leading-[1.25] mb-4">{tStr('finalCta.headline')}</h2>
-              <p className="font-inter text-[15px] text-white/80 leading-[1.6] mb-10 max-w-[340px] mx-auto">{tStr('finalCta.supportText')}</p>
+              <p className="font-inter text-[11px] font-semibold uppercase tracking-[0.12em] text-[#D9E3F0] mb-4">{tStr('finalCta.eyebrow')}</p>
+              <h2 className="font-cormorant text-[28px] md:text-[34px] md:whitespace-nowrap text-[#FFFFFF] leading-[1.25] mb-4">{tStr('finalCta.headline')}</h2>
+              <p className="font-inter text-[15px] text-white/80 leading-[1.6] mb-8 max-w-[360px] mx-auto">{tStr('finalCta.supportText')}</p>
 
-              <div className="flex flex-col items-center gap-3 mb-8">
+              <div className="flex flex-col items-center gap-3 mb-7">
                 <button
                   onClick={() => openBookingModal()}
                   className={`inline-flex w-full max-w-[280px] min-h-[56px] items-center justify-center px-8 py-3 rounded-lg font-inter text-[16px] font-semibold tracking-wide focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/90 cursor-pointer ${bookingGlassOnDarkClasses}`}
@@ -653,11 +638,29 @@ export function ChiropractorTemplate() {
                   <Phone size={15} strokeWidth={1.5} />
                   {templateData.business.phone}
                 </a>
-                <p className="font-inter text-[12px] text-white/80 tracking-wide">{tStr('finalCta.phoneSupport')}</p>
               </div>
 
-              <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1">
+              <div className="mt-5 flex flex-wrap items-center justify-center gap-x-3 gap-y-1">
                 <span className="font-inter text-[12px] text-white/80 tracking-wide">{tStr('finalCta.trustLine', { rating: businessInfo.googleRating })}</span>
+              </div>
+
+              <div className="mt-6 pt-4 border-t border-white/10">
+                <p className="mb-3 font-inter text-[10px] font-semibold uppercase tracking-[0.18em] text-white/50">{tStr('finalCta.paymentLabel')}</p>
+                <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
+                  {trustLogos.map((logo, index) => (
+                    <div
+                      key={logo.alt}
+                      className={`flex items-center justify-center ${index > 0 ? 'pl-1 md:pl-2' : ''}`}
+                    >
+                      <img
+                        src={logo.src}
+                        alt={logo.alt}
+                        loading="lazy"
+                        className={`h-auto w-auto object-contain ${logo.className}`}
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </ScrollReveal>
@@ -669,3 +672,5 @@ export function ChiropractorTemplate() {
     </div>
   );
 }
+
+

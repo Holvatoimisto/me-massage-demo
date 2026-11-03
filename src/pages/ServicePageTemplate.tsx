@@ -1,4 +1,4 @@
-import { useParams, Link } from 'react-router-dom';
+﻿import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import { Header } from '@/components/Header';
@@ -47,10 +47,10 @@ interface ServiceDetail {
 }
 
 const SERVICES: ServiceDetail[] = [
-  { key: 'classic', slug: 'hieronta', image: '/assets/klassinen-hieronta-sininen-pyyhe.png', desktopPositionClass: 'lg:object-[center_28%]' },
+  { key: 'classic', slug: 'hieronta', image: '/assets/klassinen-hieronta-palvelusivu-kuva.png' },
   { key: 'hotStone', slug: 'kuumakivihieronta', image: '/assets/kuuma-kivi-mathias.png', desktopPositionClass: 'lg:object-[center_88%]' },
   { key: 'jaw', slug: 'purentalihashieronta', image: '/assets/purenta-lihas-hieronta-kuva.png' },
-  { key: 'iastm', slug: 'faskiarautakasittely', image: '/assets/fasciarauta hoitokuva.jpg', positionClass: 'object-[center_78%]', desktopPositionClass: 'lg:object-[center_92%]' },
+  { key: 'iastm', slug: 'faskiarautakasittely', image: '/assets/mathias-fascia-hoito.png' },
 ];
 
 const locationNames = (memberLocations: ('klaukkala' | 'vaasa')[], tStr: (p: string) => string): string =>
@@ -115,7 +115,7 @@ export function ServicePageTemplate() {
 
       {/* Hero */}
       <section className="relative h-[52vh] md:h-[56vh] overflow-hidden">
-        <img src={service.image} alt={title} className={`w-full h-full object-cover ${service.positionClass ?? ''} ${service.desktopPositionClass ?? ''}`} />
+        <img src={service.image} alt={title} className={`w-full h-full ${service.key === 'iastm' ? 'object-contain object-center' : 'object-cover'} ${service.positionClass ?? ''} ${service.desktopPositionClass ?? ''}`} />
         <div className="absolute inset-0 bg-[#152238]/65" />
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-center px-6">
@@ -424,3 +424,5 @@ export function ServicePageTemplate() {
     </div>
   );
 }
+
+

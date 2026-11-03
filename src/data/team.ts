@@ -1,7 +1,7 @@
-// Centralized staff data, shared by the service pages and the location
+﻿// Centralized staff data, shared by the service pages and the location
 // pages. Staff/location assignment is the best-supported reading of the
 // current memassage.fi content: Mathias serves both locations, Janina serves
-// Klaukkala. NEEDS MATHIAS CONFIRMATION — keep assignments here so one edit
+// Klaukkala. NEEDS MATHIAS CONFIRMATION â€” keep assignments here so one edit
 // updates every page.
 export interface TeamMember {
   id: 'mathias' | 'janina';
@@ -29,10 +29,11 @@ export const teamMembers: TeamMember[] = [
     name: 'Janina Honkanen',
     titleKey: 'team.janina.title',
     bioKey: 'team.janina.bio',
-    image: '/assets/me_janina.png',
+    image: '/assets/janina-uusi-kuva.jpg',
     locations: ['klaukkala'],
   },
 ];
 
 export const teamAtLocation = (slug: 'klaukkala' | 'vaasa'): TeamMember[] =>
   teamMembers.filter((member) => member.locations.includes(slug));
+

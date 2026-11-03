@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+﻿import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { ArrowLeft, ArrowRight, Mail, MapPin, Phone, Star } from 'lucide-react';
@@ -71,7 +71,7 @@ function LocationPage({ location }: { location: LocationData }) {
   const t = (key: string) => tStr(`locationPage.${location.slug}.${key}`);
 
   const allReviews = tArr<ReviewItem>('reviews.items');
-  // TEMPORARY assignment — see reviewNames in src/data/locations.ts
+  // TEMPORARY assignment â€” see reviewNames in src/data/locations.ts
   const locationReviews = allReviews.filter((r) => location.reviewNames.includes(r.name));
 
   const arrivalRows = tArr<ArrivalRow>(`locationPage.${location.slug}.arrival`);
@@ -195,7 +195,7 @@ function LocationPage({ location }: { location: LocationData }) {
               <ScrollReveal key={member.id} delay={0.05 + i * 0.08}>
                 <div className={`flex items-center gap-5 ${therapists.length === 1 ? 'justify-center' : ''}`}>
                   <div className="w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden shrink-0 border border-white/15">
-                    <img src={member.image} alt={member.name} loading="lazy" className="w-full h-full object-cover" />
+                    <img src={member.image} alt={member.name} loading="lazy" className="w-full h-full object-cover" style={{ objectPosition: member.id === 'mathias' ? 'center 18%' : 'center center' }} />
                   </div>
                   <div>
                     <p className="font-cormorant text-[20px] text-white leading-[1.2] mb-1">{member.name}</p>
@@ -363,3 +363,4 @@ export function LocationPageTemplate() {
 
   return <LocationPage location={location} />;
 }
+
