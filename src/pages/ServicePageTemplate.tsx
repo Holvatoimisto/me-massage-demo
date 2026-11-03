@@ -79,6 +79,8 @@ export function ServicePageTemplate() {
   }
 
   const p = (key: string) => `servicePages.${service.key}.${key}`;
+  const isIastm = service.key === 'iastm';
+  const displayedTeamMembers = isIastm ? teamMembers.filter((member) => member.id === 'mathias') : teamMembers;
   const title = tStr(p('title'));
   const subtitle = tStr(p('subtitle'));
   const introParagraphs = t(p('intro')) as string[];
@@ -333,19 +335,25 @@ export function ServicePageTemplate() {
           <ScrollReveal>
             <div className="text-center mb-12">
               <h2 className="font-cormorant text-[24px] md:text-[30px] text-white leading-[1.25] mb-4">
-                {tStr('servicePages.therapistsHeading')}
+                {isIastm ? tStr(p('therapistHeading')) : tStr('servicePages.therapistsHeading')}
               </h2>
               <p className="font-inter text-[14px] text-white/70 leading-[1.7] max-w-[480px] mx-auto">
-                {tStr('servicePages.therapistsText')}
+                {isIastm ? tStr(p('therapistText')) : tStr('servicePages.therapistsText')}
               </p>
             </div>
           </ScrollReveal>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 md:gap-12 max-w-[640px] mx-auto">
-            {teamMembers.map((member, i) => (
+          <div className={`grid grid-cols-1 gap-8 md:gap-12 max-w-[640px] mx-auto ${isIastm ? 'justify-items-center' : 'sm:grid-cols-2'}`}>
+            {displayedTeamMembers.map((member, i) => (
               <ScrollReveal key={member.id} delay={0.05 + i * 0.08}>
                 <div className="flex items-center gap-5">
                   <div className="w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden shrink-0 border border-white/15">
-                    <img src={member.image} alt={member.name} loading="lazy" className="w-full h-full object-cover" />
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      loading="lazy"
+                      className="w-full h-full object-cover"
+                      style={member.id === 'mathias' ? { objectPosition: 'center top', transform: 'translateY(18%)' } : undefined}
+                    />
                   </div>
                   <div>
                     <p className="font-cormorant text-[20px] text-white leading-[1.2] mb-1">{member.name}</p>

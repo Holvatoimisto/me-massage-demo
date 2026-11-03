@@ -5,7 +5,6 @@ import { Menu, X, ChevronDown, Globe, ShoppingBag } from 'lucide-react';
 import { useLang } from '@/contexts/LanguageContext';
 import { useCart } from '@/contexts/CartContext';
 import { useBookingModal } from '@/contexts/BookingModalContext';
-import { useClickOutside } from '@/hooks/useClickOutside';
 import { businessInfo, navigationInfo } from '@/data/site';
 
 const getServiceDropdownItems = (tStr: (p: string) => string) => [
@@ -21,12 +20,24 @@ export function Header() {
   const { openBookingModal } = useBookingModal();
   const { pathname } = useLocation();
   const langRef = useRef<HTMLDivElement>(null);
+  const mobileLangRef = useRef<HTMLDivElement>(null);
   const [langOpen, setLangOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  useClickOutside(langRef, () => setLangOpen(false));
+
+  useEffect(() => {
+    const handleLangClickOutside = (event: MouseEvent) => {
+      const target = event.target as Node;
+      if (!langRef.current?.contains(target) && !mobileLangRef.current?.contains(target)) {
+        setLangOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleLangClickOutside);
+    return () => document.removeEventListener('mousedown', handleLangClickOutside);
+  }, []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -230,7 +241,7 @@ export function Header() {
         </div>
 
         {/* Mobile: language + menu buttons */}
-        <div className="xl:hidden flex items-center gap-2 relative z-10">
+        <div ref={mobileLangRef} className="xl:hidden flex items-center gap-2 relative z-10">
           <button
             onClick={() => setLangOpen(!langOpen)}
             className="flex items-center gap-0.5 font-inter text-[11px] font-semibold uppercase tracking-wider text-[#FFFFFF]/70 bg-transparent border-none cursor-pointer px-1.5 py-1"

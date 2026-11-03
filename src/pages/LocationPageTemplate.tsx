@@ -195,7 +195,13 @@ function LocationPage({ location }: { location: LocationData }) {
               <ScrollReveal key={member.id} delay={0.05 + i * 0.08}>
                 <div className={`flex items-center gap-5 ${therapists.length === 1 ? 'justify-center' : ''}`}>
                   <div className="w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden shrink-0 border border-white/15">
-                    <img src={member.image} alt={member.name} loading="lazy" className="w-full h-full object-cover" style={{ objectPosition: member.id === 'mathias' ? 'center 18%' : 'center center' }} />
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      loading="lazy"
+                      className="w-full h-full object-cover"
+                      style={member.id === 'mathias' ? { objectPosition: 'center top', transform: 'translateY(18%)' } : undefined}
+                    />
                   </div>
                   <div>
                     <p className="font-cormorant text-[20px] text-white leading-[1.2] mb-1">{member.name}</p>

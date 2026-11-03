@@ -483,6 +483,8 @@ export const translations = {
         description: 'IASTM (Instrument Assisted Soft Tissue Mobilization) on syväkäsittelyä, jossa käytetään erityisiä metallisia työkaluja lihaskudoksen käsittelyyn. Se auttaa lihaskireyksissä, arpikudoksessa ja palautumisessa. Erittäin tehokasta urheilijoille ja aktiiviliikkujille.',
         metaTitle: 'Faskiarautakäsittely | ME massage',
         metaDescription: 'Faskiarautakäsittely (IASTM) Klaukkalassa ja Vaasassa. Kohdennettu käsittely instrumentin avulla, 20–110 min, alk. 50 €.',
+        therapistHeading: 'Hoidosta vastaa Mathias Eklund',
+        therapistText: 'Faskiarautakäsittelyn toteuttaa koulutettu hieroja Mathias Eklund. Mathias palvelee sekä Klaukkalassa että Vaasassa.',
         introHeading: 'Mitä faskiarautakäsittely on?',
         intro: [
           'Faskiarautakäsittely (IASTM, Instrument Assisted Soft Tissue Mobilization) on käsittelymuoto, jossa pehmytkudosta käsitellään erityisen muotoillun metallisen instrumentin avulla. Instrumentti mahdollistaa tarkemman ja syvemmän käsittelyn kuin pelkät kädet.',
@@ -1313,6 +1315,8 @@ export const translations = {
         description: 'IASTM (Instrument Assisted Soft Tissue Mobilization) is a deep treatment that uses special metal tools to treat muscle tissue. It helps with muscle tension, scar tissue, and recovery. Extremely effective for athletes and active individuals.',
         metaTitle: 'Fascia Treatment with the IASTM Method | ME massage',
         metaDescription: 'Fascia treatment with the IASTM method in Klaukkala and Vaasa. Targeted instrument-assisted treatment, 20–110 min, from €50.',
+        therapistHeading: 'Treatment provided by Mathias Eklund',
+        therapistText: 'Fascia tool treatment is provided by trained massage therapist Mathias Eklund. Mathias works at both the Klaukkala and Vaasa locations.',
         introHeading: 'What is fascia treatment with the IASTM method?',
         intro: [
           'Fascia treatment with the IASTM method (Instrument Assisted Soft Tissue Mobilization) is a form of treatment in which soft tissue is worked on using a specially shaped metal instrument. The instrument allows more precise and deeper treatment than hands alone.',
@@ -2143,6 +2147,8 @@ export const translations = {
         description: 'IASTM (Instrument Assisted Soft Tissue Mobilization) är en djupbehandling som använder speciella metallverktyg för att behandla muskelvävnad. Den hjälper vid muskelspänningar, ärrvävnad och återhämtning. Extremt effektiv för atleter och aktiva individer.',
         metaTitle: 'Fasciabehandling med IASTM | ME massage',
         metaDescription: 'Fasciabehandling med IASTM i Klövskog och Vasa. Riktad instrumentassisterad behandling, 20–110 min, fr. 50 €.',
+        therapistHeading: 'Behandlingen utförs av Mathias Eklund',
+        therapistText: 'Fasciabehandlingen utförs av utbildade massören Mathias Eklund. Mathias arbetar både i Klövskog och Vasa.',
         introHeading: 'Vad är Fasciabehandling med IASTM?',
         intro: [
           'Fasciabehandling med IASTM (Instrument Assisted Soft Tissue Mobilization) är en behandlingsform där mjukvävnad behandlas med hjälp av ett speciellt format metallinstrument. Instrumentet möjliggör en noggrannare och djupare behandling än enbart händerna.',

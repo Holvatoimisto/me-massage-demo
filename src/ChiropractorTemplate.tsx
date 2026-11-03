@@ -164,9 +164,9 @@ export function ChiropractorTemplate() {
     translatedReviews[(reviewIndex + 2) % translatedReviews.length],
   ];
   const trustLogos = [
-    { src: '/assets/edenred-logo.png', alt: 'Edenred', className: 'max-h-[18px] md:max-h-[22px] max-w-[88px] opacity-90' },
+    { src: '/assets/Edenred_idz7l1Fpv0_1.png', alt: 'Edenred', className: 'max-h-[18px] md:max-h-[22px] max-w-[88px] opacity-90' },
     { src: '/assets/epassi-logo.png', alt: 'ePassi', className: 'max-h-[16px] md:max-h-[20px] max-w-[82px] opacity-90' },
-    { src: '/assets/mobilepay-logo.jfif', alt: 'MobilePay', className: 'max-h-[18px] md:max-h-[22px] max-w-[76px] opacity-90' },
+    { src: '/assets/MobilePay_idhpdSgYek_0.png', alt: 'MobilePay', className: 'max-h-[18px] md:max-h-[22px] max-w-[76px] opacity-90' },
   ];
   return (
     <div className="min-h-[100dvh] font-inter antialiased">
