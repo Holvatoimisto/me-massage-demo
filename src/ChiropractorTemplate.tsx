@@ -372,7 +372,7 @@ export function ChiropractorTemplate() {
 
           {/* Symptom survey — same reusable component as on the Palvelut page */}
           <ScrollReveal delay={0.1}>
-            <div className="mt-18 md:mt-22 pt-12 border-t border-[#E2E8F0]">
+            <div id="oirekysely" className="mt-18 md:mt-22 pt-12 border-t border-[#E2E8F0]">
               <SymptomSurvey />
             </div>
           </ScrollReveal>

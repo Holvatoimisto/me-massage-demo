@@ -553,7 +553,7 @@ export const translations = {
         {
           title: 'Hoidot ja hoidon valinta',
           faqs: [
-            { question: 'Minkä pituinen hieronta minulle?', answer: '20 minuuttia riittää yhden alueen kohdennettuun hoitoon, 50 minuuttia on suosituin valinta ja antaa aikaa laajempaan kokonaisuuteen, ja 80–110 minuuttia kattaa koko vartalon perusteellisesti. Tarkemmat kestojen erot löydät hinnastosta.', linkText: 'Katso hinnat ja kestot', linkHref: '/hinnasto' },
+            { question: 'Minkä pituinen hieronta minulle?', answer: '20 minuuttia riittää yhden alueen kohdennettuun hoitoon, 50 minuuttia on suosituin valinta ja antaa aikaa laajempaan kokonaisuuteen, ja 80–110 minuuttia kattaa koko vartalon perusteellisesti. Tarkemmat kestojen erot löydät hinnastosta.', linkText: 'Aloita oirekysely', linkHref: '/#oirekysely' },
             { question: 'Sopiiko hieronta minulle?', answer: 'Hieronta sopii monille, mutta ei kaikissa tilanteissa. Esimerkiksi kuume, infektiot ja tietyt vammat voivat estää hieronnan. Kerro terveydentilastasi ja lääkityksestäsi ennen hoitoa.' },
             { question: 'Mitä eroa on klassisella hieronnalla ja kuumakivi ja klassisella hieronnalla?', answer: 'Klassinen hieronta on perinteistä lihaskäsittelyä, joka räätälöidään tarpeidesi mukaan. Kuumakivi ja klassisessa hieronnassa käytetään lämpimiä kiviä, jotka rentouttavat syvällä tasolla ja lievittävät lihaskireyksiä tehokkaasti.', linkText: 'Vertaile palveluita', linkHref: '/palvelut' },
             { question: 'Kuinka usein kannattaa käydä hieronnassa?', answer: 'Se riippuu tilanteestasi. Akuuttiin vaivaan suositellaan kerran viikossa siihen asti, kunnes vaiva helpottuu. Ylläpitohoitona 1–2 kertaa kuukaudessa.' },
@@ -562,7 +562,7 @@ export const translations = {
         {
           title: 'Hoito käytännössä',
           faqs: [
-            { question: 'Mitä vaatetusta hierontaan tarvitsen?', answer: 'Riittää, että riisut yläosan. Alaosan voi pitää päällä tai riisua tarpeen mukaan. Saat peiton päälle hoidon ajaksi.' },
+            { question: 'Mitä vaatetusta hierontaan tarvitsen?', answer: 'Voit tulla hierontaan millä vaatteilla tahansa. Rennot ja joustavat vaatteet ovat kuitenkin mukavimmat. Hoidon aikana vaatetusta voidaan mukauttaa hoidettavan alueen mukaan.' },
             { question: 'Sopiiko hieronta raskausaikana?', answer: 'Hierontaa vältetään kokonaan raskauden ensimmäiset 3 kuukautta. Kerro raskaudestasi aina etukäteen ennen hoitoa.' },
             { question: 'Mitä jos minulla on kipua tai sairaus?', answer: 'Kerrothan kaikista sairauksistasi ja lääkityksestäsi etukäteen. Joitakin tilanteita vastaan ei voi hieroa (esim. akuutti tulehdus, kuume).' },
             {
@@ -598,7 +598,7 @@ export const translations = {
                 '• Veritulppia liuottavien tai verenohennuslääkkeiden käyttö',
                 '• Avoimet haavat ja märkivä tulehdus sekä tuoreet tatuoinnit',
                 '• Tietyt ihosairaudet, kuten vaikea ekseema, tartuntataudit',
-                '• Akuutti pehmytkudosvamma (esim. ”reisiluun murtuma”)',
+                '• Akuutti pehmytkudosvamma (esim. ”puujalka”)',
                 '• Kortisonihoito (koskee erityisesti tabletteja ja voiteita)',
                 '• Diabetes (erityisesti jalkahaavojen tai tuntoherkkyyden heikkenemisen yhteydessä)',
                 '• Masennuslääkitys',
@@ -1385,7 +1385,7 @@ export const translations = {
         {
           title: 'Treatments and choosing a treatment',
           faqs: [
-            { question: 'What length of massage should I choose?', answer: '20 minutes is enough for a targeted treatment of one area, 50 minutes is the most popular choice and allows time for a broader session, and 80–110 minutes covers the whole body thoroughly. You can find a more detailed comparison of the durations in the price list.', linkText: 'See prices and durations', linkHref: '/hinnasto' },
+            { question: 'What length of massage should I choose?', answer: '20 minutes is enough for a targeted treatment of one area, 50 minutes is the most popular choice and allows time for a broader session, and 80–110 minutes covers the whole body thoroughly. You can find a more detailed comparison of the durations in the price list.', linkText: 'Start the symptom survey', linkHref: '/#oirekysely' },
             { question: 'Is massage suitable for me?', answer: 'Massage is suitable for many people, but not in every situation. For example, fever, infections and certain injuries may prevent massage. Please tell us about your health conditions and medication before treatment.' },
             { question: 'What is the difference between classic massage and hot stone and classical massage?', answer: 'Classic massage is traditional manual therapy tailored to your needs. Hot stone and classical massage uses warm stones that relax at a deep level and effectively relieve muscle tension.', linkText: 'Compare services', linkHref: '/palvelut' },
             { question: 'How often should I get a massage?', answer: 'It depends on your situation. For acute issues, once a week is recommended until the issue eases. As maintenance, 1–2 times a month.' },
@@ -1394,7 +1394,7 @@ export const translations = {
         {
           title: 'The treatment in practice',
           faqs: [
-            { question: 'What clothing do I need for massage?', answer: 'Just remove your upper body clothing. You can keep lower clothing on or remove as needed. You will be covered with a blanket during the treatment.' },
+            { question: 'What clothing do I need for massage?', answer: 'You can come to the massage wearing any clothes. However, loose and flexible clothing is the most comfortable. During the treatment, clothing can be adjusted according to the area being treated.' },
             { question: 'Is massage safe during pregnancy?', answer: 'Massage should be avoided entirely during the first 3 months of pregnancy. Please always tell us about your pregnancy before treatment.' },
             { question: 'What if I have pain or an illness?', answer: 'Please tell us about all your conditions and medication in advance. Some situations cannot be treated with massage (e.g. acute inflammation, fever).' },
             {
@@ -1793,13 +1793,13 @@ export const translations = {
       eyebrow: 'LÄR KÄNNA OSS',
       headline: 'Experter för Dig',
       mathias: {
-        title: 'Diplomerad Massör, Företagare',
+        title: 'Utbildad massör, företagare',
         bio: 'Mathias har en bakgrund som professionell boxare.\n\nUnder sin boxningskarriär insåg han hur viktigt det är att ta hand om kroppen.\n\nSom massör tar han varje kunds situation på allvar för att tillsammans med kunden uppnå bästa möjliga välbefinnande genom massage.\n\nHan är specialiserad på behandling av tuggmusklerna och fasciabehandling.\n\nMathias tog examen som utbildad massör vid Finlands massörskola 2023.\n\nMathias tar emot kunder i Klövskog och Vasa.',
         quote: 'Det viktigaste för mig är att varje kund lämnar sessionen med bättre välbefinnande.',
       },
       janina: {
-        title: 'Diplomerad Massör',
-        bio: 'Janina är en diplomerad massör som gick med i ME massage-teamet 2025. Hon bidrar med en varm och professionell touch till massagetjänsterna.\n\nHos Janina kan du få klassisk massage, hotstone och klassisk massage samt massage av tuggmusklerna. Hon är särskilt intresserad av holistiskt välbefinnande och kroppsvård.',
+        title: 'Utbildad massör',
+        bio: 'Janina är en utbildad massör som gick med i ME massage-teamet 2025. Hon bidrar med en varm och professionell touch till massagetjänsterna.\n\nHos Janina kan du få klassisk massage, hotstone och klassisk massage samt massage av tuggmusklerna. Hon är särskilt intresserad av holistiskt välbefinnande och kroppsvård.',
         quote: 'Jag vill hjälpa mina kunder att hitta vägar till avkoppling och smärtlindring.',
       },
     },
@@ -2029,7 +2029,7 @@ export const translations = {
       viewPricing: 'Se Priser',
       chooseDuration: 'Välj en lämplig behandlingslängd',
       therapistsHeading: 'Behandlingen utförs av ME massages proffs',
-      therapistsText: 'Behandlingarna utförs av diplomerade massörer. Mathias betjänar i både Klövskog och Vasa, Janina på mottagningen i Klövskog.',
+      therapistsText: 'Behandlingarna utförs av utbildade massörer. Mathias betjänar i både Klövskog och Vasa, Janina på mottagningen i Klövskog.',
       faqHeading: 'Vanliga frågor om behandlingen',
       classic: {
         eyebrow: 'MASSAGE',
@@ -2217,7 +2217,7 @@ export const translations = {
         {
           title: 'Behandlingar och val av behandling',
           faqs: [
-            { question: 'Hur lång massage ska jag välja?', answer: '20 minuter räcker för en riktad behandling av ett område, 50 minuter är det mest populära valet och ger tid för en större helhet, och 80–110 minuter täcker hela kroppen grundligt. Mer detaljerade skillnader i längderna hittar du i prislistan.', linkText: 'Se priser och längder', linkHref: '/hinnasto' },
+            { question: 'Hur lång massage ska jag välja?', answer: '20 minuter räcker för en riktad behandling av ett område, 50 minuter är det mest populära valet och ger tid för en större helhet, och 80–110 minuter täcker hela kroppen grundligt. Mer detaljerade skillnader i längderna hittar du i prislistan.', linkText: 'Starta symptomenkäten', linkHref: '/#oirekysely' },
             { question: 'Passar massage för mig?', answer: 'Massage passar många, men inte i alla situationer. Till exempel feber, infektioner och vissa skador kan förhindra massage. Berätta om ditt hälsotillstånd och din medicinering före behandlingen.' },
             { question: 'Vad är skillnaden mellan klassisk massage och hotstone och klassisk massage?', answer: 'Klassisk massage är traditionell manuell terapi anpassad efter dina behov. Hotstone och klassisk massage använder varma stenar som slappnar av på djupet och effektivt lindrar muskelspänningar.', linkText: 'Jämför tjänsterna', linkHref: '/palvelut' },
             { question: 'Hur ofta lönar det sig att gå på massage?', answer: 'Det beror på din situation. Vid akuta besvär rekommenderas en gång i veckan tills besvären lättar. Som underhållsbehandling 1–2 gånger i månaden.' },
@@ -2226,7 +2226,7 @@ export const translations = {
         {
           title: 'Behandlingen i praktiken',
           faqs: [
-            { question: 'Vilka kläder behöver jag för massage?', answer: 'Det räcker att ta av överkroppen. Underkroppen kan behållas på eller tas av efter behov. Du får en filt över dig under behandlingen.' },
+            { question: 'Vilka kläder behöver jag för massage?', answer: 'Du kan komma till massagen i vilka kläder som helst. Lösa och stretchiga kläder är dock mest bekväma. Under behandlingen kan klädseln anpassas efter det område som behandlas.' },
             { question: 'Passar massage under graviditet?', answer: 'Massage bör undvikas helt under graviditetens första 3 månader. Berätta alltid om graviditeten före behandlingen.' },
             { question: 'Vad gör jag om jag har smärta eller sjukdom?', answer: 'Berätta gärna om alla dina sjukdomar och din medicinering i förväg. Vissa situationer kan inte masseras (t.ex. akut inflammation, feber).' },
             {
