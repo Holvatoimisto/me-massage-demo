@@ -5,7 +5,7 @@ import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { FinalCtaSection } from '@/components/FinalCtaSection';
 import { ArrowLeft, ArrowRight, Plus, Minus } from 'lucide-react';
-import { useLang } from '@/contexts/LanguageContext';
+import { useLang } from '@/contexts/language';
 import { businessInfo } from '@/data/site';
 import { PageSeo } from '@/components/PageSeo';
 
@@ -83,7 +83,7 @@ export function FAQPage() {
                         </span>
                       </button>
                       <div
-                        className="overflow-hidden transition-all duration-[400ms] ease-out"
+                        className="overflow-hidden transition-all [transition-duration:400ms] ease-out"
                         style={{ maxHeight: isOpen ? (isLong ? '900px' : '280px') : '0px', opacity: isOpen ? 1 : 0 }}
                       >
                         <div className="font-inter text-[14px] text-[#1F2937] leading-[1.75] pb-6 max-w-[540px]">

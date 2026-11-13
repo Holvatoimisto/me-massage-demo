@@ -1,4 +1,4 @@
-import type { CartItem } from '@/contexts/CartContext';
+import type { CartItem } from '@/contexts/cart';
 
 /**
  * UX-only eligibility hint for a future payment UI.

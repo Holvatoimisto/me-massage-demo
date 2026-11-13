@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Check } from 'lucide-react';
-import { useLang } from '@/contexts/LanguageContext';
+import { useLang } from '@/contexts/language';
 import { locations } from '@/data/locations';
 import { bookingPrimaryOnLightClasses } from '@/lib/bookingCta';
 import { ajasServiceDurations, buildAjasBookingUrl, type ServiceKey } from '@/data/ajas';
-import type { BookingModalOptions } from '@/contexts/BookingModalContext';
+import type { BookingModalOptions } from '@/contexts/bookingModal';
 
 interface BookingLocationModalProps {
   open: boolean;

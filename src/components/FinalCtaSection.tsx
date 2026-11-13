@@ -1,6 +1,6 @@
 import { Phone } from 'lucide-react';
-import { useLang } from '@/contexts/LanguageContext';
-import { useBookingModal } from '@/contexts/BookingModalContext';
+import { useLang } from '@/contexts/language';
+import { useBookingModal } from '@/contexts/bookingModal';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import { businessInfo } from '@/data/site';
 import { bookingGlassOnDarkClasses } from '@/lib/bookingCta';

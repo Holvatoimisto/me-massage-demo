@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { MapPin, Phone, Mail, Instagram, Facebook } from 'lucide-react';
-import { useLang } from '@/contexts/LanguageContext';
+import { useLang } from '@/contexts/language';
 import { businessInfo, footerColumns, locationPhoneContacts } from '@/data/site';
 import { locations, localizedLocation } from '@/data/locations';
 
@@ -102,9 +102,9 @@ export function Footer() {
           </div>
           <p className="font-inter text-[12px] text-[#94A3B8]/70">{tStr('footer.paymentMethods')}</p>
           <div className="flex gap-4">
-            <a href={businessInfo.instagramUrl} className="text-[#94A3B8]/70 hover:text-white transition-colors"><Instagram size={18} strokeWidth={1.5} /></a>
-            <a href={businessInfo.facebookUrl} className="text-[#94A3B8]/70 hover:text-white transition-colors"><Facebook size={18} strokeWidth={1.5} /></a>
-            <a href={businessInfo.phoneLink} className="text-[#94A3B8]/70 hover:text-white transition-colors"><Phone size={18} strokeWidth={1.5} /></a>
+            <a href={businessInfo.instagramUrl} aria-label="Instagram" className="text-[#94A3B8]/70 hover:text-white transition-colors"><Instagram size={18} strokeWidth={1.5} /></a>
+            <a href={businessInfo.facebookUrl} aria-label="Facebook" className="text-[#94A3B8]/70 hover:text-white transition-colors"><Facebook size={18} strokeWidth={1.5} /></a>
+            <a href={businessInfo.phoneLink} aria-label="Soita ME Massagelle" className="text-[#94A3B8]/70 hover:text-white transition-colors"><Phone size={18} strokeWidth={1.5} /></a>
           </div>
         </div>
       </div>

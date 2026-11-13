@@ -4,7 +4,7 @@ import { ArrowLeft, ArrowRight, Mail, MapPin, Phone, Star } from 'lucide-react';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
-import { useLang } from '@/contexts/LanguageContext';
+import { useLang } from '@/contexts/language';
 import { locations, localizedLocation, type LocationData } from '@/data/locations';
 import { teamAtLocation } from '@/data/team';
 import { serviceOverviews } from '@/data/services';

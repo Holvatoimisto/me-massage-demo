@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Check } from 'lucide-react';
-import { useLang } from '@/contexts/LanguageContext';
-import { useBookingModal } from '@/contexts/BookingModalContext';
+import { useLang } from '@/contexts/language';
+import { useBookingModal } from '@/contexts/bookingModal';
 import { serviceOverviews } from '@/data/services';
 import { type ServiceKey } from '@/data/ajas';
 import { bookingPrimaryOnLightClasses } from '@/lib/bookingCta';

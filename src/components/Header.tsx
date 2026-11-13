@@ -2,9 +2,9 @@ import { useState, useRef, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Menu, X, ChevronDown, Globe, ShoppingBag } from 'lucide-react';
-import { useLang } from '@/contexts/LanguageContext';
-import { useCart } from '@/contexts/CartContext';
-import { useBookingModal } from '@/contexts/BookingModalContext';
+import { useLang } from '@/contexts/language';
+import { useCart } from '@/contexts/cart';
+import { useBookingModal } from '@/contexts/bookingModal';
 import { businessInfo, navigationInfo } from '@/data/site';
 
 const getServiceDropdownItems = (tStr: (p: string) => string) => [

@@ -1,4 +1,4 @@
-import type { CartItem } from '@/contexts/CartContext';
+import type { CartItem } from '@/contexts/cart';
 import { isKnownShopProductId } from '@/data/shop';
 
 export const CHECKOUT_PAYLOAD_VERSION = 1 as const;

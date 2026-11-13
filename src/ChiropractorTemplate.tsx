@@ -10,8 +10,8 @@ import {
   Minus,
   Star,
 } from 'lucide-react';
-import { useLang } from '@/contexts/LanguageContext';
-import { useBookingModal } from '@/contexts/BookingModalContext';
+import { useLang } from '@/contexts/language';
+import { useBookingModal } from '@/contexts/bookingModal';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { PricingExplorer } from '@/components/PricingExplorer';
@@ -587,7 +587,7 @@ export function ChiropractorTemplate() {
                       {openFaqIndex === i ? <Minus size={16} strokeWidth={1.5} /> : <Plus size={16} strokeWidth={1.5} />}
                     </span>
                   </button>
-                  <div className="overflow-hidden transition-all duration-[400ms] ease-out" style={{ maxHeight: openFaqIndex === i ? '220px' : '0px', opacity: openFaqIndex === i ? 1 : 0 }}>
+                  <div className="overflow-hidden transition-all [transition-duration:400ms] ease-out" style={{ maxHeight: openFaqIndex === i ? '220px' : '0px', opacity: openFaqIndex === i ? 1 : 0 }}>
                     <div className="font-inter text-[14px] text-[#1F2937] leading-[1.75] pb-5 md:pb-6 max-w-[540px]">
                       {faq.answer.replace('{phone}', templateData.business.phone)}
                       {faq.includePhone && (

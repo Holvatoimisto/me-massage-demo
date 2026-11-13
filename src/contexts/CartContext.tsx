@@ -1,42 +1,11 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { parseStoredCart, serializeCart } from '@/lib/cartStorage';
+import { CartContext, type CartContextValue, type CartItem } from '@/contexts/cart';
 
 // Local cart for the new webshop frontend. Items carry the exact WooCommerce
 // product IDs from src/data/shop.ts, so a future WooCommerce/Ajas checkout
 // integration can submit this cart without reshaping it. Persisted to
 // localStorage. No backend communication happens yet.
-
-export interface CartItem {
-  /** Unique line id (productId + recipient + language combo). */
-  lineId: string;
-  /** WooCommerce product ID this line maps to. */
-  productId: number;
-  type: 'gift' | 'open' | 'series';
-  recipientType: 'gift' | 'self';
-  /** Display label, e.g. "Lahjakortti". */
-  label: string;
-  /** Meta lines, e.g. ["Klassinen hieronta · 50 min", "Saaja: Anna", "Kieli: Suomi"]. */
-  details: string[];
-  price: number;
-  qty: number;
-  /** Ajas customer choices preserved for the future integration. */
-  recipientName?: string;
-  cardLanguage?: 'fi' | 'sv' | 'en';
-}
-
-interface CartContextValue {
-  items: CartItem[];
-  count: number;
-  total: number;
-  isOpen: boolean;
-  openCart: () => void;
-  closeCart: () => void;
-  addItem: (item: Omit<CartItem, 'qty'>) => void;
-  removeItem: (lineId: string) => void;
-  setQty: (lineId: string, qty: number) => void;
-}
-
-const CartContext = createContext<CartContextValue | null>(null);
 
 const STORAGE_KEY = 'me-cart';
 
@@ -94,10 +63,4 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   }), [items, isOpen, addItem, removeItem, setQty]);
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
-}
-
-export function useCart() {
-  const ctx = useContext(CartContext);
-  if (!ctx) throw new Error('useCart must be used within CartProvider');
-  return ctx;
 }

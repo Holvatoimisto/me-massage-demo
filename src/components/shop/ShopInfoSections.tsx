@@ -1,4 +1,4 @@
-import { useLang } from '@/contexts/LanguageContext';
+import { useLang } from '@/contexts/language';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import { businessInfo } from '@/data/site';
 

@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { Minus, Plus, X } from 'lucide-react';
-import { useLang } from '@/contexts/LanguageContext';
-import { useCart } from '@/contexts/CartContext';
+import { useLang } from '@/contexts/language';
+import { useCart } from '@/contexts/cart';
 
 /**
  * Cart drawer — right-side panel on desktop, full-width bottom sheet on

@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ShoppingCart } from 'lucide-react';
-import { useLang } from '@/contexts/LanguageContext';
-import { useBookingModal } from '@/contexts/BookingModalContext';
+import { useLang } from '@/contexts/language';
+import { useBookingModal } from '@/contexts/bookingModal';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import { pricingTabs, pricingTabGroups } from '@/data/pricing';
 import { ajasServiceDurations, type ServiceKey } from '@/data/ajas';

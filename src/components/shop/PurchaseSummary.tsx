@@ -1,4 +1,4 @@
-import { useLang } from '@/contexts/LanguageContext';
+import { useLang } from '@/contexts/language';
 
 /**
  * Sticky purchase summary shown next to the shop configurators on desktop.

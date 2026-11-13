@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { X } from 'lucide-react';
-import { useLang } from '@/contexts/LanguageContext';
-import { useCart } from '@/contexts/CartContext';
+import { useLang } from '@/contexts/language';
+import { useCart } from '@/contexts/cart';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { ScrollReveal } from '@/components/ScrollReveal';
