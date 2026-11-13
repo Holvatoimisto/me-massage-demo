@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 import { ArrowRight } from 'lucide-react';
 import { useLang } from '@/contexts/LanguageContext';
 import { Header } from '@/components/Header';
@@ -10,6 +9,7 @@ import { ScrollReveal } from '@/components/ScrollReveal';
 import { SymptomSurvey } from '@/components/SymptomSurvey';
 import { serviceOverviews } from '@/data/services';
 import { pricingTabs } from '@/data/pricing';
+import { PageSeo } from '@/components/PageSeo';
 
 export function PalvelutPage() {
   const { tStr } = useLang();
@@ -17,10 +17,7 @@ export function PalvelutPage() {
 
   return (
     <div className="bg-white min-h-[100dvh]">
-      <Helmet>
-        <title>{t('metaTitle')}</title>
-        <meta name="description" content={t('metaDescription')} />
-      </Helmet>
+      <PageSeo title={t('metaTitle')} description={t('metaDescription')} />
 
       <Header />
       {/* Header spacer */}

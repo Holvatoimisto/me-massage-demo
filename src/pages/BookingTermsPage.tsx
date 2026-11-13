@@ -1,6 +1,6 @@
-import { Helmet } from 'react-helmet-async';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
+import { PageSeo } from '@/components/PageSeo';
 
 const sectionHeadingClass = 'font-inter text-[16px] font-semibold text-[#152238] leading-[1.5] mb-3';
 const paragraphClass = 'font-inter text-[14px] md:text-[15px] text-[#1F2937] leading-[1.8]';
@@ -9,9 +9,10 @@ const listClass = 'list-disc pl-5 space-y-1 font-inter text-[14px] md:text-[15px
 export function BookingTermsPage() {
   return (
     <div className="bg-[#F7F5F2] min-h-[100dvh]">
-      <Helmet>
-        <title>VARAUSEHDOT – Hierontapalvelu</title>
-      </Helmet>
+      <PageSeo
+        title="Varausehdot – Hierontapalvelu | ME massage"
+        description="ME Massagen hierontapalveluiden ajanvaraus-, peruutus- ja saapumisehdot."
+      />
 
       <Header />
       <div className="h-[60px] md:h-[68px]" />

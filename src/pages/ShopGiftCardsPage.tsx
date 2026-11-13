@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Helmet } from 'react-helmet-async';
 import { X } from 'lucide-react';
 import { useLang } from '@/contexts/LanguageContext';
 import { useCart } from '@/contexts/CartContext';
@@ -10,6 +9,7 @@ import { StepHeading, Choice, Segmented, ServiceChoice } from '@/components/shop
 import { PurchaseSummary } from '@/components/shop/PurchaseSummary';
 import { ShopInfoSections } from '@/components/shop/ShopInfoSections';
 import { shopServices, openGiftCardValues, shopAssets, type ShopServiceKey } from '@/data/shop';
+import { PageSeo } from '@/components/PageSeo';
 
 type CardLang = 'fi' | 'sv' | 'en';
 type RecipientType = 'gift' | 'self';
@@ -138,10 +138,7 @@ export function ShopGiftCardsPage() {
 
   return (
     <div className="bg-white min-h-[100dvh]">
-      <Helmet>
-        <title>{t('giftMetaTitle')}</title>
-        <meta name="description" content={t('giftMetaDescription')} />
-      </Helmet>
+      <PageSeo title={t('giftMetaTitle')} description={t('giftMetaDescription')} />
 
       <Header />
       {/* Header spacer */}

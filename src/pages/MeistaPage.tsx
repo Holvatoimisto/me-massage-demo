@@ -1,4 +1,3 @@
-import { Helmet } from 'react-helmet-async';
 import { useLang } from '@/contexts/LanguageContext';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -6,6 +5,7 @@ import { PageHero } from '@/components/PageHero';
 import { FinalCtaSection } from '@/components/FinalCtaSection';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import { teamMembers } from '@/data/team';
+import { PageSeo } from '@/components/PageSeo';
 
 const mathias = teamMembers.find((m) => m.id === 'mathias')!;
 const janina = teamMembers.find((m) => m.id === 'janina')!;
@@ -32,10 +32,7 @@ export function MeistaPage() {
 
   return (
     <div className="bg-white min-h-[100dvh]">
-      <Helmet>
-        <title>{t('metaTitle')}</title>
-        <meta name="description" content={t('metaDescription')} />
-      </Helmet>
+      <PageSeo title={t('metaTitle')} description={t('metaDescription')} />
 
       <Header />
       {/* Header spacer */}

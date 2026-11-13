@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { Helmet } from 'react-helmet-async';
 import { ChevronDown, ChevronUp, Phone, Star } from 'lucide-react';
 import { useLang } from '@/contexts/LanguageContext';
 import { Header } from '@/components/Header';
@@ -18,6 +17,7 @@ import {
   type ReviewLocationResult,
 } from '@/lib/reviewProvider';
 import type { NormalizedReview } from '@/lib/reviewTypes';
+import { PageSeo } from '@/components/PageSeo';
 
 const INITIAL_REVIEWS = 6;
 
@@ -116,10 +116,7 @@ export function ReviewsPage() {
 
   return (
     <div className="bg-white min-h-[100dvh]">
-      <Helmet>
-        <title>{t('metaTitle')}</title>
-        <meta name="description" content={t('metaDescription')} />
-      </Helmet>
+      <PageSeo title={t('metaTitle')} description={t('metaDescription')} />
 
       <Header />
       {/* Header spacer */}

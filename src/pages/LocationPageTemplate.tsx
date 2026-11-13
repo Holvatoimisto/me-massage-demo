@@ -1,6 +1,5 @@
 ﻿import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 import { ArrowLeft, ArrowRight, Mail, MapPin, Phone, Star } from 'lucide-react';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import { Header } from '@/components/Header';
@@ -12,6 +11,7 @@ import { serviceOverviews } from '@/data/services';
 import { pricingTabs } from '@/data/pricing';
 import { businessInfo } from '@/data/site';
 import { bookingGlassOnDarkClasses, bookingPrimaryOnLightClasses } from '@/lib/bookingCta';
+import { PageSeo } from '@/components/PageSeo';
 
 type ReviewItem = {
   name: string;
@@ -82,10 +82,7 @@ function LocationPage({ location }: { location: LocationData }) {
 
   return (
     <div className="bg-white min-h-[100dvh]">
-      <Helmet>
-        <title>{t('metaTitle')}</title>
-        <meta name="description" content={t('metaDescription')} />
-      </Helmet>
+      <PageSeo title={t('metaTitle')} description={t('metaDescription')} />
 
       <Header />
       {/* Header spacer */}
@@ -354,6 +351,7 @@ export function LocationPageTemplate() {
   if (!location) {
     return (
       <div className="bg-[#F7F5F2] min-h-[100dvh]">
+        <PageSeo title="Sivua ei löytynyt | ME massage" noIndex />
         <Header />
         <div className="h-[60px] md:h-[68px]" />
         <div className="pt-32 pb-20 px-6 text-center">

@@ -19,6 +19,7 @@ import { SymptomSurvey } from '@/components/SymptomSurvey';
 import { businessInfo } from '@/data/site';
 import { bookingGlassOnDarkClasses } from '@/lib/bookingCta';
 import { locations } from '@/data/locations';
+import { BusinessStructuredData, PageSeo } from '@/components/PageSeo';
 
 const templateData = {
   business: businessInfo,
@@ -170,6 +171,11 @@ export function ChiropractorTemplate() {
   ];
   return (
     <div className="min-h-[100dvh] font-inter antialiased">
+      <PageSeo
+        title="ME Massage | Hierontaa Klaukkalassa ja Vaasassa"
+        description="Ammattitaitoista hierontaa, kuumakivihierontaa, purentalihashierontaa ja faskiarautakäsittelyä Klaukkalassa ja Vaasassa."
+      />
+      <BusinessStructuredData />
       {/* Navigation */}
       <Header />
 

@@ -10,10 +10,19 @@ export function ScrollManager() {
 
   useEffect(() => {
     if (hash) {
-      const id = hash.replace('#', '');
+      let id = hash.slice(1);
+      try {
+        id = decodeURIComponent(id);
+      } catch {
+        // Keep the literal id when the hash contains malformed encoding.
+      }
       // Wait a tick so the target route has rendered before scrolling.
       const timer = window.setTimeout(() => {
-        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const target = document.getElementById(id);
+        if (!target) return;
+        const headerHeight = document.querySelector('nav')?.getBoundingClientRect().height ?? 0;
+        const targetTop = target.getBoundingClientRect().top + window.scrollY - headerHeight - 16;
+        window.scrollTo({ top: Math.max(0, targetTop), behavior: 'smooth' });
       }, 60);
       return () => window.clearTimeout(timer);
     }

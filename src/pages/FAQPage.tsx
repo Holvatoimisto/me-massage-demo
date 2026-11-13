@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -8,6 +7,7 @@ import { FinalCtaSection } from '@/components/FinalCtaSection';
 import { ArrowLeft, ArrowRight, Plus, Minus } from 'lucide-react';
 import { useLang } from '@/contexts/LanguageContext';
 import { businessInfo } from '@/data/site';
+import { PageSeo } from '@/components/PageSeo';
 
 interface FaqItem {
   question: string;
@@ -35,10 +35,7 @@ export function FAQPage() {
 
   return (
     <div className="bg-[#F7F5F2] min-h-[100dvh]">
-      <Helmet>
-        <title>{tStr('pages.faq.metaTitle')}</title>
-        <meta name="description" content={tStr('pages.faq.metaDescription')} />
-      </Helmet>
+      <PageSeo title={tStr('pages.faq.metaTitle')} description={tStr('pages.faq.metaDescription')} />
       <Header />
       <div className="h-[60px] md:h-[68px]" />
 

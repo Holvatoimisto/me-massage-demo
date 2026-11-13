@@ -1,4 +1,4 @@
-import { HashRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { LanguageProvider } from '@/contexts/LanguageContext';
 import { CartProvider } from '@/contexts/CartContext';
@@ -26,7 +26,7 @@ function App() {
     <HelmetProvider>
       <LanguageProvider>
         <CartProvider>
-          <HashRouter>
+          <BrowserRouter>
             <BookingModalProvider>
               <ScrollManager />
             <Routes>
@@ -48,7 +48,7 @@ function App() {
             </Routes>
             <CartDrawer />
             </BookingModalProvider>
-          </HashRouter>
+          </BrowserRouter>
         </CartProvider>
       </LanguageProvider>
     </HelmetProvider>

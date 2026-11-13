@@ -1,16 +1,13 @@
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
+import { PageSeo } from '@/components/PageSeo';
 
 /** Lightweight branded 404 for unknown routes. */
 export function NotFoundPage() {
   return (
     <div className="bg-[#F7F5F2] min-h-[100dvh]">
-      <Helmet>
-        <title>Sivua ei löytynyt | ME massage</title>
-        <meta name="robots" content="noindex" />
-      </Helmet>
+      <PageSeo title="Sivua ei löytynyt | ME massage" noIndex />
       <Header />
       <div className="h-[60px] md:h-[68px]" />
       <section className="py-24 md:py-32 px-6 md:px-12">

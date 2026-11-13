@@ -1,0 +1,27 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/klaukkala",
+      "destination": "/toimipisteet/klaukkala",
+      "permanent": true
+    },
+    {
+      "source": "/vaasa",
+      "destination": "/toimipisteet/vaasa",
+      "permanent": true
+    },
+    {
+      "source": "/lahjakortit",
+      "destination": "/verkkokauppa",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}

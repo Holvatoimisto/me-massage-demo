@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 import { Mail, MapPin } from 'lucide-react';
 import { useLang } from '@/contexts/LanguageContext';
 import { Header } from '@/components/Header';
@@ -10,6 +9,7 @@ import { ScrollReveal } from '@/components/ScrollReveal';
 import { locations, localizedLocation } from '@/data/locations';
 import { businessInfo } from '@/data/site';
 import { bookingPrimaryOnLightClasses } from '@/lib/bookingCta';
+import { PageSeo } from '@/components/PageSeo';
 
 export function ContactPage() {
   const { tStr } = useLang();
@@ -17,10 +17,7 @@ export function ContactPage() {
 
   return (
     <div className="bg-white min-h-[100dvh]">
-      <Helmet>
-        <title>{t('metaTitle')}</title>
-        <meta name="description" content={t('metaDescription')} />
-      </Helmet>
+      <PageSeo title={t('metaTitle')} description={t('metaDescription')} />
 
       <Header />
       {/* Header spacer */}

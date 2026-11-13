@@ -1,5 +1,4 @@
 ﻿import { useParams, Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -11,6 +10,7 @@ import { businessInfo } from '@/data/site';
 import { bookingGlassOnDarkClasses } from '@/lib/bookingCta';
 import { pricingTabs } from '@/data/pricing';
 import { teamMembers } from '@/data/team';
+import { PageSeo } from '@/components/PageSeo';
 
 type ServiceKey = 'classic' | 'hotStone' | 'jaw' | 'iastm';
 
@@ -65,6 +65,7 @@ export function ServicePageTemplate() {
   if (!service) {
     return (
       <div className="bg-[#F7F5F2] min-h-[100dvh]">
+        <PageSeo title="Sivua ei löytynyt | ME massage" noIndex />
         <Header />
         <div className="h-[60px] md:h-[68px]" />
         <div className="pt-32 pb-20 px-6 text-center">
@@ -107,10 +108,7 @@ export function ServicePageTemplate() {
 
   return (
     <div className="bg-[#F7F5F2] min-h-[100dvh]">
-      <Helmet>
-        <title>{tStr(p('metaTitle'))}</title>
-        <meta name="description" content={tStr(p('metaDescription'))} />
-      </Helmet>
+      <PageSeo title={tStr(p('metaTitle'))} description={tStr(p('metaDescription'))} />
       <Header />
       {/* Header spacer */}
       <div className="h-[60px] md:h-[68px]" />

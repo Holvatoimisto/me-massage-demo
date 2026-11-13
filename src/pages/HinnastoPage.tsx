@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 import { ArrowRight } from 'lucide-react';
 import { useLang } from '@/contexts/LanguageContext';
 import { Header } from '@/components/Header';
@@ -10,6 +9,7 @@ import { PricingExplorer } from '@/components/PricingExplorer';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import { pricingTabs, type PricingTab } from '@/data/pricing';
 import { serviceOverviews } from '@/data/services';
+import { PageSeo } from '@/components/PageSeo';
 
 interface DurationGuideItem {
   duration: string;
@@ -35,10 +35,7 @@ export function HinnastoPage() {
 
   return (
     <div className="bg-white min-h-[100dvh]">
-      <Helmet>
-        <title>{t('metaTitle')}</title>
-        <meta name="description" content={t('metaDescription')} />
-      </Helmet>
+      <PageSeo title={t('metaTitle')} description={t('metaDescription')} />
 
       <Header />
       {/* Header spacer */}
