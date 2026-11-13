@@ -171,6 +171,21 @@ export const openGiftCardValues: OpenGiftCardValue[] = [
   { value: 500, productId: 1788 },
 ];
 
+const knownShopProductIds = new Set([
+  ...shopServices.flatMap((service) =>
+    service.durations.flatMap((duration) => [
+      duration.giftProductId,
+      ...duration.series.map((option) => option.productId),
+    ]),
+  ),
+  ...openGiftCardValues.map((option) => option.productId),
+]);
+
+/** Returns whether the ID is present in the current WooCommerce shop mappings. */
+export function isKnownShopProductId(productId: number): boolean {
+  return Number.isInteger(productId) && knownShopProductIds.has(productId);
+}
+
 /** Approximate savings label per visits count (matches the live "Säästä ~N %" badges). */
 export const seriesSavings: Record<SeriesVisits, number> = { 3: 10, 6: 15, 12: 20 };
 

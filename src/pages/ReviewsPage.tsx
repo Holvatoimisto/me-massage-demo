@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { ChevronDown, ChevronUp, Phone, Star } from 'lucide-react';
 import { useLang } from '@/contexts/LanguageContext';
@@ -8,11 +8,16 @@ import { PageHero } from '@/components/PageHero';
 import { ReviewCard, type ReviewCardData } from '@/components/ReviewCard';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import { locations, localizedLocation, locationTranslationKeys, type LocationData } from '@/data/locations';
-import { locationReviews, type LocationReviewsData } from '@/data/reviews';
 import { teamAtLocation, type TeamMember } from '@/data/team';
 import { buildAjasBookingUrl } from '@/data/ajas';
 import { businessInfo } from '@/data/site';
 import { bookingGlassOnDarkClasses } from '@/lib/bookingCta';
+import {
+  getFallbackReviewsForLocation,
+  getReviewsForLocation,
+  type ReviewLocationResult,
+} from '@/lib/reviewProvider';
+import type { NormalizedReview } from '@/lib/reviewTypes';
 
 const INITIAL_REVIEWS = 6;
 
@@ -21,7 +26,7 @@ const INITIAL_REVIEWS = 6;
  * text genuinely fits the therapist are passed in (see reviews.ts); an empty
  * list renders no quote area rather than implying unattributed quotes.
  */
-function TherapistQuotes({ quotes }: { quotes: LocationReviewsData['reviews'] }) {
+function TherapistQuotes({ quotes }: { quotes: NormalizedReview[] }) {
   if (quotes.length === 0) return null;
   return (
     <div className="mt-6 space-y-5">
@@ -41,13 +46,15 @@ function TherapistQuotes({ quotes }: { quotes: LocationReviewsData['reviews'] })
  * Editorial "people behind the experiences" block. Klaukkala shows Mathias
  * and Janina, Vaasa shows Mathias only (team.ts is the single source).
  */
-function TherapistSection({ members, data }: { members: TeamMember[]; data: LocationReviewsData }) {
+function TherapistSection({ members, data }: { members: TeamMember[]; data: ReviewLocationResult }) {
   const { tStr } = useLang();
   return (
     <div className="space-y-14 md:space-y-16">
       {members.map((member) => {
         const highlightIds = data.highlightedByTherapist[member.id] ?? [];
-        const quotes = data.highlights.filter((review) => highlightIds.includes(review.id));
+        const quotes = data.therapistHighlights
+          .filter((review) => highlightIds.includes(review.id))
+          .map((review) => ({ ...review, locationSlug: data.locationSlug }));
         return (
           <ScrollReveal key={member.id}>
             <div className="grid grid-cols-1 md:grid-cols-[260px_1fr] gap-7 md:gap-12 items-start">
@@ -78,9 +85,22 @@ export function ReviewsPage() {
 
   const [selectedSlug, setSelectedSlug] = useState<LocationData['slug']>('klaukkala');
   const [showAll, setShowAll] = useState(false);
+  const [reviewsByLocation, setReviewsByLocation] = useState<Record<LocationData['slug'], ReviewLocationResult>>(() => ({
+    klaukkala: getFallbackReviewsForLocation('klaukkala'),
+    vaasa: getFallbackReviewsForLocation('vaasa'),
+  }));
+
+  useEffect(() => {
+    const controller = new AbortController();
+    void getReviewsForLocation(selectedSlug, controller.signal).then((result) => {
+      if (controller.signal.aborted) return;
+      setReviewsByLocation((current) => ({ ...current, [selectedSlug]: result }));
+    });
+    return () => controller.abort();
+  }, [selectedSlug]);
 
   const location = locations.find((l) => l.slug === selectedSlug) ?? locations[0];
-  const data: LocationReviewsData = locationReviews[selectedSlug];
+  const data = reviewsByLocation[selectedSlug];
   const therapists = teamAtLocation(selectedSlug);
 
   const visibleReviews = showAll ? data.reviews : data.reviews.slice(0, INITIAL_REVIEWS);
@@ -176,9 +196,9 @@ export function ReviewsPage() {
                 ))}
               </div>
               <p className="font-inter text-[15px] text-[#1F2937] mb-1">
-                <span className="font-semibold">{data.rating} / 5</span>
-                {data.reviewCount !== undefined && (
-                  <span className="text-[#5A6A7A]"> · {data.reviewCount} {t('ratingCount')}</span>
+                <span className="font-semibold">{data.aggregateRating.toFixed(1).replace('.', ',')} / 5</span>
+                {data.totalReviewCount !== undefined && (
+                  <span className="text-[#5A6A7A]"> · {data.totalReviewCount} {t('ratingCount')}</span>
                 )}
               </p>
               <p className="font-inter text-[12px] text-[#5A6A7A] tracking-wide mb-4">{t('ratingSource')}</p>

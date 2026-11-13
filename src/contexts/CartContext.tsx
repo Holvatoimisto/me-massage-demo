@@ -1,4 +1,5 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import { parseStoredCart, serializeCart } from '@/lib/cartStorage';
 
 // Local cart for the new webshop frontend. Items carry the exact WooCommerce
 // product IDs from src/data/shop.ts, so a future WooCommerce/Ajas checkout
@@ -11,6 +12,7 @@ export interface CartItem {
   /** WooCommerce product ID this line maps to. */
   productId: number;
   type: 'gift' | 'open' | 'series';
+  recipientType: 'gift' | 'self';
   /** Display label, e.g. "Lahjakortti". */
   label: string;
   /** Meta lines, e.g. ["Klassinen hieronta · 50 min", "Saaja: Anna", "Kieli: Suomi"]. */
@@ -41,8 +43,7 @@ const STORAGE_KEY = 'me-cart';
 export function CartProvider({ children }: { children: React.ReactNode }) {
   const [items, setItems] = useState<CartItem[]>(() => {
     try {
-      const raw = localStorage.getItem(STORAGE_KEY);
-      return raw ? (JSON.parse(raw) as CartItem[]) : [];
+      return parseStoredCart(localStorage.getItem(STORAGE_KEY));
     } catch {
       return [];
     }
@@ -51,7 +52,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+      localStorage.setItem(STORAGE_KEY, serializeCart(items));
     } catch {
       // storage unavailable — cart still works in memory
     }

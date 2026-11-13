@@ -96,6 +96,10 @@ export function Footer() {
 
         <div className="border-t border-[#E2E8F0]/[0.06] pt-6 flex flex-col md:flex-row items-center justify-between gap-3">
           <p className="font-inter text-[12px] text-[#94A3B8]/70">{tStr('footer.copyright')}</p>
+          <div className="flex items-center gap-4 font-inter text-[12px] text-[#94A3B8]/70">
+            <Link to="/tietosuojan-kuvaus" className="hover:text-white transition-colors no-underline">Tietosuojan kuvaus</Link>
+            <Link to="/varausehdot" className="hover:text-white transition-colors no-underline">Varausehdot</Link>
+          </div>
           <p className="font-inter text-[12px] text-[#94A3B8]/70">{tStr('footer.paymentMethods')}</p>
           <div className="flex gap-4">
             <a href={businessInfo.instagramUrl} className="text-[#94A3B8]/70 hover:text-white transition-colors"><Instagram size={18} strokeWidth={1.5} /></a>

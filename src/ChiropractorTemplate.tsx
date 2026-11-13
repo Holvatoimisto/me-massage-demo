@@ -148,8 +148,8 @@ export function ChiropractorTemplate() {
       firstName: lang === 'sv' ? 'från Janina' : lang === 'en' ? 'from Janina' : 'Janinalta',
       title: tStr('team.janina.title'),
       role: 'Hieroja',
-      image: '/assets/janina-uusi-kuva.jpg',
-      avatar: '/assets/janina-uusi-kuva.jpg',
+      image: '/assets/janina-cutout.png',
+      avatar: '/assets/janina-cutout.png',
       imagePosition: 'center 20%',
       avatarPosition: 'center center',
       bio: tStr('team.janina.bio'),
@@ -573,7 +573,7 @@ export function ChiropractorTemplate() {
 
           <ScrollReveal delay={0.1}>
             <div className="mb-12 md:mb-14">
-              {tArr<{question: string; answer: string; includePhone?: boolean}>('faq.items').map((faq, i) => (
+              {tArr<{question: string; answer: string; includePhone?: boolean; linkText?: string; linkHref?: string}>('faq.items').map((faq, i) => (
                 <div key={i} className="border-t border-[#E2E8F0]">
                   <button onClick={() => setOpenFaqIndex(openFaqIndex === i ? null : i)} className="group w-full flex items-start justify-between gap-4 py-5 md:py-6 text-left bg-transparent border-none cursor-pointer">
                     <span className="font-inter text-[15px] md:text-[16px] font-semibold text-[#152238] leading-[1.5]">{faq.question}</span>
@@ -588,6 +588,15 @@ export function ChiropractorTemplate() {
                         <a href={templateData.business.phoneLink} className="block mt-3 font-inter text-[14px] text-[#152238]/70 tracking-wider no-underline hover:text-[#152238] hover:underline underline-offset-4 decoration-[#4A4540]/20 transition-colors duration-300">
                           📞 {templateData.business.phone}
                         </a>
+                      )}
+                      {faq.linkText && faq.linkHref && (
+                        <Link
+                          to={faq.linkHref}
+                          className="group/link flex w-fit items-center gap-1.5 mt-3 font-inter text-[13px] font-semibold text-[#152238] underline underline-offset-4 decoration-[#152238]/25 hover:decoration-[#152238]/70 transition-colors duration-300"
+                        >
+                          {faq.linkText}
+                          <ArrowRight size={12} strokeWidth={1.5} className="transition-transform duration-300 group-hover/link:translate-x-0.5" />
+                        </Link>
                       )}
                     </div>
                   </div>

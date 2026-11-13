@@ -49,6 +49,7 @@ export function ShopSeriesCardsPage() {
       lineId: `series-${selected.productId}-${recipientType}-${recipientName.trim()}-${cardLang}`,
       productId: selected.productId,
       type: 'series',
+      recipientType,
       label: t('cartSeries'),
       details: [
         `${serviceLabel} · ${duration.duration}`,

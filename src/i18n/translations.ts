@@ -149,6 +149,8 @@ export const translations = {
         {
           question: 'Minkä pituinen hieronta minulle?',
           answer: '20 minuuttia riittää yhden alueen kohdennettuun hoitoon, 50 minuuttia on suosituin valinta ja antaa aikaa laajempaan kokonaisuuteen, ja 80–110 minuuttia kattaa koko vartalon perusteellisesti.',
+          linkText: 'Aloita oirekysely',
+          linkHref: '/#oirekysely',
         },
         {
           question: 'Sopiiko hieronta minulle?',
@@ -980,6 +982,8 @@ export const translations = {
         {
           question: 'What length of massage should I choose?',
           answer: '20 minutes is enough for a targeted treatment of one area, 50 minutes is the most popular choice and allows time for a broader session, and 80–110 minutes covers the whole body thoroughly.',
+          linkText: 'Start the symptom survey',
+          linkHref: '/#oirekysely',
         },
         {
           question: 'Is massage suitable for me?',
@@ -1812,6 +1816,8 @@ export const translations = {
         {
           question: 'Hur lång massage ska jag välja?',
           answer: '20 minuter räcker för en riktad behandling av ett område, 50 minuter är det mest populära valet och ger tid för en större helhet, och 80–110 minuter täcker hela kroppen grundligt.',
+          linkText: 'Starta symptomenkäten',
+          linkHref: '/#oirekysely',
         },
         {
           question: 'Passar massage för mig?',

@@ -17,6 +17,8 @@ import { ShopPage } from '@/pages/ShopPage';
 import { ShopGiftCardsPage } from '@/pages/ShopGiftCardsPage';
 import { ShopSeriesCardsPage } from '@/pages/ShopSeriesCardsPage';
 import { NotFoundPage } from '@/pages/NotFoundPage';
+import { PrivacyPage } from '@/pages/PrivacyPage';
+import { BookingTermsPage } from '@/pages/BookingTermsPage';
 import { ScrollManager } from '@/components/ScrollManager';
 
 function App() {
@@ -40,6 +42,8 @@ function App() {
               <Route path="/verkkokauppa" element={<ShopPage />} />
               <Route path="/verkkokauppa/lahjakortit" element={<ShopGiftCardsPage />} />
               <Route path="/verkkokauppa/sarjakortit" element={<ShopSeriesCardsPage />} />
+              <Route path="/tietosuojan-kuvaus" element={<PrivacyPage />} />
+              <Route path="/varausehdot" element={<BookingTermsPage />} />
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
             <CartDrawer />

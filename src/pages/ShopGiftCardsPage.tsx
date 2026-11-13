@@ -54,6 +54,7 @@ export function ShopGiftCardsPage() {
       lineId: `gift-${duration.giftProductId}-${recipientType}-${recipientName.trim()}-${cardLang}`,
       productId: duration.giftProductId,
       type: 'gift',
+      recipientType,
       label: t('cartGift'),
       details: [
         `${serviceLabel} · ${duration.duration}`,
@@ -79,6 +80,7 @@ export function ShopGiftCardsPage() {
       lineId: `open-${openEntry.productId}-${openRecipientType}-${openRecipientName.trim()}-${openCardLang}`,
       productId: openEntry.productId,
       type: 'open',
+      recipientType: openRecipientType,
       label: t('cartOpen'),
       details: [
         `${openEntry.value} €`,
