@@ -114,12 +114,15 @@ export function Header() {
             <button
               className={`flex items-center gap-1 bg-transparent border-none cursor-pointer ${navLinkClass(isServices)}`}
               onClick={() => setServicesOpen(!servicesOpen)}
+              aria-expanded={servicesOpen}
+              aria-controls="desktop-services-menu"
             >
               {tStr('nav.services')}
               <ChevronDown size={14} strokeWidth={1.5} className={`transition-transform duration-200 ${servicesOpen ? 'rotate-180' : ''}`} />
             </button>
             {servicesOpen && (
               <motion.div
+                id="desktop-services-menu"
                 initial={{ opacity: 0, y: -4 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.2 }}
@@ -194,6 +197,8 @@ export function Header() {
           <div ref={langRef} className="relative hidden lg:block">
             <button
               onClick={() => setLangOpen(!langOpen)}
+              aria-expanded={langOpen}
+              aria-controls="desktop-language-menu"
               className="flex items-center gap-1 font-inter text-[13px] font-semibold uppercase tracking-[0.06em] text-white/80 hover:text-white transition-colors duration-300 bg-transparent border-none cursor-pointer whitespace-nowrap"
             >
               <Globe size={14} strokeWidth={1.5} />
@@ -201,6 +206,7 @@ export function Header() {
             </button>
             {langOpen && (
               <motion.div
+                id="desktop-language-menu"
                 initial={{ opacity: 0, y: -4 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.2 }}
@@ -244,13 +250,15 @@ export function Header() {
         <div ref={mobileLangRef} className="xl:hidden flex items-center gap-2 relative z-10">
           <button
             onClick={() => setLangOpen(!langOpen)}
+            aria-expanded={langOpen}
+            aria-controls="mobile-language-menu"
             className="flex items-center gap-0.5 font-inter text-[11px] font-semibold uppercase tracking-wider text-[#FFFFFF]/70 bg-transparent border-none cursor-pointer px-1.5 py-1"
           >
             <Globe size={16} strokeWidth={1.5} />
             {lang === 'fi' ? 'FI' : lang === 'en' ? 'EN' : 'SV'}
           </button>
           {langOpen && (
-            <div className="absolute top-full right-8 mt-1 w-[52px] bg-[#1E3A5F] rounded-lg shadow-[0_8px_32px_rgba(0,0,0,0.28)] border border-white/10 py-1.5 overflow-hidden">
+            <div id="mobile-language-menu" className="absolute top-full right-8 mt-1 w-[52px] bg-[#1E3A5F] rounded-lg shadow-[0_8px_32px_rgba(0,0,0,0.28)] border border-white/10 py-1.5 overflow-hidden">
               {[
                 { code: 'fi' as const, label: 'FI' },
                 { code: 'en' as const, label: 'EN' },
@@ -274,6 +282,8 @@ export function Header() {
             onClick={() => setMobileOpen(!mobileOpen)}
             className="text-[#FFFFFF] transition-colors bg-transparent border-none cursor-pointer"
             aria-label={mobileOpen ? tStr('nav.closeMenu') : tStr('nav.openMenu')}
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-navigation-menu"
           >
             {mobileOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -283,6 +293,7 @@ export function Header() {
       {/* Mobile menu */}
       {mobileOpen && (
         <motion.div
+          id="mobile-navigation-menu"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           className="xl:hidden absolute top-full left-0 right-0 bg-[#152238] border-t border-white/[0.08] px-5 py-6"
@@ -293,13 +304,15 @@ export function Header() {
           <div className="border-b border-[#E2E8F0]/[0.06]">
             <button
               onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
+              aria-expanded={mobileServicesOpen}
+              aria-controls="mobile-services-menu"
               className="w-full flex items-center justify-between py-3 font-inter text-[14px] font-semibold uppercase tracking-wider text-[#FFFFFF]/90 bg-transparent border-none cursor-pointer"
             >
               <span>{tStr('nav.services')}</span>
               <ChevronDown size={16} strokeWidth={1.5} className={`text-[#FFFFFF]/50 transition-transform duration-200 ${mobileServicesOpen ? 'rotate-180' : ''}`} />
             </button>
             {mobileServicesOpen && (
-              <div className="pb-3 pl-3">
+              <div id="mobile-services-menu" className="pb-3 pl-3">
                 {getServiceDropdownItems(tStr).map((item) => (
                   <Link
                     key={item.href}

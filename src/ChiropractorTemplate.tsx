@@ -417,7 +417,7 @@ export function ChiropractorTemplate() {
               {/* Cards + side arrows */}
               <div className="flex items-center gap-3 md:gap-4">
                 {/* Left arrow */}
-                <button onClick={prevReview} className="shrink-0 w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-white hover:border-white/30 transition-colors bg-transparent cursor-pointer">
+                <button type="button" onClick={prevReview} aria-label="Edellinen arvostelu" className="shrink-0 w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-white hover:border-white/30 transition-colors bg-transparent cursor-pointer">
                   <ChevronLeft size={18} strokeWidth={1.5} />
                 </button>
 
@@ -442,7 +442,7 @@ export function ChiropractorTemplate() {
                 </div>
 
                 {/* Right arrow */}
-                <button onClick={nextReview} className="shrink-0 w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-white hover:border-white/30 transition-colors bg-transparent cursor-pointer">
+                <button type="button" onClick={nextReview} aria-label="Seuraava arvostelu" className="shrink-0 w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-white hover:border-white/30 transition-colors bg-transparent cursor-pointer">
                   <ChevronRight size={18} strokeWidth={1.5} />
                 </button>
               </div>
