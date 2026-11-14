@@ -78,6 +78,7 @@ export function ContactPage() {
                   <img
                     src={location.image}
                     alt={`ME massage ${localized.name}`}
+                    loading="lazy"
                     className="w-full aspect-[16/10] object-cover object-center"
                   />
                   <div className="p-7 flex flex-col flex-1">

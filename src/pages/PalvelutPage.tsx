@@ -47,6 +47,7 @@ export function PalvelutPage() {
                         <img
                           src={service.image}
                           alt={tStr(`servicePages.${service.key}.title`)}
+                          loading="lazy"
                           className={`w-full h-full ${service.contain ? 'object-contain' : 'object-cover'} transition-transform duration-500 group-hover:scale-[1.02]`}
                           style={service.position ? { objectPosition: service.position } : undefined}
                         />
