@@ -13,9 +13,8 @@ export const businessInfo = {
   googleMapsUrl: 'https://maps.google.com/?q=ME+massage+Klaukkala',
   facebookUrl: 'https://www.facebook.com/memassage',
   instagramUrl: 'https://www.instagram.com/memassage',
-  // Google rating shown site-wide. memassage.fi does not publish a numeric
-  // rating; the values below come from the project data. NEEDS MATHIAS
-  // CONFIRMATION — keep centralized so one edit updates every placement.
+  // Site-wide fallback used unless both locations return valid live Google
+  // rating and review-count data. Keep centralized for failure/partial states.
   googleRating: '5.0',
   googleReviewCount: '120+',
 };

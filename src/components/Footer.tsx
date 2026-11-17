@@ -99,6 +99,7 @@ export function Footer() {
           <div className="flex items-center gap-4 font-inter text-[12px] text-[#94A3B8]/70">
             <Link to="/tietosuojan-kuvaus" className="hover:text-white transition-colors no-underline">Tietosuojan kuvaus</Link>
             <Link to="/varausehdot" className="hover:text-white transition-colors no-underline">Varausehdot</Link>
+            <Link to="/ostoehdot" className="hover:text-white transition-colors no-underline">Ostoehdot</Link>
           </div>
           <p className="font-inter text-[12px] text-[#94A3B8]/70">{tStr('footer.paymentMethods')}</p>
           <div className="flex gap-4">

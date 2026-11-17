@@ -20,6 +20,7 @@ import { businessInfo } from '@/data/site';
 import { bookingGlassOnDarkClasses } from '@/lib/bookingCta';
 import { locations } from '@/data/locations';
 import { BusinessStructuredData, PageSeo } from '@/components/PageSeo';
+import { useCombinedReviewSummary } from '@/hooks/useCombinedReviewSummary';
 
 const templateData = {
   business: businessInfo,
@@ -117,6 +118,12 @@ export function ChiropractorTemplate() {
   const [teamTransitioning, setTeamTransitioning] = useState(false);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
   const [reviewIndex, setReviewIndex] = useState(0);
+  const combinedReviews = useCombinedReviewSummary();
+  const heroStats = templateData.hero.stats.map((stat, index) => {
+    if (index === 0) return { ...stat, value: combinedReviews.aggregateRating };
+    if (index === 1) return { ...stat, value: combinedReviews.totalReviewCount };
+    return stat;
+  });
 
   const handleTeamSelect = useCallback((index: number) => {
     if (index === activeTeamIndex || teamTransitioning) return;
@@ -252,14 +259,14 @@ export function ChiropractorTemplate() {
             transition={{ duration: 0.8, delay: 0.75 }}
             className="flex flex-col items-start gap-2.5 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-4 sm:gap-y-2 font-inter text-[13px] text-white/85 tracking-[0.02em]"
           >
-            {templateData.hero.stats.map((stat, i) => (
+            {heroStats.map((stat, i) => (
               <span key={i} className="inline-flex items-center gap-2.5 sm:gap-4">
                 {/* Mobile: own bullet per row; sm+: separator only between items */}
                 <span className="w-1 h-1 rounded-full bg-white/30 sm:hidden" aria-hidden="true" />
                 {i > 0 && <span className="hidden sm:inline text-white/30" aria-hidden="true">•</span>}
                 <span className="inline-flex items-center gap-1.5">
                   {stat.value && <span className="font-semibold text-white/95">{stat.value}</span>}
-                  {stat.value === '5.0' && (
+                  {i === 0 && (
                     <Star size={12} fill="currentColor" strokeWidth={1.6} className="text-[#F2D890]" />
                   )}
                   <span className="text-white/65">
@@ -656,7 +663,7 @@ export function ChiropractorTemplate() {
               </div>
 
               <div className="mt-5 flex flex-wrap items-center justify-center gap-x-3 gap-y-1">
-                <span className="font-inter text-[12px] text-white/80 tracking-wide">{tStr('finalCta.trustLine', { rating: businessInfo.googleRating })}</span>
+                <span className="font-inter text-[12px] text-white/80 tracking-wide">{tStr('finalCta.trustLine', { rating: combinedReviews.aggregateRating })}</span>
               </div>
 
               <div className="mt-6 pt-4 border-t border-white/10">

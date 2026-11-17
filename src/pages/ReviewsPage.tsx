@@ -18,6 +18,7 @@ import {
 } from '@/lib/reviewProvider';
 import type { NormalizedReview } from '@/lib/reviewTypes';
 import { PageSeo } from '@/components/PageSeo';
+import { useCombinedReviewSummary } from '@/hooks/useCombinedReviewSummary';
 
 const INITIAL_REVIEWS = 6;
 
@@ -82,6 +83,7 @@ function TherapistSection({ members, data }: { members: TeamMember[]; data: Revi
 export function ReviewsPage() {
   const { lang, tStr } = useLang();
   const t = (key: string) => tStr(`pages.reviews.${key}`);
+  const combinedReviews = useCombinedReviewSummary();
 
   const [selectedSlug, setSelectedSlug] = useState<LocationData['slug']>('klaukkala');
   const [showAll, setShowAll] = useState(false);
@@ -133,8 +135,8 @@ export function ReviewsPage() {
                 <Star key={s} size={18} fill="currentColor" strokeWidth={1.5} />
               ))}
             </div>
-            <p className="font-cormorant text-[40px] md:text-[48px] font-semibold text-[#152238] leading-none mb-2">{businessInfo.googleRating}</p>
-            <p className="font-inter text-[14px] text-[#1F2937] mb-1">{businessInfo.googleReviewCount} {t('ratingCount')}</p>
+            <p className="font-cormorant text-[40px] md:text-[48px] font-semibold text-[#152238] leading-none mb-2">{combinedReviews.aggregateRating}</p>
+            <p className="font-inter text-[14px] text-[#1F2937] mb-1">{combinedReviews.totalReviewCount} {t('ratingCount')}</p>
             <p className="font-inter text-[12px] text-[#5A6A7A] tracking-wide mb-5">{t('ratingSource')}</p>
             <a
               href={businessInfo.googleReviewUrl}
@@ -273,7 +275,7 @@ export function ReviewsPage() {
             </div>
 
             <span className="font-inter text-[12px] text-white/80 tracking-wide">
-              {tStr('finalCta.trustLine', { rating: businessInfo.googleRating })}
+              {tStr('finalCta.trustLine', { rating: combinedReviews.aggregateRating })}
             </span>
           </ScrollReveal>
         </div>
