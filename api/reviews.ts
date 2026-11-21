@@ -1,4 +1,4 @@
-import { fetchGoogleBusinessProfileReviews } from './_lib/googleBusinessProfile';
+import { fetchGoogleBusinessProfileReviews } from './_lib/googleBusinessProfile.js';
 import type { ReviewLocationSlug } from '../src/lib/reviewTypes';
 
 const CACHE_CONTROL = 'public, s-maxage=21600, stale-while-revalidate=86400';
