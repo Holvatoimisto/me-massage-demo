@@ -4,6 +4,7 @@ export interface NormalizedReview {
   id: string;
   author: string;
   text: string;
+  rawText: string;
   rating: number;
   createTime?: string;
   updateTime?: string;

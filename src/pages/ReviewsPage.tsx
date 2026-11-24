@@ -55,7 +55,7 @@ function TherapistSection({ members, data }: { members: TeamMember[]; data: Revi
         const highlightIds = data.highlightedByTherapist[member.id] ?? [];
         const quotes = data.therapistHighlights
           .filter((review) => highlightIds.includes(review.id))
-          .map((review) => ({ ...review, locationSlug: data.locationSlug }));
+          .map((review) => ({ ...review, rawText: review.text, locationSlug: data.locationSlug }));
         return (
           <ScrollReveal key={member.id}>
             <div className="grid grid-cols-1 md:grid-cols-[260px_1fr] gap-7 md:gap-12 items-start">

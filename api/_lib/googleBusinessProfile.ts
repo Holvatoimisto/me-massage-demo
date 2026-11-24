@@ -3,6 +3,7 @@ import type {
   ReviewLocationApiResponse,
   ReviewLocationSlug,
 } from '../../src/lib/reviewTypes.js';
+import { parseGoogleReviewComment } from './googleReviewCommentParser.js';
 
 const GOOGLE_TOKEN_URL = 'https://oauth2.googleapis.com/token';
 const GOOGLE_REVIEWS_BASE_URL = 'https://mybusiness.googleapis.com/v4';
@@ -91,13 +92,17 @@ function normalizeGoogleReview(review: GoogleReview, locationSlug: ReviewLocatio
     ? review.reviewer.displayName
     : undefined;
   const rating = typeof review.starRating === 'string' ? starRatings[review.starRating] : undefined;
+  const parsedComment = parseGoogleReviewComment(
+    typeof review.comment === 'string' ? review.comment : '',
+  );
 
   if (!reviewId || !author || !rating) throw new Error('Google review response was malformed.');
 
   return {
     id: reviewId,
     author,
-    text: typeof review.comment === 'string' ? review.comment : '',
+    text: parsedComment.text,
+    rawText: parsedComment.rawText,
     rating,
     ...(normalizeTimestamp(review.createTime) ? { createTime: normalizeTimestamp(review.createTime) } : {}),
     ...(normalizeTimestamp(review.updateTime) ? { updateTime: normalizeTimestamp(review.updateTime) } : {}),

@@ -28,6 +28,7 @@ function normalizeStaticReview(review: LocationReview, locationSlug: ReviewLocat
     id: review.id,
     author: review.author,
     text: review.text,
+    rawText: review.text,
     rating: review.rating,
     source: 'Google',
     locationSlug,
@@ -56,6 +57,7 @@ function isNormalizedReview(value: unknown, locationSlug: ReviewLocationSlug): v
     typeof review.author === 'string' &&
     review.author.length > 0 &&
     typeof review.text === 'string' &&
+    typeof review.rawText === 'string' &&
     typeof review.rating === 'number' &&
     Number.isInteger(review.rating) &&
     review.rating >= 1 &&
