@@ -2,7 +2,7 @@ import type {
   NormalizedReview,
   ReviewLocationApiResponse,
   ReviewLocationSlug,
-} from '../../src/lib/reviewTypes';
+} from '../../src/lib/reviewTypes.js';
 
 const GOOGLE_TOKEN_URL = 'https://oauth2.googleapis.com/token';
 const GOOGLE_REVIEWS_BASE_URL = 'https://mybusiness.googleapis.com/v4';
@@ -86,7 +86,7 @@ function normalizeTimestamp(value: unknown): string | undefined {
 
 function normalizeGoogleReview(review: GoogleReview, locationSlug: ReviewLocationSlug): NormalizedReview {
   const resourceName = typeof review.name === 'string' ? review.name : undefined;
-  const reviewId = typeof review.reviewId === 'string' ? review.reviewId : resourceName?.split('/').at(-1);
+  const reviewId = typeof review.reviewId === 'string' ? review.reviewId : resourceName?.split('/').pop();
   const author = review.reviewer && typeof review.reviewer.displayName === 'string'
     ? review.reviewer.displayName
     : undefined;
