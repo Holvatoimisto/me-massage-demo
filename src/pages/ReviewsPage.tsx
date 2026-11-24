@@ -105,8 +105,9 @@ export function ReviewsPage() {
   const data = reviewsByLocation[selectedSlug];
   const therapists = teamAtLocation(selectedSlug);
 
-  const visibleReviews = showAll ? data.reviews : data.reviews.slice(0, INITIAL_REVIEWS);
-  const canExpand = data.reviews.length > INITIAL_REVIEWS;
+  const reviewsWithText = data.reviews.filter((review) => review.text.trim().length > 0);
+  const visibleReviews = showAll ? reviewsWithText : reviewsWithText.slice(0, INITIAL_REVIEWS);
+  const canExpand = reviewsWithText.length > INITIAL_REVIEWS;
 
   const selectLocation = (slug: LocationData['slug']) => {
     setSelectedSlug(slug);
@@ -214,14 +215,20 @@ export function ReviewsPage() {
 
           {/* Location review collection */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
-            {visibleReviews.map((review, i) => {
-              const card: ReviewCardData = { name: review.author, text: review.text, rating: review.rating };
-              return (
-                <ScrollReveal key={review.id} delay={0.05 + (i % 3) * 0.06} className="h-full">
-                  <ReviewCard review={card} />
-                </ScrollReveal>
-              );
-            })}
+            {visibleReviews.length === 0 ? (
+              <p className="col-span-full text-center font-inter text-[14px] text-[#5A6A7A]">
+                {t('emptyState')}
+              </p>
+            ) : (
+              visibleReviews.map((review, i) => {
+                const card: ReviewCardData = { name: review.author, text: review.text, rating: review.rating };
+                return (
+                  <ScrollReveal key={review.id} delay={0.05 + (i % 3) * 0.06} className="h-full">
+                    <ReviewCard review={card} />
+                  </ScrollReveal>
+                );
+              })
+            )}
           </div>
 
           {canExpand && (

@@ -714,6 +714,7 @@ export const translations = {
         selectorHeading: 'Katso kokemuksia toimipisteittäin',
         showMore: 'Katso lisää arvosteluja',
         showLess: 'Näytä vähemmän',
+        emptyState: 'Tälle toimipisteelle ei ole vielä tekstillisiä arvosteluja.',
         peopleHeading: 'Kokemusten takana',
       },
       contact: {
@@ -1548,6 +1549,7 @@ export const translations = {
         selectorHeading: 'See experiences by location',
         showMore: 'See more reviews',
         showLess: 'Show less',
+        emptyState: 'There are no written reviews for this location yet.',
         peopleHeading: 'The people behind the experiences',
       },
       contact: {
@@ -2382,6 +2384,7 @@ export const translations = {
         selectorHeading: 'Se upplevelser per mottagning',
         showMore: 'Se fler recensioner',
         showLess: 'Visa färre',
+        emptyState: 'Det finns inga skriftliga recensioner för den här mottagningen ännu.',
         peopleHeading: 'Människorna bakom upplevelserna',
       },
       contact: {
