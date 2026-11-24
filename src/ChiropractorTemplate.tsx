@@ -20,7 +20,10 @@ import { businessInfo } from '@/data/site';
 import { bookingGlassOnDarkClasses } from '@/lib/bookingCta';
 import { locations } from '@/data/locations';
 import { BusinessStructuredData, PageSeo } from '@/components/PageSeo';
-import { useCombinedReviewSummary } from '@/hooks/useCombinedReviewSummary';
+import {
+  formatReviewCountByDecade,
+  useCombinedReviewSummary,
+} from '@/hooks/useCombinedReviewSummary';
 
 const templateData = {
   business: businessInfo,
@@ -119,9 +122,12 @@ export function ChiropractorTemplate() {
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
   const [reviewIndex, setReviewIndex] = useState(0);
   const combinedReviews = useCombinedReviewSummary();
+  const heroReviewCount = combinedReviews.totalReviewCountValue === undefined
+    ? combinedReviews.totalReviewCount
+    : formatReviewCountByDecade(combinedReviews.totalReviewCountValue);
   const heroStats = templateData.hero.stats.map((stat, index) => {
     if (index === 0) return { ...stat, value: combinedReviews.aggregateRating };
-    if (index === 1) return { ...stat, value: combinedReviews.totalReviewCount };
+    if (index === 1) return { ...stat, value: heroReviewCount };
     return stat;
   });
 
@@ -260,7 +266,11 @@ export function ChiropractorTemplate() {
             className="flex flex-col items-start gap-2.5 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-4 sm:gap-y-2 font-inter text-[13px] text-white/85 tracking-[0.02em]"
           >
             {heroStats.map((stat, i) => (
-              <span key={i} className="inline-flex items-center gap-2.5 sm:gap-4">
+              <span
+                key={i}
+                className={`inline-flex items-center gap-2.5 sm:gap-4 ${i === 1 && combinedReviews.loading ? 'invisible' : ''}`}
+                aria-hidden={i === 1 && combinedReviews.loading ? true : undefined}
+              >
                 {/* Mobile: own bullet per row; sm+: separator only between items */}
                 <span className="w-1 h-1 rounded-full bg-white/30 sm:hidden" aria-hidden="true" />
                 {i > 0 && <span className="hidden sm:inline text-white/30" aria-hidden="true">•</span>}

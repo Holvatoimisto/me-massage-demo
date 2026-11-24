@@ -5,6 +5,7 @@ import { getReviewsForLocation, type ReviewLocationResult } from '@/lib/reviewPr
 export interface CombinedReviewSummary {
   aggregateRating: string;
   totalReviewCount: string;
+  totalReviewCountValue?: number;
   sourceState: 'live' | 'fallback';
   loading: boolean;
 }
@@ -48,8 +49,13 @@ export function combineReviewSummaries(
   return {
     aggregateRating: weightedRating.toFixed(1),
     totalReviewCount: String(totalReviewCount),
+    totalReviewCountValue: totalReviewCount,
     sourceState: 'live',
   };
+}
+
+export function formatReviewCountByDecade(totalReviewCount: number): string {
+  return `${Math.floor(totalReviewCount / 10) * 10}+`;
 }
 
 export function useCombinedReviewSummary(): CombinedReviewSummary {
